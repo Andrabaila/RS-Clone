@@ -1,0 +1,44 @@
+h1 {
+    margin: 0;
+    align-self: center;
+
+    background: linear-gradient(to right, $color-text, $color-primary 100%);
+    background-position: 0 100%;
+    background-size: 100% 2px;
+    background-repeat: repeat-x;
+
+    font-size: $font-size-title1;
+}
+
+h2 {
+    margin: 0;
+
+    background: linear-gradient(to right, $color-text, $color-primary 100%);
+    background-position: 0 100%;
+    background-size: 100% 2px;
+    background-repeat: repeat-x;
+
+    font-size: $font-size-title2;
+
+    transition: all 0.3s;
+}
+
+h2:hover {
+    background: linear-gradient(to left, $color-text, $color-primary 100%);
+    background-position: 0 100%;
+    background-size: 100% 2px;
+    background-repeat: repeat-x;
+}
+
+h3 {
+    margin: 0;
+
+    background: linear-gradient(to right, $color-text, $color-primary 100%);
+    background-position: 0 100%;
+    background-size: 100% 2px;
+    background-repeat: repeat-x;
+
+    font-size: $font-size-title3;
+    color: $color-text;
+    font-weight: 700;
+}

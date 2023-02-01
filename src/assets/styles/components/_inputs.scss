@@ -1,0 +1,45 @@
+.input {
+    border: 1px solid $color-border;
+    border-radius: 5px;
+
+    background-color: $color-background-light;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: $font-size-text_large;
+    color: $color-text;
+    height: $input-height;
+}
+
+.input::-webkit-input-placeholder {
+    font-size: $font-size-text_large;
+    color: $color-text;
+}
+
+.input:focus {
+    border: 1px solid #ffffff;
+
+    background-color: $color-focus;
+
+    outline: none;
+}
+
+.input_valid {
+    border: 1px solid $color-background-light;
+}
+
+.input_valid:focus {
+    color: $color-text;
+}
+
+.input_invalid {
+    position: relative;
+
+    border: 1px solid $color-mistake;
+
+    color: $color-mistake;
+}
+
+.input_invalid:focus {
+    color: $color-text;
+}
