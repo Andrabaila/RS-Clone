@@ -1,4 +1,4 @@
-const UI: { readonly [x: string]: string } = {
+const english: { readonly [x: string]: string } = {
     githubLinkFirstTeammate: 'Yury Andrabaila',
     githubLinkSecondTeammate: 'Alexandr Rylkov',
     githubLinkThirdTeammate: 'Pavel Poleshchuk',
@@ -10,4 +10,4 @@ const UI: { readonly [x: string]: string } = {
     startPageButtonJoin: 'Join group',
 };
 
-export default UI;
+export default english;

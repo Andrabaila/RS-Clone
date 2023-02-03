@@ -1,0 +1,16 @@
+.wrapper {
+    display: flex;
+}
+
+.wrapper_start-page-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+}
+
+@media (min-width: 768px) {
+    .wrapper_start-page-buttons {
+        display: flex;
+        flex-direction: row;
+    }
+}

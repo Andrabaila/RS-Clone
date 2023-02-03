@@ -1,6 +1,9 @@
 import createFooter from '../layouts/createFooter';
+import createStartPageMain from '../layouts/createStartPageMain';
 
-async function createStartPage() {
+function createStartPage() {
+    createStartPageMain();
+
     createFooter();
 }
 
