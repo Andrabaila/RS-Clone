@@ -5,6 +5,26 @@
     align-items: center;
     width: 100%;
     padding: 0 2rem;
-    flex-grow: 2;
+    flex-grow: 1;
+    gap: $gap;
+}
+
+.main_start-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 2rem;
+    gap: $gap;
+}
+
+.main_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 2rem;
     gap: $gap;
 }

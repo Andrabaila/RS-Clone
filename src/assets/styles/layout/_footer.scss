@@ -57,7 +57,7 @@
 @media (max-width: 600px) {
     .footer__wrapper {
         flex-direction: column;
-
+        gap: 0;
         font-size: $font-size-text_small;
     }
 

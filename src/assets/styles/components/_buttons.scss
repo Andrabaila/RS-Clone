@@ -1,25 +1,23 @@
 .button {
-    padding: 0 0.5rem 0 0.5rem;
-    border: 1px solid $color-border;
-    border-radius: 5px;
+    padding: 0 1.5rem;
+    border-radius: $button-height / 2;
     height: $button-height;
 
-    background-color: $color-primary;
+    background-color: $color-text;
+    border: none;
     cursor: pointer;
 
     font-style: normal;
     font-weight: 500;
     font-size: $font-size-text;
-    color: $color-text;
+    color: $color-background;
     text-decoration: none;
-    line-height: 140%;
 
-    transition: all 0.3s;
+    transition: all 0.2s;
 }
 
 .button:hover {
-    background: $color-hover;
-    box-shadow: inset 1px 1px 0 $color-gray_light;
+    transform: scale(1.05);
 }
 
 .button_disabled {
