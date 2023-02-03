@@ -19,7 +19,17 @@
     gap: $gap;
 }
 
-.main_wrapper {
+.main__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 2rem;
+    gap: $gap;
+}
+
+.main__wrapper_start-page {
     display: flex;
     flex-direction: column;
     justify-content: center;

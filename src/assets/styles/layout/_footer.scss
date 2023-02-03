@@ -11,6 +11,7 @@
 
 .footer__wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     width: 100%;
@@ -54,10 +55,9 @@
     border: 1px solid $color-primary;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 768px) {
     .footer__wrapper {
-        flex-direction: column;
-        gap: 0;
+        flex-direction: row;
         font-size: $font-size-text_small;
     }
 

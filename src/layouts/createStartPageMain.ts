@@ -7,16 +7,27 @@ function createStartPageMain() {
     document.querySelector('.main')?.remove();
 
     getHtmlElement({ parent: 'body', tag: 'main', style: ['main', 'main_start-page'] });
-    getHtmlElement({ parent: '.main', style: ['main_wrapper'] });
-    getHtmlElement({ parent: '.main_wrapper', tag: 'h1', style: ['main_title'], content: langObj.startPageTitle });
+    getHtmlElement({ parent: '.main', style: ['main__wrapper', 'main__wrapper_start-page'] });
+    getHtmlElement({ parent: '.main__wrapper', tag: 'h1', style: ['main_title'], content: langObj.startPageTitle });
     getHtmlElement({
-        parent: '.main_wrapper',
+        parent: '.main__wrapper',
         tag: 'p',
         style: ['text', 'text_start-page'],
         content: langObj.startPageText,
     });
-    getHtmlElement({ parent: '.main_wrapper', tag: 'button', style: ['button'], content: langObj.startPageButtonNew });
-    getHtmlElement({ parent: '.main_wrapper', tag: 'button', style: ['button'], content: langObj.startPageButtonJoin });
+    getHtmlElement({ parent: '.main', style: ['wrapper', 'wrapper_start-page-buttons'] });
+    getHtmlElement({
+        parent: '.wrapper_start-page-buttons',
+        tag: 'button',
+        style: ['button', 'button_start-page'],
+        content: langObj.startPageButtonNew,
+    });
+    getHtmlElement({
+        parent: '.wrapper_start-page-buttons',
+        tag: 'button',
+        style: ['button'],
+        content: langObj.startPageButtonJoin,
+    });
 }
 
 export default createStartPageMain;
