@@ -1,0 +1,42 @@
+.button {
+    padding: 0 0.5rem 0 0.5rem;
+    border: 1px solid $color-border;
+    border-radius: 5px;
+    height: $button-height;
+
+    background-color: $color-primary;
+    cursor: pointer;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: $font-size-text;
+    color: $color-text;
+    text-decoration: none;
+    line-height: 140%;
+
+    transition: all 0.3s;
+}
+
+.button:hover {
+    background: $color-hover;
+    box-shadow: inset 1px 1px 0 $color-gray_light;
+}
+
+.button_disabled {
+    border: 1px solid darker($color-border, 8);
+
+    background-color: darker($color-primary, 8);
+    cursor: default;
+
+    color: darker($color-text, 8);
+}
+
+.button_disabled:hover {
+    border: 1px solid darker($color-border, 8);
+
+    background-color: darker($color-primary, 8);
+    cursor: default;
+    box-shadow: none;
+
+    color: darker($color-text, 8);
+}

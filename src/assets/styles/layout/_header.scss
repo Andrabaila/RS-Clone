@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
+
+    width: 100%;
+    padding: 2rem;
+
+    background-color: $color-background;
+}
+
+.header__item {
+    font-size: $font-size-title1;
+
+    transition: all 0.2s;
+}
+
+.header__item:hover {
+    color: $color-hover;
+}
+

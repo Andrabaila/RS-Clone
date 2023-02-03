@@ -1,0 +1,67 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 2rem;
+    gap: 2rem;
+
+    background-color: $color-background;
+}
+
+.footer__wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+
+    font-size: $font-size-text_large;
+    color: $color-additional;
+}
+
+.footer__item {
+    font-size: 2rem;
+    color: $color-text;
+
+    transition: all 0.2s;
+}
+
+.footer__item_github-link {
+    line-height: 35px;
+}
+
+.footer__item_rsschool-link {
+    @include size(74px, 30px);
+    background-image: url('https://rs.school/images/rs_school_js.svg');
+    background-color: $color-light;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid $color-light;
+    border-radius: 4px;
+}
+
+.footer__item_github-link:hover {
+    color: $color-hover;
+}
+
+.footer__item_rsschool-link:hover {
+    background-color: $color-hover;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid $color-primary;
+}
+
+@media (max-width: 600px) {
+    .footer__wrapper {
+        flex-direction: column;
+
+        font-size: $font-size-text_small;
+    }
+
+    .footer__item {
+        font-size: $font-size-text_small;
+    }
+}
