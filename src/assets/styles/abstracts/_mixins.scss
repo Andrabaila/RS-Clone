@@ -2,3 +2,15 @@
   width: $width;
   height: $height;
 }
+
+@mixin modal($width, $bgColor, $opacity) {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: $width;
+  background-color: $bgColor;
+  opacity: $opacity;
+  transform: translateX(-100%);
+  transition: 0.5s;
+}
