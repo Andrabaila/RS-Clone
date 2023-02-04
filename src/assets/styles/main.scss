@@ -4,4 +4,6 @@
 
 @import 'layout/body', 'layout/main', 'layout/header', 'layout/footer', 'layout/shadow';
 
-@import 'components/buttons', 'components/logo', 'components/titles', 'components/inputs'
+@import 'components/buttons', 'components/logo', 'components/titles', 'components/inputs';
+
+@import '../../layouts/header/header';

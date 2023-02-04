@@ -1,0 +1,152 @@
+@import '../../assets/styles/abstracts/_placeholders.scss';
+@import '../../assets/styles/abstracts/mixins';
+
+.header__wrapper {
+    @extend %column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    gap: 1rem;
+    font-size: 1.8rem;
+    color: #88000b;
+}
+
+.header__row1 {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    h2 {
+        background: none;
+        font-size: 5rem;
+    }
+}
+
+.burger__menu {
+    display: block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    &:before,
+    &:after {
+        width: 100%;
+        left: 0;
+        height: 2px;
+        content: '';
+        background-color: #fff;
+        position: absolute;
+    }
+    &:before {
+        top: 0;
+    }
+    &:after {
+        bottom: 0;
+    }
+    & span {
+        width: 100%;
+        left: 0;
+        height: 2px;
+        content: '';
+        background-color: #fff;
+        position: absolute;
+        top: 9px;
+    }
+}
+
+.burger__nav {
+	@include modal(40%, #7d7016, 0.9);
+		padding: 15px;
+		z-index: 4;
+}
+.modal {
+	@include modal(100%, #000000, 0.7);
+		padding: 15px;
+		z-index: 3;
+}
+.burger__nav-open,
+.modal-open {
+    transform: translateX(0);
+}
+
+.burger__row1 {
+	@extend %flex-fow-align-center;
+	justify-content: space-between;
+	padding-bottom: 30px;
+}
+
+.button {
+
+}
+.button__rename-groupe {
+}
+.burger__row2 {
+}
+.burger__groupe-name {
+}
+.burger__row3 {
+	position: relative;
+}
+.button__add-groupe {
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	border-radius: 50%;
+	height: 10rem;
+	width: 10rem;
+	font-size: 4rem;
+	// color: #e8e9e9;
+	// background-color: #b9000f;
+}
+.burger__list {
+}
+.burger__link {
+}
+.header__group-name {
+}
+.dot__menu {
+    display: block;
+    position: relative;
+    width: 4px;
+    height: 20px;
+    &:before,
+    &:after {
+        width: 100%;
+        height: 4px;
+        content: '';
+        background-color: #fff;
+        position: absolute;
+        border-radius: 50%;
+    }
+    &:before {
+        top: 0;
+    }
+    &:after {
+        bottom: 0;
+    }
+    & span {
+        width: 100%;
+        height: 4px;
+        content: '';
+        background-color: #fff;
+        position: absolute;
+        top: 8px;
+        border-radius: 50%;
+    }
+}
+.header__row2 {
+}
+.header__btn-wrapper {
+}
+.button-owerview,
+.button-expenses {
+    height: fit-content;
+    padding: 12px 33px;
+    // border: 1px solid #bbbbbb;
+    border-radius: 25px;
+    // background-color: #b9000f;
+    // cursor: pointer;
+    // font-style: normal;
+    // font-weight: 500;
+    font-size: 2rem;
+}
