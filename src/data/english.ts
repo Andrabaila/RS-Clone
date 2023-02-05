@@ -8,6 +8,12 @@ const english: { readonly [x: string]: string } = {
     startPageText: 'Do you want to create a new group ar join an existing one?',
     startPageButtonNew: 'New group',
     startPageButtonJoin: 'Join group',
+
+    buttonBack: '←',
+    buttonCreate: 'CREATE',
+    placeholderNewGroup: 'Name',
+    buttonCurrency: 'Currency',
+    currency: 'BYN',
 };
 
 export default english;

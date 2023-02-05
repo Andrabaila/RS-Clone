@@ -1,8 +1,9 @@
 .input {
-    border: 1px solid $color-border;
-    border-radius: 5px;
+    border: none;
+    outline: none;
+    border-radius: 2px;
 
-    background-color: $color-background-light;
+    background-color: $color-light;
 
     font-style: normal;
     font-weight: 500;
@@ -11,9 +12,16 @@
     height: $input-height;
 }
 
+.input_new-group {
+    width: 100%;
+
+    text-align: center;
+}
+
 .input::-webkit-input-placeholder {
     font-size: $font-size-text_large;
-    color: $color-text;
+    color: $color-placeholder;
+    text-align: center;
 }
 
 .input:focus {

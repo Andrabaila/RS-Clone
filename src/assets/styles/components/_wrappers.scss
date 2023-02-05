@@ -8,6 +8,13 @@
     gap: $gap;
 }
 
+.wrapper_currency,
+.wrapper_input-new-group {
+    width: 100%;
+    padding: 0 8rem;
+    justify-content: space-between;
+}
+
 @media (min-width: 768px) {
     .wrapper_start-page-buttons {
         display: flex;

@@ -16,8 +16,32 @@
     transition: all 0.2s;
 }
 
+.button_main-header {
+    background-color: $color-background;
+    color: $color-light;
+}
+
+.button_currency {
+    padding: 0;
+    flex-grow: 1;
+    background-color: $color-background;
+    color: $color-light;
+}
+
+.button_currency:first-of-type {
+    text-align: left;
+}
+
+.button_currency:last-of-type {
+    text-align: right;
+}
+
 .button:hover {
     transform: scale(1.05);
+}
+
+.button_currency:hover {
+    transform: none;
 }
 
 .button_disabled {

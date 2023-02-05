@@ -1,7 +1,8 @@
 import UI from '../data/UI';
 
 function createFooter() {
-    if (document.querySelector('footer')) {
+    if (document.querySelector('.footer') instanceof Node && document.querySelector('.main') instanceof Node) {
+        document.querySelector('.main')?.after(<Node>document.querySelector('.footer'));
         return;
     }
 
