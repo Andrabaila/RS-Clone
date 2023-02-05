@@ -1,1 +1,1 @@
-**Application launch instructions:**
+rs clone API

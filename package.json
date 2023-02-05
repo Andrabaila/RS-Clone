@@ -1,0 +1,27 @@
+{
+  "name": "splid-server",
+  "version": "1.0.0",
+  "description": "**Application launch instructions:**",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "check": "node check-responses.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Andrabaila/RS-Clone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Andrabaila/RS-Clone/issues"
+  },
+  "homepage": "https://github.com/Andrabaila/RS-Clone#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
+    "request": "^2.88.2"
+  }
+}
