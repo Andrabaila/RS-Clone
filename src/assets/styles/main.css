@@ -9,7 +9,7 @@
   align-items: center;
 }
 
-.modal1 {
+.modal1, .dot__menu-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -582,7 +582,7 @@ h3 {
   align-items: center;
 }
 
-.modal1 {
+.modal1, .dot__menu-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -611,8 +611,14 @@ h3 {
 }
 
 .burger__menu:hover,
-.dot__menu:hover {
+.dot__menu-wrap:hover {
   transform: rotate(180deg);
+}
+
+.dot__menu-wrap {
+  width: 30px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 .burger__menu {
@@ -706,7 +712,7 @@ h3 {
 }
 
 .modal1__trash-buttons button:hover {
-  background-color: #ffffff;
+  background-color: #767474;
 }
 
 .burger__row1 {
@@ -729,9 +735,11 @@ h3 {
 
 .group-name_trash {
   display: inline-block;
-  width: 20px;
+  text-align: center;
+  width: 30px;
   height: 20px;
   fill: white;
+  cursor: pointer;
 }
 
 .burger__bottom {
@@ -775,7 +783,7 @@ h3 {
 .dotted__link:hover,
 .burger__link1:hover,
 .burger__link2:hover {
-  color: #ffffff;
+  color: #767474;
 }
 
 .burger__link1,
@@ -807,7 +815,7 @@ h3 {
 .dotted__link:hover,
 .burger__link1:hover,
 .burger__link2:hover {
-  color: #ffffff;
+  color: #767474;
 }
 
 .dotted__nav {
@@ -832,6 +840,7 @@ h3 {
   position: relative;
   width: 5px;
   height: 20px;
+  cursor: pointer;
   transition: all 0.2s;
 }
 .dot__menu:before, .dot__menu:after {
@@ -882,17 +891,20 @@ h3 {
   height: 30px;
   display: flex;
   align-items: flex-end;
+  justify-content: center;
+  font-size: 2rem;
   color: white;
+  cursor: pointer;
 }
 .button__select-groupe svg {
   fill: white;
 }
 .button__select-groupe:hover {
-  color: #ffffff;
+  color: #767474;
 }
 
 .button__select-groupe svg:hover {
-  fill: #ffffff;
+  fill: #767474;
 }
 
 .modal-open {
@@ -900,7 +912,7 @@ h3 {
 }
 
 .modal1__plus-block button:hover {
-  background-color: #ffffff;
+  background-color: #767474;
 }
 .modal1__plus-block h3 {
   line-height: 200%;
