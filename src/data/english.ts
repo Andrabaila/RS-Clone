@@ -9,6 +9,26 @@ const english: { readonly [x: string]: string } = {
     startPageButtonNew: 'New group',
     startPageButtonJoin: 'Join group',
 
+    headerLeftButton: 'Overview',
+    headerRightButton: 'Expenses',
+    burgerTop: 'Groups',
+    burgerFeedback: 'Feedback',
+    burgerAbout: 'About',
+    dottedTotal: 'Total expenditure',
+    dottedAdd: 'Add group photo',
+    dottedChangeName: 'Change name',
+    dottedChangeCurrency: 'Change currency',
+    dottedLeaveGroup: 'Leave group',
+    penButton: 'Done',
+
+    cancelButton: 'Cancel',
+    leaveButton: 'Leave',
+    leaveGroupButton: 'Leave Group?',
+
+    newGroupButton: 'New group',
+    choiceGroupButton: 'Choice group',
+    makeChoiceButton: 'Make choice',
+
     buttonBack: '←',
     buttonCreate: 'CREATE',
     placeholderNewGroup: 'Name',

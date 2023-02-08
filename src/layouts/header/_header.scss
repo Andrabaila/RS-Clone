@@ -1,0 +1,292 @@
+@import '../../assets/styles/abstracts/_placeholders.scss';
+@import '../../assets/styles/abstracts/mixins';
+
+.header__wrapper {
+    @extend %column;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.header__row1 {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    h2 {
+        background: none;
+        font-size: 4.5rem;
+    }
+}
+
+.header__btn-wrapper {
+    display: flex;
+    gap: 1rem;
+}
+
+.burger__menu:hover,
+.dot__menu:hover {
+    transform: rotate(180deg);
+}
+
+.burger__menu {
+    display: block;
+    position: relative;
+    width: 20px;
+    height: 21px;
+    cursor: pointer;
+    &:before,
+    &:after {
+        width: 100%;
+        left: 0;
+        height: 2px;
+        content: '';
+        background-color: #fff;
+        position: absolute;
+    }
+    &:before {
+        top: 0;
+    }
+    &:after {
+        bottom: 0;
+    }
+    & span {
+        width: 100%;
+        left: 0;
+        height: 2px;
+        content: '';
+        background-color: #fff;
+        position: absolute;
+        top: 9px;
+    }
+    transition: all 0.2s;
+}
+
+.burger__nav {
+    @include modal(35rem, $color-background, 0.9);
+    z-index: 4;
+}
+
+.burger__top {
+    height: 350px;
+    padding: 15px 0 15px 0;
+}
+
+.burger__bottom {
+    padding: 15px 15px 15px 15px;
+}
+
+.modal {
+    @include modal(100%, #000000, 0.7);
+    padding: 15px;
+    z-index: 3;
+}
+.modal1 {
+    @include modal(100%, #000000, 0.8);
+    @extend %flex-center-center;
+    padding: 15px;
+    z-index: 7;
+}
+.modal1__trash-block {
+    padding: 15px;
+    flex-direction: column;
+    & h3 {
+        line-height: 200%;
+    }
+}
+.modal1__trash-buttons {
+    & button:hover {
+        background-color: $color-focus;
+    }
+}
+
+.burger__row1 {
+    @extend %flex-row-align-center;
+    justify-content: space-between;
+    padding: 15px 15px 30px 15px;
+}
+.burger__row2 {
+    font-size: 2rem;
+    color: white;
+    & svg {
+        pointer-events: none;
+    }
+}
+
+.burger__group-name {
+    background-color: #f9b77a;
+    padding: 5px;
+}
+.group-name_trash {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    fill: white;
+}
+
+.burger__bottom {
+    height: 100%;
+    background-color: $color-light;
+}
+
+.burger__row3 {
+    position: relative;
+}
+
+.button__add-groupe {
+    position: absolute;
+    top: 300px;
+    right: 12px;
+
+    border-radius: 50%;
+    height: 10rem;
+    width: 10rem;
+    font-size: 4rem;
+    box-shadow: 1px 9px 15px -7px #75726d;
+}
+
+.burger__list,
+.dotted__list {
+    & li {
+        list-style-type: none;
+    }
+    & a {
+        color: #000000;
+        font-size: 3rem;
+        line-height: 180%;
+        white-space: nowrap;
+        transition: font-size 0.5s;
+    }
+}
+.burger__list {
+    padding: 70px 0 0 0;
+    margin-left: 6rem;
+}
+
+.dotted__link:hover,
+.burger__link1:hover,
+.burger__link2:hover {
+    color: $color-focus;
+}
+
+.burger__link1,
+.burger__link2 {
+    position: relative;
+    &::before {
+        position: absolute;
+        top: 5px;
+        left: -45px;
+
+        content: '';
+        height: 3rem;
+        width: 3rem;
+    }
+}
+
+.burger__link1::before {
+    background: no-repeat center/85% url(../../assets/icons/feedback.svg);
+}
+.burger__link2::before {
+    background: no-repeat center/85% url(../../assets/icons/info.svg);
+}
+
+.dotted__link {
+    font-size: 2.5rem;
+}
+
+.dotted__link:hover,
+.burger__link1:hover,
+.burger__link2:hover {
+    color: $color-focus;
+}
+
+.dotted__nav {
+    @include modalRightSide(fit-content, 30rem, $color-light, 0.95);
+    padding: 15px;
+    z-index: 4;
+    @extend %column;
+    justify-content: space-around;
+}
+
+.dot__menu {
+    display: block;
+    position: relative;
+    width: 5px;
+    height: 20px;
+    &:before,
+    &:after {
+        width: 100%;
+        height: 4px;
+        content: '';
+        background-color: #fff;
+        position: absolute;
+        border-radius: 50%;
+    }
+    &:before {
+        top: 0;
+    }
+    &:after {
+        bottom: 0;
+    }
+    & span {
+        width: 100%;
+        height: 4px;
+        content: '';
+        background-color: #fff;
+        position: absolute;
+        top: 8px;
+        border-radius: 50%;
+    }
+    transition: all 0.2s;
+}
+
+.button-overview,
+.button-expenses {
+    height: fit-content;
+    padding: 12px 33px;
+    border-radius: 25px;
+    font-size: 2rem;
+}
+
+.group-name_span {
+    width: 240px;
+    display: inline-block;
+    padding-top: 2px;
+}
+
+.display-none {
+    display: none;
+}
+
+.button__select-groupe {
+    width: 60px;
+    height: 30px;
+    display: flex;
+    align-items: flex-end;
+    color: white;
+    & svg {
+        fill: white;
+    }
+    &:hover {
+        color: $color-focus;
+    }
+}
+
+.button__select-groupe svg:hover {
+    fill: $color-focus;
+}
+
+.modal-open {
+    transform: translateX(0);
+}
+.modal1__plus-block {
+    & button:hover {
+        background-color: $color-focus;
+    }
+    & h3 {
+        line-height: 200%;
+    }
+    & a {
+        color: #000000;
+    }
+}
