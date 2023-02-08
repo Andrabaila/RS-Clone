@@ -25,10 +25,15 @@
 }
 
 .burger__menu:hover,
-.dot__menu:hover {
+.dot__menu-wrap:hover {
     transform: rotate(180deg);
 }
-
+.dot__menu-wrap {
+    width: 30px;
+    cursor: pointer;
+    @extend %flex-center-center;
+    transition: all 0.2s;
+}
 .burger__menu {
     display: block;
     position: relative;
@@ -96,7 +101,7 @@
 }
 .modal1__trash-buttons {
     & button:hover {
-        background-color: $color-focus;
+        background-color: $color-gray;
     }
 }
 
@@ -119,9 +124,11 @@
 }
 .group-name_trash {
     display: inline-block;
-    width: 20px;
+    text-align: center;
+    width: 30px;
     height: 20px;
     fill: white;
+    cursor: pointer;
 }
 
 .burger__bottom {
@@ -166,7 +173,7 @@
 .dotted__link:hover,
 .burger__link1:hover,
 .burger__link2:hover {
-    color: $color-focus;
+    color: $color-gray;
 }
 
 .burger__link1,
@@ -197,7 +204,7 @@
 .dotted__link:hover,
 .burger__link1:hover,
 .burger__link2:hover {
-    color: $color-focus;
+    color: $color-gray;
 }
 
 .dotted__nav {
@@ -213,6 +220,7 @@
     position: relative;
     width: 5px;
     height: 20px;
+    cursor: pointer;
     &:before,
     &:after {
         width: 100%;
@@ -263,17 +271,20 @@
     height: 30px;
     display: flex;
     align-items: flex-end;
+    justify-content: center;
+    font-size: 2rem;
     color: white;
+    cursor: pointer;
     & svg {
         fill: white;
     }
     &:hover {
-        color: $color-focus;
+        color: $color-gray;
     }
 }
 
 .button__select-groupe svg:hover {
-    fill: $color-focus;
+    fill: $color-gray;
 }
 
 .modal-open {
@@ -281,7 +292,7 @@
 }
 .modal1__plus-block {
     & button:hover {
-        background-color: $color-focus;
+        background-color: $color-gray;
     }
     & h3 {
         line-height: 200%;
