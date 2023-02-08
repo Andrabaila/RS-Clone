@@ -1,6 +1,10 @@
 export interface RegularExpressions {
     [index: string]: RegExp;
 }
+
+export interface FunctionObject {
+    [id: string]: () => void;
+}
 export interface User {
     id: number;
     groups: number[]; // перечень групп который подключил/создал пользователь

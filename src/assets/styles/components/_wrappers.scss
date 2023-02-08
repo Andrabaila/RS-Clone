@@ -8,6 +8,24 @@
     gap: $gap;
 }
 
+.wrapper_currency,
+.wrapper_input-new-group {
+    width: 100%;
+    padding: 0 8rem;
+    justify-content: space-between;
+}
+
+.wrapper_popup {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: $gap * 2;
+}
+
 @media (min-width: 768px) {
     .wrapper_start-page-buttons {
         display: flex;
