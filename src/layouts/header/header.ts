@@ -1,19 +1,149 @@
-// const BTN_BURGER = document.querySelector('.burger__menu');
-const BURGER_MENU = document.querySelector('.burger__nav');
-const MODAL = document.querySelector('.modal');
-const BURGER_MENU_HASH = '#burger_menu';
+import stringToElement from '../../components/stringToElement';
+import { addModalTrashCanHtml, penSvg, getHeaderHtml, addBurgerGroupItemHtml, addModalBtnPlusHtml } from './headerHTML';
+import {
+    innerHtmlInElement,
+    addListenerOpenCloseModal,
+    removeElementFromBody,
+    addRemoveClassInAllElements,
+    isElementInBody,
+    addRemoveClassInElement,
+} from './tools';
+import getLangObj from '../../features/getLangObj';
 
-export const addListenerForBurgerMenu = (): void => {
-    const BTN_BURGER = document.querySelector('.burger__menu');
+const langObj = getLangObj();
 
-    BTN_BURGER?.addEventListener('click', () => {
-        BURGER_MENU?.classList.add('burger__nav-open');
-        MODAL?.classList.add('modal-open');
+const DOCUMENT_BODY = document.body;
+const BURGER_MENU_HASH = '#/';
+const DOTTED_MENU_HASH = '#/';
 
-        window.location.hash = BURGER_MENU_HASH;
+const addHeaderHtml = (): void => {
+    const headerHtml = getHeaderHtml(
+        langObj.burgerTop,
+        langObj.burgerFeedback,
+        langObj.burgerAbout,
+        langObj.dottedTotal,
+        langObj.dottedAdd,
+        langObj.dottedChangeName,
+        langObj.dottedChangeCurrency,
+        langObj.dottedLeaveGroup,
+        langObj.headerLeftButton,
+        langObj.headerRightButton,
+        penSvg,
+        'Group name API'
+    );
+
+    DOCUMENT_BODY.prepend(stringToElement(headerHtml));
+};
+
+const addListenerForBurgerMenu = () => {
+    addListenerOpenCloseModal('.burger__menu', '.modal', 'modal-open', BURGER_MENU_HASH, '.burger__nav');
+};
+
+const addListenerForDottedMenu = () =>
+    addListenerOpenCloseModal('.dot__menu', '.modal', 'modal-open', DOTTED_MENU_HASH, '.dotted__nav');
+
+const addListenerForPlusMenu = () => {
+    const plusBtn = document.querySelector('.button__add-groupe');
+    plusBtn?.addEventListener('click', () => {
+        innerHtmlInElement(
+            '.modal1',
+            addModalBtnPlusHtml(langObj.newGroupButton, langObj.choiceGroupButton, langObj.makeChoiceButton)
+        );
+        addRemoveClassInElement('.modal1', 'modal-open', 'add');
     });
 };
 
-export const createHeader = () => {
-    addListenerForBurgerMenu();
+const closeModal1 = () => {
+    document
+        .querySelector('.modal1')
+        ?.addEventListener('click', () => addRemoveClassInElement('.modal1', 'modal-open', 'remove'));
 };
+
+const changeInnerBtnPen = () => {
+    const buttonSelectGroupe = document.querySelector('.button__select-groupe');
+
+    buttonSelectGroupe?.addEventListener('click', () => {
+        if (buttonSelectGroupe.innerHTML === langObj.penButton) {
+            buttonSelectGroupe.innerHTML = penSvg;
+            addRemoveClassInAllElements('.burger__row2', '.group-name_trash', 'display-none', 'add');
+        } else {
+            addRemoveClassInAllElements('.burger__row2', '.group-name_trash', 'display-none', 'remove');
+            buttonSelectGroupe.innerHTML = langObj.penButton;
+        }
+    });
+};
+
+const changeTextToSvg = () => {
+    const btnPen = document.querySelector('.button__select-groupe');
+    if (btnPen) btnPen.innerHTML = penSvg;
+};
+
+const closeModal = () => {
+    const modalFullScreen = document.querySelector('.modal');
+    modalFullScreen?.addEventListener('click', () => {
+        addRemoveClassInAllElements('.header__row1', '.modal-open', 'modal-open', 'remove');
+        changeTextToSvg();
+        addRemoveClassInAllElements('.burger__row2', '.group-name_trash', 'display-none', 'add');
+    });
+};
+
+const addTrashButtonLogic = (e: Event) => {
+    console.log(e.target);
+    if (e.target instanceof HTMLElement) {
+        const targetGroupId = e.target.dataset.id;
+        if (targetGroupId) {
+            innerHtmlInElement(
+                '.modal1',
+                addModalTrashCanHtml(langObj.cancelButton, langObj.leaveButton, langObj.leaveGroupButton)
+            );
+            addRemoveClassInElement('.modal1', 'modal-open', 'add');
+            const buttonsModalBlock = document.querySelector('.modal1__trash-block');
+            buttonsModalBlock?.addEventListener('click', (ev) => {
+                if (ev.target instanceof HTMLElement) {
+                    const targetId1 = ev.target.dataset.id;
+                    if (targetId1 === 'cancel') {
+                        addRemoveClassInElement('.modal1', 'modal-open', 'remove');
+                    } else if (targetId1 === 'leave') {
+                        removeElementFromBody(targetGroupId);
+                        addRemoveClassInElement('.modal1', 'modal-open', 'remove');
+                    }
+                }
+            });
+        }
+    }
+};
+
+const addBurgerGroupNameHtml = (groupName: string, id = groupName): void => {
+    const parentDiv = document.querySelector('.burger__row2');
+    const nameItem = addBurgerGroupItemHtml(groupName, id);
+    const btnItem = stringToElement(nameItem);
+    btnItem.addEventListener('click', addTrashButtonLogic);
+    parentDiv?.append(btnItem);
+};
+
+const FAKE_SERVER = [
+    { nameGroup: 'API info1', id: 'groupId1' },
+    { nameGroup: 'API info2', id: 'groupId2' },
+    { nameGroup: 'API info3', id: 'groupId3' },
+];
+const addGroupNames = () => {
+    const namesContainer = document.querySelector('.burger__row2');
+    if (namesContainer) {
+        namesContainer.innerHTML = '';
+    }
+    FAKE_SERVER.forEach((obj) => addBurgerGroupNameHtml(obj.nameGroup, obj.id));
+};
+const createHeader = () => {
+    if (!isElementInBody('.header')) {
+        addHeaderHtml();
+    }
+    closeModal();
+    closeModal1();
+    changeInnerBtnPen();
+    addGroupNames();
+    addListenerForBurgerMenu();
+    addListenerForDottedMenu();
+    addListenerForPlusMenu();
+};
+
+export default createHeader;
