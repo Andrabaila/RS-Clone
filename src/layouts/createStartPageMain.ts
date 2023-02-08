@@ -8,7 +8,7 @@ function createStartPageMain() {
 
     getHtmlElement({ parent: 'body', tag: 'main', style: ['main', 'main_start-page'] });
     getHtmlElement({ parent: '.main', style: ['main__wrapper', 'main__wrapper_start-page'] });
-    getHtmlElement({ parent: '.main__wrapper', tag: 'h1', style: ['main_title'], content: langObj.startPageTitle });
+    getHtmlElement({ parent: '.main__wrapper', tag: 'h1', style: ['main__title'], content: langObj.startPageTitle });
     getHtmlElement({
         parent: '.main__wrapper',
         tag: 'p',
@@ -20,14 +20,16 @@ function createStartPageMain() {
         parent: '.wrapper_start-page-buttons',
         tag: 'button',
         style: ['button', 'button_start-page'],
+        id: 'startPageButtonNew',
         content: langObj.startPageButtonNew,
-    });
+    }).dataset.hash = 'new_group';
     getHtmlElement({
         parent: '.wrapper_start-page-buttons',
         tag: 'button',
         style: ['button'],
+        id: 'startPageButtonJoin',
         content: langObj.startPageButtonJoin,
-    });
+    }).dataset.hash = 'join_group';
 }
 
 export default createStartPageMain;

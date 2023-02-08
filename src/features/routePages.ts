@@ -1,4 +1,5 @@
 import createMainPage from '../pages/createMainPage';
+import createNewGroupPage from '../pages/createNewGroupPage';
 import createStartPage from '../pages/createStartPage';
 
 function routePages() {
@@ -11,6 +12,12 @@ function routePages() {
             break;
         case '#/':
             createMainPage();
+            break;
+        case '#/new_group':
+            createNewGroupPage();
+            break;
+        case '#/new_group_popup':
+            createNewGroupPage();
             break;
         default:
             createMainPage();

@@ -19,6 +19,10 @@
     gap: $gap;
 }
 
+.main_new-group-page {
+    padding: 1rem;
+}
+
 .main__wrapper {
     display: flex;
     flex-direction: column;
@@ -37,4 +41,14 @@
     width: 100%;
     padding: 1rem 2rem;
     gap: $gap;
+}
+
+.main__wrapper_new-group-page {
+    padding: 0;
+}
+
+.main__header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }

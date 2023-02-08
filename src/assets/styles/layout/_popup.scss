@@ -1,0 +1,40 @@
+.popup {
+    position: absolute;
+    top: -200%;
+    left: 25%;
+
+    display: flex;
+    width: 50%;
+    padding: 3rem;
+    gap: 1rem;
+
+    font-size: 30px;
+    background: $color-background;
+    border-radius: 10px;
+    opacity: 0;
+
+    transition: opacity 0.4s;
+}
+
+.popup_active {
+    top: 35%;
+    z-index: 20;
+
+    opacity: 1;
+}
+
+.popup__content {
+    text-align: center;
+}
+
+.popup__close {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+
+    @include size(28px);
+
+    &:hover {
+        transform: scale(1.2);
+    }
+}
