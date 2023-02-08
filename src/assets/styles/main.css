@@ -469,7 +469,21 @@ h3 {
   height: 3rem;
 }
 
-.input_new-group {
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type=number],
+input[type=number]:hover,
+input[type=number]:focus {
+  -webkit-appearance: none;
+          appearance: none;
+  -moz-appearance: textfield;
+}
+
+.input_new-group,
+.input_join-group {
   width: 100%;
   text-align: center;
 }
@@ -508,7 +522,8 @@ h3 {
   font-size: 1.8rem;
 }
 
-.text_start-page {
+.text_start-page,
+.text_join-page {
   padding: 1rem 7rem;
   text-align: center;
 }

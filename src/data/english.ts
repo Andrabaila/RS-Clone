@@ -15,6 +15,10 @@ const english: { readonly [x: string]: string } = {
     buttonCurrency: 'Currency',
     currency: 'BYN',
     addGroupTitle: 'Enter a group name',
+
+    buttonJoin: 'JOIN',
+    placeholderJoinGroup: 'code',
+    joinPageText: 'Enter a code',
 };
 
 export default english;
