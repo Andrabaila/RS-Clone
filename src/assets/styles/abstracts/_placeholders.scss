@@ -3,8 +3,14 @@
     flex-direction: column;
 }
 
-%flex-fow-align-center {
+%flex-row-align-center {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+%flex-center-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
