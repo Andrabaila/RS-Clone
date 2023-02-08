@@ -2,7 +2,6 @@ import getHtmlElement from '../components/getHtmlElement';
 import getLangObj from '../features/getLangObj';
 
 function createNewGroupMain() {
-    console.log('createNewGroupMain');
     const langObj = getLangObj();
 
     document.querySelector('.main')?.remove();

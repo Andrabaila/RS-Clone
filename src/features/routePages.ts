@@ -16,6 +16,9 @@ function routePages() {
         case '#/new_group':
             createNewGroupPage();
             break;
+        case '#/new_group_popup':
+            createNewGroupPage();
+            break;
         default:
             createMainPage();
     }

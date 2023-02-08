@@ -10,3 +10,5 @@ export const API = {
     baseUrl: 'http://127.0.0.1:3000/',
     endpoint: 'endpoint',
 };
+
+export const MAX_MOBILE_WIDTH = 768;

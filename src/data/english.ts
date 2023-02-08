@@ -14,6 +14,7 @@ const english: { readonly [x: string]: string } = {
     placeholderNewGroup: 'Name',
     buttonCurrency: 'Currency',
     currency: 'BYN',
+    addGroupTitle: 'Enter a group name',
 };
 
 export default english;

@@ -36,11 +36,32 @@
     text-align: right;
 }
 
+.button_x {
+    position: absolute;
+    right: 8px;
+    top: 5px;
+
+    display: block;
+    @include size(35px);
+    padding: 2px;
+    justify-self: flex-start;
+
+    background-color: $color-background;
+    color: $color-light;
+    font-size: 3rem;
+    line-height: 3rem;
+    text-align: center;
+}
+
 .button:hover {
     transform: scale(1.05);
 }
 
 .button_currency:hover {
+    transform: scale(1);
+}
+
+.button_x:hover {
     transform: none;
 }
 

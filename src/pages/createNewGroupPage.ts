@@ -1,11 +1,15 @@
+import { MAX_MOBILE_WIDTH } from '../data/constants';
+import togglePopup from '../features/togglePopup';
 import createFooter from '../layouts/createFooter';
 import createNewGroupMain from '../layouts/createNewGroupMain';
 
 function createNewGroupPage() {
-    console.log('createNewGroupPage');
+    if (window.innerWidth < MAX_MOBILE_WIDTH) {
+        createNewGroupMain();
 
-    createNewGroupMain();
-
-    createFooter();
+        createFooter();
+    } else {
+        togglePopup();
+    }
 }
 export default createNewGroupPage;
