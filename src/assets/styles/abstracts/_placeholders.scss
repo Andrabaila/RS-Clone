@@ -2,3 +2,15 @@
     display: flex;
     flex-direction: column;
 }
+
+%flex-row-align-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+%flex-center-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
