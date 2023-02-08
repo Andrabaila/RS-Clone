@@ -1,6 +1,7 @@
 import createMainPage from '../pages/createMainPage';
 import createNewGroupPage from '../pages/createNewGroupPage';
 import createStartPage from '../pages/createStartPage';
+import createJoinGroupPage from '../pages/createJoinGroupPage';
 
 function routePages() {
     const { hash } = window.location;
@@ -16,8 +17,8 @@ function routePages() {
         case '#/new_group':
             createNewGroupPage();
             break;
-        case '#/new_group_popup':
-            createNewGroupPage();
+        case '#/join_group':
+            createJoinGroupPage();
             break;
         default:
             createMainPage();
