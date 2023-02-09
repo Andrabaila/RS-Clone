@@ -73,8 +73,10 @@ export const getHeaderHtml = (
         </div>
       </nav>
       <h2 class="header__group-name">${groupName}</h2>
+      <div class="dot__menu-wrap">
       <div class="dot__menu">
         <span></span>
+      </div>
       </div>
       <nav class="dotted__nav">
         <ul class="dotted__list">
