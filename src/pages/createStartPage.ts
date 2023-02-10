@@ -3,6 +3,7 @@ import createStartPageMain from '../layouts/createStartPageMain';
 import createPopup from '../layouts/createPopup';
 
 function createStartPage() {
+    document.querySelector('header')?.remove();
     createStartPageMain();
 
     createFooter();

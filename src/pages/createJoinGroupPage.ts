@@ -5,6 +5,7 @@ import createJoinGroupMain from '../layouts/createJoinGroupMain';
 import createJoinPopup from '../layouts/createJoinPopup';
 
 function createJoinGroupPage() {
+    document.querySelector('header')?.remove();
     if (window.innerWidth < MAX_MOBILE_WIDTH) {
         createJoinGroupMain();
 

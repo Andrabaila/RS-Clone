@@ -23,6 +23,11 @@
     padding: 1rem;
 }
 
+.main_overview {
+    padding: 0;
+    background-color: $color-background-lightest;
+}
+
 .main__wrapper {
     display: flex;
     flex-direction: column;
@@ -45,6 +50,11 @@
 
 .main__wrapper_new-group-page {
     padding: 0;
+}
+
+.main__wrapper_overview {
+    padding: 2rem 0;
+    gap: 2rem;
 }
 
 .main__header {

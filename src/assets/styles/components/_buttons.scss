@@ -1,5 +1,5 @@
 .button {
-    padding: 0 1.5rem;
+    padding: 1.5rem 5rem;
     border-radius: $button-height / 2;
     height: $button-height;
 
@@ -9,7 +9,7 @@
 
     font-style: normal;
     font-weight: 500;
-    font-size: $font-size-text;
+    font-size: $font-size-text_large;
     color: $color-background;
     text-decoration: none;
 
@@ -51,6 +51,26 @@
     font-size: 3rem;
     line-height: 3rem;
     text-align: center;
+}
+
+.button_overview {
+    border: 1px solid darker($color-background-lightest, 1);
+    box-shadow: 0 1px 3px darker($color-background-lightest, 3);
+    background-color: $color-light;
+}
+
+.button_copy {
+    padding: 1.5rem 5rem;
+
+    color: $color-light;
+    background-color: $color-background;
+}
+
+.button_later {
+    padding: 1.5rem 5rem;
+
+    color: $color-background;
+    background-color: $color-light;
 }
 
 .button:hover {

@@ -39,6 +39,13 @@ const english: { readonly [x: string]: string } = {
     buttonJoin: 'JOIN',
     placeholderJoinGroup: 'code',
     joinPageText: 'Enter a code',
+
+    buttonInvite: 'INVITE',
+    buttonCopy: 'COPY',
+    buttonLater: 'LATER',
+
+    inviteText: 'Others can access your group using this code',
+    confirmingMessage: 'Code successfully copied to clipboard',
 };
 
 export default english;

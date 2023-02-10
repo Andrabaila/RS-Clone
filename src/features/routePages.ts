@@ -2,6 +2,7 @@ import createMainPage from '../pages/createMainPage';
 import createNewGroupPage from '../pages/createNewGroupPage';
 import createStartPage from '../pages/createStartPage';
 import createJoinGroupPage from '../pages/createJoinGroupPage';
+import createOverviewPage from '../pages/createOverviewPage';
 
 function routePages() {
     const { hash } = window.location;
@@ -19,6 +20,9 @@ function routePages() {
             break;
         case '#/join_group':
             createJoinGroupPage();
+            break;
+        case '#/overview':
+            createOverviewPage();
             break;
         default:
             createMainPage();

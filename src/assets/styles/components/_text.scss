@@ -3,8 +3,14 @@
 }
 
 .text_start-page,
-.text_join-page {
+.text_join-page,
+.text_invite {
     padding: 1rem 7rem;
 
     text-align: center;
+}
+
+.text_invite {
+    padding: 1rem 0;
+    color: $color-gray;
 }

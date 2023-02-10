@@ -4,6 +4,7 @@ import createFooter from '../layouts/createFooter';
 import createNewGroupMain from '../layouts/createNewGroupMain';
 
 function createNewGroupPage() {
+    document.querySelector('header')?.remove();
     if (window.innerWidth < MAX_MOBILE_WIDTH) {
         createNewGroupMain();
 

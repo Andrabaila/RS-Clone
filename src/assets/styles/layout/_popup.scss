@@ -16,11 +16,24 @@
     transition: opacity 0.4s;
 }
 
+.popup_invite {
+    background-color: $color-light;
+    border-radius: 2px;
+    color: $color-dark;
+}
+
 .popup_active {
     top: 35%;
     z-index: 20;
 
     opacity: 1;
+}
+
+.popup__title_invite {
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    background-color: $color-gray_light;
+    user-select: auto;
 }
 
 .popup__content {
