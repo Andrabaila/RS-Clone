@@ -233,25 +233,6 @@ body {
   width: 100%;
 }
 
-.header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 2rem;
-  width: 100%;
-  padding: 2rem;
-  background-color: #ff7b00;
-}
-
-.header__item {
-  font-size: 3.6rem;
-  transition: all 0.2s;
-}
-
-.header__item:hover {
-  color: #ff0015;
-}
-
 .footer {
   display: flex;
   justify-content: center;
