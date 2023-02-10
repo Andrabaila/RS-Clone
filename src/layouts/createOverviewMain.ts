@@ -13,6 +13,7 @@ function createOverviewMain() {
     getHtmlElement({ parent: '.main__wrapper', tag: 'ul', style: ['members-list'] });
     persons.forEach((person) => {
         const listItem = getHtmlElement({ parent: '.members-list', tag: 'li', style: ['members-list__item'] });
+        listItem.dataset.hash = 'user_page';
         getHtmlElement({ parentNode: listItem, tag: 'span', style: ['members-list__text'], content: person.name });
         getHtmlElement({
             parentNode: listItem,
