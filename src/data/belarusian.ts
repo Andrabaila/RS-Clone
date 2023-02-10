@@ -27,6 +27,16 @@ const belarusian: { readonly [x: string]: string } = {
     newGroupButton: 'Новая група',
     choiceGroupButton: 'Выбраць групу',
     makeChoiceButton: 'Зрабіце выбар',
+
+    btnEdit: 'ЗМЯНИЦЬ',
+    btnDone: 'ЗАХАВАЦЬ',
+    balance: 'Баланс',
+    expenses: 'Аплаты',
+    payments: 'Узаемаразлікі',
+    benefitsFrom: 'Аплата ад',
+    deletePerson: 'Выдаліць',
+    btnCancel: 'Адмена',
+    btnDelete: 'Выдаліць',
 };
 
 export default belarusian;

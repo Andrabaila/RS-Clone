@@ -1,4 +1,4 @@
-.dotted__nav, .header__wrapper {
+.header__wrapper-upage, .dotted__nav, .header__wrapper {
   display: flex;
   flex-direction: column;
 }
@@ -586,7 +586,7 @@ input[type=number]:focus {
   gap: 1rem;
 }
 
-.dotted__nav, .header__wrapper {
+.header__wrapper-upage, .dotted__nav, .header__wrapper {
   display: flex;
   flex-direction: column;
 }
@@ -922,4 +922,121 @@ input[type=number]:focus {
 }
 .modal1__plus-block a {
   color: #000000;
+}
+
+.header-upage {
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #ff7b00;
+}
+
+.header__wrapper-upage {
+  width: 80%;
+  align-items: center;
+}
+
+.header-upage-row1 {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-upage-arrow {
+  cursor: pointer;
+}
+
+.btn-upage-delete {
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+.header-upage-row2 {
+  width: 100%;
+  padding: 50px 0 18px 0px;
+}
+
+.upage-row2-input {
+  background: rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  outline: none;
+  font-size: 2.5rem;
+  font-weight: bold;
+  width: 20rem;
+}
+.upage-row2-input::-moz-placeholder {
+  color: white;
+}
+.upage-row2-input::placeholder {
+  color: white;
+}
+
+input.disabled {
+  pointer-events: none;
+}
+
+input.bordered {
+  border-bottom: 2px solid white;
+}
+
+.upage-main {
+  height: 80vh;
+  width: 100%;
+  background-color: #f0f0f0;
+  color: black;
+  font-size: 2.2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.upage-balance,
+.upage-expenses,
+.upage-payments,
+.upage-benefit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10%;
+  background-color: white;
+}
+
+.balance-number::after {
+  content: "$";
+}
+
+.upage-balance,
+.upage-benefit,
+.upage-wrap {
+  margin-bottom: 35px;
+}
+
+.upage-balance {
+  margin-top: 35px;
+}
+
+.upage-block {
+  width: 100%;
+}
+.upage-block a {
+  color: black;
+}
+.upage-block a:hover {
+  color: #909090;
+}
+
+.button-upage {
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 8px 33px;
+  border-radius: 25px;
+  font-size: 2rem;
+  background-color: white;
+  margin-top: 20px;
 }/*# sourceMappingURL=main.css.map */

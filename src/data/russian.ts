@@ -27,6 +27,16 @@ const russian: { readonly [x: string]: string } = {
     newGroupButton: 'Новая группа',
     choiceGroupButton: 'Выбрать группу',
     makeChoiceButton: 'Сделать выбор',
+
+    btnEdit: 'ИЗМЕНИТЬ',
+    btnDone: 'СОХРАНИТЬ',
+    balance: 'Баланс',
+    expenses: 'Оплаты',
+    payments: 'Взаиморасчеты',
+    benefitsFrom: 'Оплата от',
+    deletePerson: 'Удалить',
+    btnCancel: 'Отмена',
+    btnDelete: 'Удалить',
 };
 
 export default russian;
