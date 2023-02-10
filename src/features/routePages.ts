@@ -3,6 +3,7 @@ import createNewGroupPage from '../pages/createNewGroupPage';
 import createStartPage from '../pages/createStartPage';
 import createJoinGroupPage from '../pages/createJoinGroupPage';
 import createOverviewPage from '../pages/createOverviewPage';
+import { makeUserPage } from '../layouts/user-page/user-page';
 
 function routePages() {
     const { hash } = window.location;
@@ -12,7 +13,7 @@ function routePages() {
         case '':
             createStartPage();
             break;
-        case '#/':
+        case '#/main':
             createMainPage();
             break;
         case '#/new_group':
@@ -23,6 +24,9 @@ function routePages() {
             break;
         case '#/overview':
             createOverviewPage();
+            break;
+        case '#/user_page':
+            makeUserPage();
             break;
         default:
             createMainPage();

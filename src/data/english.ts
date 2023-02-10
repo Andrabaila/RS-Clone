@@ -46,6 +46,16 @@ const english: { readonly [x: string]: string } = {
 
     inviteText: 'Others can access your group using this code',
     confirmingMessage: 'Code successfully copied to clipboard',
+
+    btnEdit: 'EDIT',
+    btnDone: 'DONE',
+    balance: 'Balance',
+    expenses: 'Expenses',
+    payments: 'Payments',
+    benefitsFrom: 'Benefits from',
+    deletePerson: 'Delete',
+    btnCancel: 'Cancel',
+    btnDelete: 'Delete',
 };
 
 export default english;

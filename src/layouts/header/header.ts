@@ -7,7 +7,7 @@ import {
     addRemoveClassInAllElements,
     isElementInBody,
     addRemoveClassInElement,
-} from './tools';
+} from '../../features/tools';
 import getLangObj from '../../features/getLangObj';
 
 const langObj = getLangObj();
@@ -40,7 +40,7 @@ const addListenerForBurgerMenu = () => {
 };
 
 const addListenerForDottedMenu = () =>
-    addListenerOpenCloseModal('.dot__menu', '.modal', 'modal-open', DOTTED_MENU_HASH, '.dotted__nav');
+    addListenerOpenCloseModal('.dot__menu-wrap', '.modal', 'modal-open', DOTTED_MENU_HASH, '.dotted__nav');
 
 const addListenerForPlusMenu = () => {
     const plusBtn = document.querySelector('.button__add-groupe');
