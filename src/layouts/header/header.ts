@@ -7,7 +7,7 @@ import {
     addRemoveClassInAllElements,
     isElementInBody,
     addRemoveClassInElement,
-} from './tools';
+} from '../../features/tools';
 import getLangObj from '../../features/getLangObj';
 
 const langObj = getLangObj();

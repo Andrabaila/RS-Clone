@@ -39,6 +39,16 @@ const english: { readonly [x: string]: string } = {
     buttonJoin: 'JOIN',
     placeholderJoinGroup: 'code',
     joinPageText: 'Enter a code',
+
+    btnEdit: 'EDIT',
+    btnDone: 'DONE',
+    balance: 'Balance',
+    expenses: 'Expenses',
+    payments: 'Payments',
+    benefitsFrom: 'Benefits from',
+    deletePerson: 'Delete',
+    btnCancel: 'Cancel',
+    btnDelete: 'Delete',
 };
 
 export default english;
