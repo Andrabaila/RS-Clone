@@ -21,7 +21,6 @@ html {
   height: 100%;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   width: 100%;
   font-family: "Roboto";
@@ -346,7 +345,6 @@ body {
   background-color: #e8e9e9;
   -webkit-user-select: auto;
      -moz-user-select: auto;
-      -ms-user-select: auto;
           user-select: auto;
 }
 
@@ -669,6 +667,16 @@ input[type=number]:focus {
   justify-content: center;
 }
 
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  padding: 2rem;
+  background-color: #ff7b00;
+}
+
 .header__wrapper {
   align-items: center;
   width: 100%;
@@ -904,7 +912,6 @@ input[type=number]:focus {
   top: 0;
   right: 0;
   bottom: 0;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   height: 30rem;
@@ -951,7 +958,6 @@ input[type=number]:focus {
 
 .button-overview,
 .button-expenses {
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding: 12px 33px;

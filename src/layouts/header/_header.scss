@@ -1,6 +1,19 @@
 @import '../../assets/styles/abstracts/_placeholders.scss';
 @import '../../assets/styles/abstracts/mixins';
 
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+
+  width: 100%;
+  padding: 2rem;
+
+  background-color: $color-background;
+}
+
+
 .header__wrapper {
     @extend %column;
     align-items: center;
