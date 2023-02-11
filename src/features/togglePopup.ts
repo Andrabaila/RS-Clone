@@ -7,7 +7,7 @@ function togglePopup() {
     const popup = document.querySelector('.popup');
     if (popup) {
         popup.classList.toggle('popup_active');
-        (<HTMLInputElement>document.querySelector('.input')).focus();
+        (<HTMLInputElement>document.querySelector('.input'))?.focus();
     }
 }
 

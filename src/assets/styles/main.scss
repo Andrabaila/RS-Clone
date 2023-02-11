@@ -2,9 +2,9 @@
 
 @import 'base/reset', 'base/fonts', 'base/typography';
 
-@import 'layout/body', 'layout/main', 'layout/header', 'layout/footer', 'layout/shadow', 'layout/popup';
+@import 'layout/body', 'layout/main', 'layout/footer', 'layout/shadow', 'layout/popup', 'layout/members-list';
 
 @import 'components/buttons', 'components/logo', 'components/titles', 'components/inputs', 'components/text',
-    'components/wrappers', 'components/forms';
+    'components/wrappers', 'components/forms', 'components/message';
 
 @import '../../layouts/header/header', '../../layouts/user-page/user-page';

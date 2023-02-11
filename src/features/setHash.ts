@@ -2,7 +2,7 @@ function setHash(event: MouseEvent) {
     if (
         event instanceof MouseEvent &&
         event.type === 'click' &&
-        event.target instanceof HTMLButtonElement &&
+        event.target instanceof HTMLElement &&
         event.target.dataset.hash
     ) {
         event.preventDefault();

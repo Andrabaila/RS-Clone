@@ -2,6 +2,7 @@ import createMainPage from '../pages/createMainPage';
 import createNewGroupPage from '../pages/createNewGroupPage';
 import createStartPage from '../pages/createStartPage';
 import createJoinGroupPage from '../pages/createJoinGroupPage';
+import createOverviewPage from '../pages/createOverviewPage';
 import { makeUserPage } from '../layouts/user-page/user-page';
 
 function routePages() {
@@ -20,6 +21,9 @@ function routePages() {
             break;
         case '#/join_group':
             createJoinGroupPage();
+            break;
+        case '#/overview':
+            createOverviewPage();
             break;
         case '#/user_page':
             makeUserPage();
