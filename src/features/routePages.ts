@@ -3,7 +3,8 @@ import createNewGroupPage from '../pages/createNewGroupPage';
 import createStartPage from '../pages/createStartPage';
 import createJoinGroupPage from '../pages/createJoinGroupPage';
 import createOverviewPage from '../pages/createOverviewPage';
-import { makeUserPage } from '../layouts/user-page/user-page';
+import createUserPage from '../pages/createUserPage';
+import createExpensesPage from '../pages/createExpensesPage';
 
 function routePages() {
     const { hash } = window.location;
@@ -26,7 +27,10 @@ function routePages() {
             createOverviewPage();
             break;
         case '#/user_page':
-            makeUserPage();
+            createUserPage();
+            break;
+        case '#/expenses_page':
+            createExpensesPage();
             break;
         default:
             createMainPage();

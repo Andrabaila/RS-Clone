@@ -13,8 +13,6 @@ import getLangObj from '../../features/getLangObj';
 const langObj = getLangObj();
 
 const DOCUMENT_BODY = document.body;
-const BURGER_MENU_HASH = '#/';
-const DOTTED_MENU_HASH = '#/';
 
 const addHeaderHtml = (): void => {
     const headerHtml = getHeaderHtml(
@@ -36,11 +34,11 @@ const addHeaderHtml = (): void => {
 };
 
 const addListenerForBurgerMenu = () => {
-    addListenerOpenCloseModal('.burger__menu', '.modal', 'modal-open', BURGER_MENU_HASH, '.burger__nav');
+    addListenerOpenCloseModal('.burger__menu', '.modal', 'modal-open', '.burger__nav');
 };
 
 const addListenerForDottedMenu = () =>
-    addListenerOpenCloseModal('.dot__menu-wrap', '.modal', 'modal-open', DOTTED_MENU_HASH, '.dotted__nav');
+    addListenerOpenCloseModal('.dot__menu-wrap', '.modal', 'modal-open', '.dotted__nav');
 
 const addListenerForPlusMenu = () => {
     const plusBtn = document.querySelector('.button__add-groupe');

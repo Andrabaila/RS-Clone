@@ -9,8 +9,9 @@
     align-items: center;
 }
 
-%flex-center-center {
+%flex-row-center-center {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
 }
