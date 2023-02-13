@@ -95,5 +95,40 @@ var router = function (app) {
             response.send('Group deleted');
         });
     });
+    app.get('/expenses/:groupId', function (request, response) {
+        var groupId = request.params.groupId;
+        config_1.pool.query('SELECT * FROM groups WHERE id = ?', groupId, function (error, jsonGroup) {
+            if (error)
+                throw error;
+            var group = (0, jsonToObject_1.jsonGroupToGroup)(jsonGroup[0]);
+            response.send(group.expenses);
+        });
+    });
+    app.get('/expenses/:groupId/:expenseId', function (request, response) {
+        var groupId = request.params.groupId;
+        var expenseId = +request.params.expenseId;
+        config_1.pool.query('SELECT * FROM groups WHERE id = ?', groupId, function (error, jsonGroup) {
+            if (error)
+                throw error;
+            var group = (0, jsonToObject_1.jsonGroupToGroup)(jsonGroup[0]);
+            console.log(group.expenses);
+            response.send(group.expenses[expenseId]);
+        });
+    });
+    // app.post('/groups', (request: Request, response: Response) => {
+    //   const group = groupToJsonGroup(request.body);
+    //   pool.query('INSERT INTO groups SET ?', group, (error: Error) => {
+    //     if (error) throw error;
+    //     response.send('Group created');
+    //   });
+    // });
+    // app.put('/groups/:id', (request: Request, response: Response) => {
+    //   const id = request.params.id;
+    //   const group = groupToJsonGroup(request.body);
+    //   pool.query('UPDATE groups SET ? WHERE id = ?', [group, id], (error: Error) => {
+    //     if (error) throw error;
+    //     response.send('Group updated');
+    //   });
+    // });
 };
 exports["default"] = router;
