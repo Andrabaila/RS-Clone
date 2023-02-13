@@ -5,26 +5,41 @@ export interface RegularExpressions {
 export interface FunctionObject {
     [id: string]: () => void;
 }
+
 export interface User {
     id: number;
+    name: string; // имя человека
     groups: number[]; // перечень групп который подключил/создал пользователь
 }
 
-export interface Group {
-    photo: string; // фото группы
-    name: string; // имя группы
-    persons: Person[]; // перечень добавленных людей
-    expense: Expense[]; // перечень платежей
-}
-
-export interface Person {
+export interface UserInGroup {
     id: number;
     name: string; // имя человека
-    expenses: Expense[]; // перечень платежей человека
-    balance: number; // текущий баланс человека
+    balance: number; // текущий баланс
 }
 
-export interface Expense {
+// отправляете на сервер
+export interface SendGroup {
+    id: number;
+    photo: string; // фото группы
+    name: string; // имя группы
+    currency: string; // валюта
+    users: number[]; // перечень id добавленных людей
+    expenses: number[]; // перечень id платежей
+}
+
+// получаете с сервера
+export interface GetGroup {
+    id: number;
+    photo: string; // фото группы
+    name: string; // имя группы
+    currency: string; // валюта
+    users: UserInGroup[]; // перечень добавленных людей
+    expenses: GetExpense[]; // перечень платежей
+}
+
+// отправляете на сервер
+export interface SendExpense {
     id: number;
     title?: string; // название платежа (необязательное поле)
     amount: number; // сумма платежа
@@ -33,10 +48,12 @@ export interface Expense {
     date: number; // дата платежа
 }
 
-/* Примечание.
-  User - пользователь который может просматривать/редактировать группу.
-  Person - объект созданный непосредственно в группе, никак не свзязанный с User.
-  
-  Другими словами: User это любой пользователь который может получить доступ у группе по его id. 
-  Persone же это просто объект в группе.
-  */
+// получаете с сервера
+export interface GetExpense {
+    id: number;
+    title?: string; // название платежа (необязательное поле)
+    amount: number; // сумма платежа
+    by: UserInGroup; // тот кто купил
+    for: UserInGroup[]; // перечень пользователей для кого купили
+    date: number; // дата платежа
+}
