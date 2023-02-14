@@ -2,17 +2,19 @@
 @import '../../assets/styles/abstracts/mixins';
 
 .header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
 
-  width: 100%;
-  padding: 2rem;
+    width: 100%;
+    padding: 2rem;
 
-  background-color: $color-background;
+    background-color: $color-background;
+    & h2 {
+        color: #fff;
+    }
 }
-
 
 .header__wrapper {
     @extend %column;
@@ -44,7 +46,7 @@
 .dot__menu-wrap {
     width: 30px;
     cursor: pointer;
-    @extend %flex-center-center;
+    @extend %flex-row-center-center;
     transition: all 0.2s;
 }
 .burger__menu {
@@ -101,7 +103,7 @@
 }
 .modal1 {
     @include modal(100%, #000000, 0.8);
-    @extend %flex-center-center;
+    @extend %flex-row-center-center;
     padding: 15px;
     z-index: 7;
 }
@@ -161,7 +163,9 @@
     border-radius: 50%;
     height: 10rem;
     width: 10rem;
+    @extend %flex-row-center-center;
     font-size: 4rem;
+    background-color: #fff;
     box-shadow: 1px 9px 15px -7px #75726d;
 }
 
@@ -267,6 +271,17 @@
     padding: 12px 33px;
     border-radius: 25px;
     font-size: 2rem;
+    background-color: #ff7b00;
+    color: white;
+}
+
+.focused {
+  background: #fb912e;
+}
+
+.button-overview:focus,
+.button-expenses:focus {
+    background: #fb912e;
 }
 
 .group-name_span {

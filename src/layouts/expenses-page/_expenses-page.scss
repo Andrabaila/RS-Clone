@@ -1,0 +1,30 @@
+.expenses-main {
+    height: 73vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 2.2rem;
+    color: black;
+    background-color: #f0f0f0;
+}
+
+.expenses-block {
+    width: 90%;
+}
+
+.expenses-item {
+    @extend %flex-row-align-center;
+    justify-content: space-between;
+}
+.expenses-picture-text-wrapper {
+    @extend %flex-row-align-center;
+    gap: 2rem;
+}
+.item-picture-expenses svg {
+    width: 35px;
+    height: 35px;
+    fill: #ff7b00;
+}
+.expenses-item * {
+    pointer-events: none;
+}
