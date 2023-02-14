@@ -51,7 +51,7 @@ export interface SendExpense {
 // получаете с сервера
 export interface GetExpense {
     id: number;
-    title?: string; // название платежа (необязательное поле)
+    title?: string; // название платежа (необязательное поле) пустая строка в случае взаиморасчетов!
     amount: number; // сумма платежа
     by: UserInGroup; // тот кто купил
     for: UserInGroup[]; // перечень пользователей для кого купили

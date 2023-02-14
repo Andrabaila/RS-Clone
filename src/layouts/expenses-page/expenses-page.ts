@@ -1,5 +1,5 @@
 import { addFocusedToBtn, addPictureBasketOrArrow } from '../../features/tools';
-import { expenses } from '../../data/database';
+import { expenses } from '../../data/database_new';
 import { makeMainHtml, addExpensesItem } from './expenses-pageHtml';
 import stringToElement from '../../components/stringToElement';
 import setHash from '../../features/setHash';
@@ -24,15 +24,15 @@ const addExpensesPageHtml = () => {
                   'goods_page',
                   expense.id,
                   expense.title,
-                  String(expense.by),
+                  String(expense.by.name),
                   expense.amount,
                   addPictureBasketOrArrow('basket')
               )
             : addExpensesItem(
                   'payment_page',
                   expense.id,
-                  `From ${expense.by}`,
-                  `To ${expense.for[0]}`,
+                  `From ${expense.by.name}`,
+                  `To ${expense.for[0].name}`,
                   expense.amount,
                   addPictureBasketOrArrow('arrow')
               );
