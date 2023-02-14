@@ -5,6 +5,7 @@ import createJoinGroupPage from '../pages/createJoinGroupPage';
 // import createOverviewPage from '../pages/createOverviewPage';
 import createUserPage from '../pages/createUserPage';
 import createExpensesPage from '../pages/createExpensesPage';
+import createExpenseDetailPage from '../pages/createExpenseDetailPage';
 
 function routePages() {
     const { hash } = window.location;
@@ -31,6 +32,9 @@ function routePages() {
             break;
         case '#/expenses_page':
             createExpensesPage();
+            break;
+        case '#/expense_detail':
+            createExpenseDetailPage();
             break;
         default:
             createMainPage();
