@@ -28,6 +28,9 @@ function routePages() {
         case '#/user_page':
             makeUserPage();
             break;
+        case '#/add_payment':
+            makeUserPage();
+            break;
         default:
             createMainPage();
     }
