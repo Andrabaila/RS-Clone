@@ -1,6 +1,6 @@
 .button {
     padding: 1.5rem 5rem;
-    border-radius: $button-height / 2;
+    border-radius: calc($button-height / 2);
     height: $button-height;
 
     background-color: $color-text;

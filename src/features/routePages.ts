@@ -2,7 +2,7 @@ import createMainPage from '../pages/createMainPage';
 import createNewGroupPage from '../pages/createNewGroupPage';
 import createStartPage from '../pages/createStartPage';
 import createJoinGroupPage from '../pages/createJoinGroupPage';
-// import createOverviewPage from '../pages/createOverviewPage';
+import createOverviewPage from '../pages/createOverviewPage';
 import createUserPage from '../pages/createUserPage';
 import createExpensesPage from '../pages/createExpensesPage';
 
@@ -24,16 +24,13 @@ function routePages() {
             createJoinGroupPage();
             break;
         case '#/overview':
-            // createOverviewPage();
+            createOverviewPage();
             break;
         case '#/user_page':
             createUserPage();
             break;
         case '#/expenses_page':
             createExpensesPage();
-            break;
-        case '#/add_payment':
-            makeUserPage();
             break;
         default:
             createMainPage();
