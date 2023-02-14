@@ -2,7 +2,8 @@ import { pool } from "../data/config";
 import { Request, Response, Express } from 'express';
 import { removeGroupFromUser } from "../scripts/user";
 import { groupToJsonGroup, jsonGroupToGroup, jsonUserToUser, userToJsonUser } from "../scripts/jsonToObject";
-import { JsonUser, JsonGroup } from "../data/interfaces";
+import { JsonUser, JsonGroup, Group, SendExpense } from "../data/interfaces";
+import { convertToGet } from "../scripts/expense";
 
 const router = (app: Express) => {
   app.get('/users', (request: Request, response: Response) => {
@@ -104,7 +105,7 @@ const router = (app: Express) => {
       if (error) throw error;
 
       const { users } = jsonGroupToGroup(jsonGroup[0]);
-      users.forEach((userId) => removeGroupFromUser(userId, id));
+      users.forEach((user) => removeGroupFromUser(user.id, id));
     });
 
     pool.query('DELETE FROM groups WHERE id = ?', id, (error: Error) => {
@@ -116,10 +117,12 @@ const router = (app: Express) => {
   app.get('/expenses/:groupId', (request: Request, response: Response) => {
     const groupId = request.params.groupId;
 
-    pool.query('SELECT * FROM groups WHERE id = ?', groupId, (error: Error, jsonGroup: JsonGroup[]) => {
+    pool.query('SELECT * FROM groups WHERE id = ?', groupId, (error: Error, group: Group[]) => {
       if (error) throw error;
-      const group = jsonGroupToGroup(jsonGroup[0]);
-      response.send(group.expenses);
+      const expenses = group[0].expenses.map((expense) => {
+        return convertToGet(expense);
+      })
+      Promise.all(expenses).then((newExpenses) => response.send(newExpenses))
     });
   });
 
@@ -134,22 +137,24 @@ const router = (app: Express) => {
     });
   });
 
-  // app.post('/groups', (request: Request, response: Response) => {
-  //   const group = groupToJsonGroup(request.body);
+  app.post('/expenses/:groupId', (request: Request, response: Response) => {
+    const expense = JSON.parse(request.body);
 
-  //   pool.query('INSERT INTO groups SET ?', group, (error: Error) => {
+    pool.query('INSERT INTO groups SET ?', expense, (error: Error) => {
+      if (error) throw error;
+      response.send('Group created');
+    });
+  });
+
+  // app.put('/expenses/:groupId/:expenseId', (request: Request, response: Response) => {
+  //   const groupId = +request.params.groupId;
+  //   const expenseId = +request.params.expenseId;
+
+  //   const expense: SendExpense = JSON.parse(request.body);
+
+  //   pool.query('UPDATE groups SET ? WHERE id = ?', [group, groupId], (error: Error) => {
   //     if (error) throw error;
-  //     response.send('Group created');
-  //   });
-  // });
-
-  // app.put('/groups/:id', (request: Request, response: Response) => {
-  //   const id = request.params.id;
-  //   const group = groupToJsonGroup(request.body);
-
-  //   pool.query('UPDATE groups SET ? WHERE id = ?', [group, id], (error: Error) => {
-  //     if (error) throw error;
-  //     response.send('Group updated');
+  //     response.send('Expense updated');
   //   });
   // });
 }

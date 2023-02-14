@@ -1,7 +1,7 @@
 "use strict";
 exports.__esModule = true;
 exports.pool = void 0;
-var mysql = require('mysql');
+var mysql = require('mysql2');
 var config = {
     host: 'localhost',
     user: 'root',

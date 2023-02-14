@@ -43,4 +43,4 @@
 
 // fetch('http://localhost:3333/groups/2').then((res) => res.json()).then((res) => console.log(res));
 
-fetch('http://localhost:3333/expenses/2/0').then((res) => res.json()).then((res) => console.log(res));
+fetch('http://localhost:3333/expenses/2').then((res) => res.json()).then((res) => console.log(res));

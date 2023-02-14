@@ -5,9 +5,9 @@ import { pool } from "../data/config";
 function removeUserFromGroup(userId: number, groupId: number): void {
   pool.query('SELECT * FROM groups WHERE id = ?', groupId, (error: Error, jsonGroup: JsonGroup[]) => {
     if (error) throw error;
-;
+    
     let { users } = jsonGroupToGroup(jsonGroup[0]);
-    if (users.indexOf(userId) >= 0) users.splice(users.indexOf(userId), 1);
+    users = users.filter((group) => group.id !== userId)
     jsonGroup[0].users = JSON.stringify(users);
     
     removeUserFromGroup(userId, groupId);

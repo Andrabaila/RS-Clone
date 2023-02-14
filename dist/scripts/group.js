@@ -7,10 +7,8 @@ function removeUserFromGroup(userId, groupId) {
     config_1.pool.query('SELECT * FROM groups WHERE id = ?', groupId, function (error, jsonGroup) {
         if (error)
             throw error;
-        ;
         var users = (0, jsonToObject_1.jsonGroupToGroup)(jsonGroup[0]).users;
-        if (users.indexOf(userId) >= 0)
-            users.splice(users.indexOf(userId), 1);
+        users = users.filter(function (group) { return group.id !== userId; });
         jsonGroup[0].users = JSON.stringify(users);
         removeUserFromGroup(userId, groupId);
         updateGroup(jsonGroup[0], groupId);

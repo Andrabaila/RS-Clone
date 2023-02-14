@@ -3,6 +3,7 @@ exports.__esModule = true;
 var config_1 = require("../data/config");
 var user_1 = require("../scripts/user");
 var jsonToObject_1 = require("../scripts/jsonToObject");
+var expense_1 = require("../scripts/expense");
 var router = function (app) {
     app.get('/users', function (request, response) {
         config_1.pool.query('SELECT * FROM users', function (error, jsonUsers) {
@@ -87,7 +88,7 @@ var router = function (app) {
             if (error)
                 throw error;
             var users = (0, jsonToObject_1.jsonGroupToGroup)(jsonGroup[0]).users;
-            users.forEach(function (userId) { return (0, user_1.removeGroupFromUser)(userId, id); });
+            users.forEach(function (user) { return (0, user_1.removeGroupFromUser)(user.id, id); });
         });
         config_1.pool.query('DELETE FROM groups WHERE id = ?', id, function (error) {
             if (error)
@@ -97,11 +98,13 @@ var router = function (app) {
     });
     app.get('/expenses/:groupId', function (request, response) {
         var groupId = request.params.groupId;
-        config_1.pool.query('SELECT * FROM groups WHERE id = ?', groupId, function (error, jsonGroup) {
+        config_1.pool.query('SELECT * FROM groups WHERE id = ?', groupId, function (error, group) {
             if (error)
                 throw error;
-            var group = (0, jsonToObject_1.jsonGroupToGroup)(jsonGroup[0]);
-            response.send(group.expenses);
+            var expenses = group[0].expenses.map(function (expense) {
+                return (0, expense_1.convertToGet)(expense);
+            });
+            Promise.all(expenses).then(function (newExpenses) { return response.send(newExpenses); });
         });
     });
     app.get('/expenses/:groupId/:expenseId', function (request, response) {
@@ -111,23 +114,24 @@ var router = function (app) {
             if (error)
                 throw error;
             var group = (0, jsonToObject_1.jsonGroupToGroup)(jsonGroup[0]);
-            console.log(group.expenses);
             response.send(group.expenses[expenseId]);
         });
     });
-    // app.post('/groups', (request: Request, response: Response) => {
-    //   const group = groupToJsonGroup(request.body);
-    //   pool.query('INSERT INTO groups SET ?', group, (error: Error) => {
+    app.post('/expenses/:groupId', function (request, response) {
+        var expense = JSON.parse(request.body);
+        config_1.pool.query('INSERT INTO groups SET ?', expense, function (error) {
+            if (error)
+                throw error;
+            response.send('Group created');
+        });
+    });
+    // app.put('/expenses/:groupId/:expenseId', (request: Request, response: Response) => {
+    //   const groupId = +request.params.groupId;
+    //   const expenseId = +request.params.expenseId;
+    //   const expense: SendExpense = JSON.parse(request.body);
+    //   pool.query('UPDATE groups SET ? WHERE id = ?', [group, groupId], (error: Error) => {
     //     if (error) throw error;
-    //     response.send('Group created');
-    //   });
-    // });
-    // app.put('/groups/:id', (request: Request, response: Response) => {
-    //   const id = request.params.id;
-    //   const group = groupToJsonGroup(request.body);
-    //   pool.query('UPDATE groups SET ? WHERE id = ?', [group, id], (error: Error) => {
-    //     if (error) throw error;
-    //     response.send('Group updated');
+    //     response.send('Expense updated');
     //   });
     // });
 };
