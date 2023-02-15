@@ -1,18 +1,17 @@
 
-// fetch('http://localhost:3333/users/3', {
+// fetch('http://localhost:3333/users/4', {
 //   method: 'DELETE'
 // }).then((res) => res.json()).then((res) => console.log(res))
-// fetch('http://localhost:3333/users/1').then((res) => res.json()).then((res) => console.log(res));
+// fetch('http://localhost:3333/users/6').then((res) => res.json()).then((res) => console.log(res));
 
-// fetch('http://localhost:3333/users/3', {
+// fetch('http://localhost:3333/users/1', {
 //   method: 'PUT',
 //   headers: {
 //     'Content-Type': 'application/json;charset=utf-8'
 //   },
 //   body: JSON.stringify({
-//     name: 'sdfsfd Pet',
-//     balance: 12412.2,
-//     groups: [1, 2]
+//     name: 'sdsdfsfd Pet',
+//     groups: [4, 5]
 //   })
 // }).then((res) => res.json()).then((res) => console.log(res))
 
@@ -37,10 +36,17 @@
 //   })
 // }).then((res) => res.json()).then((res) => console.log(res))
 
-// fetch('http://localhost:3333/groups/1', {
+// fetch('http://localhost:3333/groups/5', {
 //   method: 'DELETE'
 // }).then((res) => res.json()).then((res) => console.log(res))
 
-// fetch('http://localhost:3333/groups/2').then((res) => res.json()).then((res) => console.log(res));
+// fetch('http://localhost:3333/groups/5').then((res) => res.json()).then((res) => console.log(res));
 
-fetch('http://localhost:3333/expenses/2').then((res) => res.json()).then((res) => console.log(res));
+// fetch('http://localhost:3333/expenses/6').then((res) => res.json()).then((res) => console.log(res));
+// fetch('http://localhost:3333/expenses/7', {
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'application/json;charset=utf-8'
+//   },
+//   body: JSON.stringify({"id": 6, "name": "afgasdasd", "balance": 234212})
+// }).then((res) => res.json()).then((res) => console.log(res));

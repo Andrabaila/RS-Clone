@@ -47,49 +47,51 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.convertToGet = exports.addExpense = void 0;
+exports.convertExpenseToGet = exports.getExpense = exports.getExpenses = exports.addExpense = void 0;
 var config_1 = require("../data/config");
-var jsonToObject_1 = require("./jsonToObject");
-function addExpense(groupId, expense) {
-    config_1.pool.query('SELECT * FROM groups WHERE id = ?', groupId, function (error, jsonGroup) {
-        if (error)
-            throw error;
-        var expenses = (0, jsonToObject_1.jsonGroupToGroup)(jsonGroup[0]).expenses;
+function addExpense(groupId, expense, response) {
+    var connection = config_1.pool.promise();
+    console.log(expense);
+    connection.execute('SELECT expenses FROM groups WHERE id = ?', [groupId])
+        .then(function (group) {
+        var expenses = group[0][0].expenses;
         expenses.push(expense);
-        jsonGroup[0].expenses = JSON.stringify(expenses);
-        updateExpense(jsonGroup[0], groupId);
+        var newExpenses = JSON.stringify(expenses);
+        connection.execute('UPDATE groups SET expenses = ? WHERE id = ?', [newExpenses, groupId])
+            .then(function () { return response.send('Expense created'); });
     });
 }
 exports.addExpense = addExpense;
-function updateExpense(group, groupId) {
-    config_1.pool.query('UPDATE groups SET ? WHERE id = ?', [group, groupId], function (error) {
-        if (error)
-            throw error;
+function getExpenses(groupId, response) {
+    var connection = config_1.pool.promise();
+    connection.execute('SELECT * FROM groups WHERE id = ?', [groupId])
+        .then(function (group) {
+        var expenses = group[0][0].expenses;
+        var awaitExpenses = expenses.map(function (expense) { return convertExpenseToGet(expense, group[0][0]); });
+        Promise.all(awaitExpenses).then(function (newExpenses) { return response.send(newExpenses); });
     });
 }
-function convertToGet(expense) {
+exports.getExpenses = getExpenses;
+function getExpense(groupId, expenseId, response) {
+    var connection = config_1.pool.promise();
+    connection.execute('SELECT * FROM groups WHERE id = ?', [groupId])
+        .then(function (group) {
+        var expenses = group[0][0].expenses;
+        var desiredExpense = expenses.find(function (expense) { return expense.id === expenseId; });
+        if (!desiredExpense)
+            return response.send('Expense not found');
+        convertExpenseToGet(desiredExpense, group[0][0]).then(function (expense) { return response.send(expense); });
+    });
+}
+exports.getExpense = getExpense;
+function convertExpenseToGet(expense, group) {
     return __awaiter(this, void 0, void 0, function () {
-        var forUsers, connection, ObjectsforUsers, byUser, _a;
-        var _b;
-        return __generator(this, function (_c) {
-            switch (_c.label) {
-                case 0:
-                    forUsers = [];
-                    connection = config_1.pool.promise();
-                    expense["for"].forEach(function (forUser) {
-                        forUsers.push(connection.execute('SELECT * FROM users WHERE id = ?', [forUser]).then(function (res) { return res[0]; }));
-                    });
-                    ObjectsforUsers = Promise.all(forUsers).then(function (forUser) { return forUser.map(function (res) { return res[0]; }); });
-                    byUser = connection.execute('SELECT * FROM users WHERE id = ?', [expense.by]).then(function (by) { return by[0][0]; });
-                    _a = [__assign({}, expense)];
-                    _b = {};
-                    return [4 /*yield*/, byUser];
-                case 1:
-                    _b.by = _c.sent();
-                    return [4 /*yield*/, ObjectsforUsers];
-                case 2: return [2 /*return*/, __assign.apply(void 0, _a.concat([(_b["for"] = _c.sent(), _b)]))];
-            }
+        var forUsers, byUser;
+        return __generator(this, function (_a) {
+            forUsers = group.users.filter(function (user) { return expense["for"].includes(user.id); });
+            byUser = group.users.find(function (user) { return expense.by === user.id; });
+            return [2 /*return*/, __assign(__assign({}, expense), { by: byUser, "for": forUsers })];
         });
     });
 }
-exports.convertToGet = convertToGet;
+exports.convertExpenseToGet = convertExpenseToGet;

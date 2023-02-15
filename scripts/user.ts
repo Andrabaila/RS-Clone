@@ -1,25 +1,34 @@
-import { JsonUser } from "../data/interfaces";
-import { jsonUserToUser } from "./jsonToObject";
+import { JsonGroup, User } from "../data/interfaces";
 import { pool } from '../data/config';
+import { Response } from "express";
+import { removeUserFromGroup } from "./group";
 
-function removeGroupFromUser(userId: number, groupId: number): void {
-  pool.query('SELECT * FROM users WHERE id = ?', userId, (error: Error, jsonUser: JsonUser[]) => {
-    if (error) throw error;
+export async function removeGroupFromUser(userId: number, groupId: number): Promise<void> {
+  const connection = pool.promise();
 
-    let { groups } = jsonUserToUser(jsonUser[0]);
-    if (groups.indexOf(groupId) >= 0) groups.splice(groups.indexOf(groupId), 1);
-    jsonUser[0].groups = JSON.stringify(groups);
-
-    updateUser(jsonUser[0], userId);
-  });
+  connection.execute('SELECT groups FROM users WHERE id = ?', [userId])
+    .then((user: User[][]) => {
+      let newGroups = user[0][0].groups;
+      newGroups = newGroups.filter((group) => group !== groupId);
+      return JSON.stringify(newGroups);
+    })
+    .then((groups: JsonGroup) => connection.query('UPDATE users SET groups = ? WHERE id = ?', [groups, userId]))
 }
 
-function updateUser(newData: JsonUser, id: number): void {
-  pool.query('UPDATE users SET ? WHERE id = ?', [newData, id], (error: Error) => {
-    if (error) throw error;
-  });
-}
+export async function deleteUser(userId: number, response: Response): Promise<void> {
+  const connection = pool.promise();
 
-export {
-  removeGroupFromUser,
+  connection.query('SELECT * FROM users WHERE id = ?', userId)
+    .then((user: User[][]) => {
+      const awaitDeleteUsers: Promise<Response>[] = [];
+      user[0][0].groups.forEach((group) => awaitDeleteUsers.push(removeUserFromGroup(userId, group)));
+
+      return awaitDeleteUsers;
+    })
+    .then((awaitDeleteUsers: Promise<Response>[]) => {
+      Promise.allSettled(awaitDeleteUsers)
+        .then(() => {
+          pool.query('DELETE FROM users WHERE id = ?', userId, (error: Error) => response.send(error || 'User deleted'));
+        })
+    })
 }
