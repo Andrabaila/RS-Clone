@@ -37,6 +37,16 @@ const belarusian: { readonly [x: string]: string } = {
     deletePerson: 'Выдаліць',
     btnCancel: 'Адмена',
     btnDelete: 'Выдаліць',
+
+    amount: 'Сума',
+    currencies: 'Валюта',
+    by: 'Хто',
+    forWhom: 'Для',
+    from: 'Ад',
+    to: 'Для',
+    date: 'Дата',
+    persons: 'ўдзельніка',
+    payment: 'Плацеж',
 };
 
 export default belarusian;

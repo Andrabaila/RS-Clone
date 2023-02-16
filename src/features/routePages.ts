@@ -1,4 +1,4 @@
-import createMainPage from '../pages/createMainPage';
+// import createMainPage from '../pages/createMainPage';
 import createNewGroupPage from '../pages/createNewGroupPage';
 import createStartPage from '../pages/createStartPage';
 import createJoinGroupPage from '../pages/createJoinGroupPage';
@@ -9,13 +9,11 @@ import createExpensesPage from '../pages/createExpensesPage';
 function routePages() {
     const { hash } = window.location;
     const page = hash.split('-')[0];
+    console.log('hash', page);
 
     switch (page) {
         case '':
             createStartPage();
-            break;
-        case '#/main':
-            createMainPage();
             break;
         case '#/new_group':
             createNewGroupPage();
@@ -33,7 +31,7 @@ function routePages() {
             createExpensesPage();
             break;
         default:
-            createMainPage();
+            createExpensesPage();
     }
 }
 
