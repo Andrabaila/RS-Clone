@@ -37,6 +37,16 @@ const russian: { readonly [x: string]: string } = {
     deletePerson: 'Удалить',
     btnCancel: 'Отмена',
     btnDelete: 'Удалить',
+
+    amount: 'Сумма',
+    currencies: 'Валюта',
+    by: 'Кто',
+    forWhom: 'Для',
+    from: 'От',
+    to: 'Для',
+    date: 'Дата',
+    persons: 'участника',
+    payment: 'Платеж',
 };
 
 export default russian;

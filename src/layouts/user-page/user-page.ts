@@ -50,7 +50,7 @@ const addListenersModal = () => {
 
 export const makeUserPage = () => {
     document.body.innerHTML = addUserPageHtml(
-        '/',
+        '/#/overview',
         '/',
         '/',
         '/',

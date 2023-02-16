@@ -86,7 +86,6 @@ const closeModal = () => {
 };
 
 const addTrashButtonLogic = (e: Event) => {
-    console.log(e.target);
     if (e.target instanceof HTMLElement) {
         const targetGroupId = e.target.dataset.id;
         if (targetGroupId) {

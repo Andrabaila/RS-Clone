@@ -7,7 +7,7 @@ export const expenses: GetExpense[] = [
     {
         id: 1,
         title: 'за конфеты', // название платежа (пустая строка в случае взаиморасчетов)
-        amount: 9, // сумма платежа
+        amount: 19, // сумма платежа
         by: { id: 1, name: 'Павел', balance: 20 }, // тот кто купил interface UserInGroup
         //     interface UserInGroup {
         //     id: number;
@@ -24,7 +24,7 @@ export const expenses: GetExpense[] = [
     {
         id: 2,
         title: '', // пустая строка в случае взаиморасчетов
-        amount: 9, // сумма платежа
+        amount: 20, // сумма платежа
         by: { id: 1, name: 'Павел', balance: 20 }, // тот кто купил interface UserInGroup
         for: [{ id: 3, name: 'Юра', balance: 50 }], // в случае взаиморасчетов может быть только один юзер
         date: 1676359147167, // дата платежа
