@@ -1,4 +1,4 @@
-import { Group, JsonUser, UserInGroup } from "../data/interfaces";
+import { Group, JsonUser, User, UserInGroup } from "../data/interfaces";
 import { Response } from "express";
 import { pool } from "../data/config";
 import { removeGroupFromUser } from "./user";
@@ -35,4 +35,17 @@ export async function removeGroup(groupId: number, response: Response): Promise<
       )
     }
   );
+}
+
+export function getUsersGroup(userId: number, response: Response): void {
+  const connection = pool.promise();
+  const awaitGroups: Promise<Group[]>[] = [];
+
+  connection.execute('SELECT groups FROM users WHERE id = ?', [userId])
+    .then((user: User[][]) => {  
+      user[0][0].groups.forEach((groupId) => {
+        awaitGroups.push(connection.execute('SELECT * FROM groups WHERE id = ?', [groupId]))
+      })
+    })
+    .then(() => Promise.all(awaitGroups).then((groups: Group[][]) => response.send(groups[0][0])));
 }

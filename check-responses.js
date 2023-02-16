@@ -2,7 +2,7 @@
 // fetch('http://localhost:3333/users/4', {
 //   method: 'DELETE'
 // }).then((res) => res.json()).then((res) => console.log(res))
-// fetch('http://localhost:3333/users/6').then((res) => res.json()).then((res) => console.log(res));
+fetch('http://localhost:3333/users/5/groups').then((res) => res.json()).then((res) => console.log(res));
 
 // fetch('http://localhost:3333/users/1', {
 //   method: 'PUT',
@@ -43,10 +43,20 @@
 // fetch('http://localhost:3333/groups/5').then((res) => res.json()).then((res) => console.log(res));
 
 // fetch('http://localhost:3333/expenses/6').then((res) => res.json()).then((res) => console.log(res));
-// fetch('http://localhost:3333/expenses/7', {
-//   method: 'POST',
+// fetch('http://localhost:3333/expenses/7/1', {
+//   method: 'PUT',
 //   headers: {
 //     'Content-Type': 'application/json;charset=utf-8'
 //   },
-//   body: JSON.stringify({"id": 6, "name": "afgasdasd", "balance": 234212})
+//   body: JSON.stringify({
+//     title: 'fgg', // название платежа (необязательное поле)
+//     amount: 2588, // сумма платежа
+//     by: 1, // id того кто купил
+//     for: [3, 7], // перечень id для кого купили
+//     date: 155225 // дата платежа
+//   })
 // }).then((res) => res.json()).then((res) => console.log(res));
+
+// fetch('http://localhost:3333/expenses/7/1', {
+//   method: 'DELETE'
+// }).then((res) => res.json()).then((res) => console.log(res))

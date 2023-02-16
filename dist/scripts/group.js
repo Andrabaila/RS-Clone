@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.removeGroup = exports.removeUserFromGroup = void 0;
+exports.getUsersGroup = exports.removeGroup = exports.removeUserFromGroup = void 0;
 var config_1 = require("../data/config");
 var user_1 = require("./user");
 function removeUserFromGroup(userId, groupId) {
@@ -76,3 +76,15 @@ function removeGroup(groupId, response) {
     });
 }
 exports.removeGroup = removeGroup;
+function getUsersGroup(userId, response) {
+    var connection = config_1.pool.promise();
+    var awaitGroups = [];
+    connection.execute('SELECT groups FROM users WHERE id = ?', [userId])
+        .then(function (user) {
+        user[0][0].groups.forEach(function (groupId) {
+            awaitGroups.push(connection.execute('SELECT * FROM groups WHERE id = ?', [groupId]));
+        });
+    })
+        .then(function () { return Promise.all(awaitGroups).then(function (groups) { return response.send(groups[0][0]); }); });
+}
+exports.getUsersGroup = getUsersGroup;

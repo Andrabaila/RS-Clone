@@ -12,6 +12,9 @@ var router = function (app) {
     app.get('/users/:id', function (request, response) {
         config_1.pool.query('SELECT * FROM users WHERE id = ?', request.params.id, function (error, user) { return response.send(error || user[0]); });
     });
+    app.get('/users/:id/groups', function (request, response) {
+        (0, group_1.getUsersGroup)(+request.params.id, response);
+    });
     app.post('/users', function (request, response) {
         config_1.pool.query('INSERT INTO users SET ?', (0, jsonToObject_1.userToJsonUser)(request.body), function (error) { return response.send(error || 'User created'); });
     });
@@ -43,14 +46,11 @@ var router = function (app) {
     app.post('/expenses/:groupId', function (request, response) {
         (0, expense_1.addExpense)(+request.params.groupId, request.body, response);
     });
-    // app.put('/expenses/:groupId/:expenseId', (request: Request, response: Response) => {
-    //   const groupId = +request.params.groupId;
-    //   const expenseId = +request.params.expenseId;
-    //   const expense: SendExpense = JSON.parse(request.body);
-    //   pool.query('UPDATE groups SET ? WHERE id = ?', [group, groupId], (error: Error) => {
-    //     if (error) throw error;
-    //     response.send('Expense updated');
-    //   });
-    // });
+    app.put('/expenses/:groupId/:expenseId', function (request, response) {
+        (0, expense_1.updateExpanse)(+request.params.groupId, +request.params.expenseId, request.body, response);
+    });
+    app["delete"]('/expenses/:groupId/:expenseId', function (request, response) {
+        (0, expense_1.deleteExpense)(+request.params.groupId, +request.params.expenseId, response);
+    });
 };
 exports["default"] = router;

@@ -3,8 +3,8 @@ import { Request, Response, Express } from 'express';
 import { deleteUser } from "../scripts/user";
 import { groupToJsonGroup, userToJsonUser } from "../scripts/jsonToObject";
 import { Group, User } from "../data/interfaces";
-import { addExpense, getExpense, getExpenses } from "../scripts/expense";
-import { removeGroup } from "../scripts/group";
+import { addExpense, deleteExpense, getExpense, getExpenses, updateExpanse } from "../scripts/expense";
+import { getUsersGroup, removeGroup } from "../scripts/group";
 
 const router = (app: Express) => {
   app.get('/users', (_, response: Response) => {
@@ -20,6 +20,10 @@ const router = (app: Express) => {
       request.params.id, 
       (error: Error, user: User[]) => response.send(error || user[0])
     );
+  });
+
+  app.get('/users/:id/groups', (request: Request, response: Response) => {
+    getUsersGroup(+request.params.id, response);
   });
 
   app.post('/users', (request: Request, response: Response) => {
@@ -87,17 +91,13 @@ const router = (app: Express) => {
     addExpense(+request.params.groupId, request.body, response);
   });
 
-  // app.put('/expenses/:groupId/:expenseId', (request: Request, response: Response) => {
-  //   const groupId = +request.params.groupId;
-  //   const expenseId = +request.params.expenseId;
+  app.put('/expenses/:groupId/:expenseId', (request: Request, response: Response) => {
+    updateExpanse(+request.params.groupId, +request.params.expenseId, request.body, response);
+  });
 
-  //   const expense: SendExpense = JSON.parse(request.body);
-
-  //   pool.query('UPDATE groups SET ? WHERE id = ?', [group, groupId], (error: Error) => {
-  //     if (error) throw error;
-  //     response.send('Expense updated');
-  //   });
-  // });
+  app.delete('/expenses/:groupId/:expenseId', (request: Request, response: Response) => {
+    deleteExpense(+request.params.groupId, +request.params.expenseId, response);
+  });
 }
 
 export default router;

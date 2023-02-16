@@ -47,21 +47,33 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.convertExpenseToGet = exports.getExpense = exports.getExpenses = exports.addExpense = void 0;
+exports.convertExpenseToGet = exports.updateExpanse = exports.getExpense = exports.getExpenses = exports.deleteExpense = exports.addExpense = void 0;
 var config_1 = require("../data/config");
+var userInGroup_1 = require("./userInGroup");
 function addExpense(groupId, expense, response) {
     var connection = config_1.pool.promise();
-    console.log(expense);
-    connection.execute('SELECT expenses FROM groups WHERE id = ?', [groupId])
+    connection.execute('SELECT * FROM groups WHERE id = ?', [groupId])
         .then(function (group) {
         var expenses = group[0][0].expenses;
         expenses.push(expense);
         var newExpenses = JSON.stringify(expenses);
         connection.execute('UPDATE groups SET expenses = ? WHERE id = ?', [newExpenses, groupId])
-            .then(function () { return response.send('Expense created'); });
+            .then(function () { return (0, userInGroup_1.updateBalance)(groupId).then(function () { return response.send('Expense created'); }); });
     });
 }
 exports.addExpense = addExpense;
+function deleteExpense(groupId, expenceId, response) {
+    var connection = config_1.pool.promise();
+    connection.execute('SELECT expenses FROM groups WHERE id = ?', [groupId])
+        .then(function (group) {
+        var expenses = group[0][0].expenses;
+        expenses = expenses.filter(function (expense) { return expense.id !== expenceId; });
+        var newExpenses = JSON.stringify(expenses);
+        connection.execute('UPDATE groups SET expenses = ? WHERE id = ?', [newExpenses, groupId])
+            .then(function () { return (0, userInGroup_1.updateBalance)(groupId).then(function () { return response.send('Expense deleted'); }); });
+    });
+}
+exports.deleteExpense = deleteExpense;
 function getExpenses(groupId, response) {
     var connection = config_1.pool.promise();
     connection.execute('SELECT * FROM groups WHERE id = ?', [groupId])
@@ -84,6 +96,22 @@ function getExpense(groupId, expenseId, response) {
     });
 }
 exports.getExpense = getExpense;
+function updateExpanse(groupId, expenseId, expense, response) {
+    var connection = config_1.pool.promise();
+    connection.execute('SELECT * FROM groups WHERE id = ?', [groupId])
+        .then(function (group) {
+        var expenses = group[0][0].expenses;
+        var desiredExpense = expenses.find(function (expense) { return expense.id === expenseId; });
+        if (!desiredExpense)
+            return addExpense(groupId, expense, response);
+        var expensePosition = expenses.indexOf(desiredExpense);
+        expenses[expensePosition] = expense;
+        var newExpenses = JSON.stringify(expenses);
+        connection.execute('UPDATE groups SET expenses = ? WHERE id = ?', [newExpenses, groupId])
+            .then(function () { return (0, userInGroup_1.updateBalance)(groupId).then(function () { return response.send('Expense updated'); }); });
+    });
+}
+exports.updateExpanse = updateExpanse;
 function convertExpenseToGet(expense, group) {
     return __awaiter(this, void 0, void 0, function () {
         var forUsers, byUser;
