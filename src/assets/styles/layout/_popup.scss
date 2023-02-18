@@ -1,7 +1,6 @@
 .popup {
     position: absolute;
-    top: -200%;
-    left: 25%;
+    top: -300%;
 
     display: flex;
     width: 50%;
@@ -12,7 +11,6 @@
     background: $color-background;
     border-radius: 10px;
     opacity: 0;
-
     transition: opacity 0.4s;
 }
 
@@ -22,11 +20,27 @@
     color: $color-dark;
 }
 
+.popup_add {
+    width: 100%;
+    padding-right: 20px;
+
+    background-color: transparent;
+    border-radius: 2px;
+    color: $color-dark;
+}
+
 .popup_active {
-    top: 35%;
+    top: 50%;
+    left: 50%;
     z-index: 20;
 
     opacity: 1;
+    transform: translate(-50%, -50%);
+
+    &.popup_add {
+        top: unset;
+        bottom: -30px;
+    }
 }
 
 .popup__title_invite {
@@ -36,8 +50,29 @@
     user-select: auto;
 }
 
+.popup-add__item {
+    display: flex;
+    gap: calc($gap * 2);
+}
+
+.popup-add__item-content {
+    display: flex;
+    flex-direction: column;
+    gap: calc($gap / 2);
+}
+
+.popup-add__item-title {
+    color: $color-text_dark;
+    text-align: right;
+}
+
 .popup__content {
     text-align: center;
+}
+
+.popup-add__item-text {
+    color: $color-gray;
+    font-size: $font-size-text_small;
 }
 
 .popup__close {

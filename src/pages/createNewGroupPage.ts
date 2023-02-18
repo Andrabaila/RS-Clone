@@ -10,7 +10,7 @@ function createNewGroupPage() {
 
         createFooter();
     } else {
-        togglePopup();
+        togglePopup('.popup');
     }
 }
 export default createNewGroupPage;

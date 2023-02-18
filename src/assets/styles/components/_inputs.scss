@@ -31,7 +31,10 @@ input[type='number']:focus {
     text-align: center;
 }
 
-.input_join-group {
+.input_add-payment {
+    width: 100px;
+    flex-grow: 2;
+    text-align: right;
 }
 
 .input::-webkit-input-placeholder {

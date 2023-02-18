@@ -1,6 +1,7 @@
 .message {
     position: absolute;
-    top: 35%;
+    top: 50%;
+    left: 50%;
     z-index: 30;
 
     padding: 2rem;
@@ -14,5 +15,6 @@
     background: $color-background;
     border-radius: 5px;
 
+    transform: translate(-50%, -50%);
     transition: all 0.3s;
 }
