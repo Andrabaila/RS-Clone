@@ -1,15 +1,50 @@
-import { addFocusedToBtn, addPictureBasketOrArrow } from '../../features/tools';
+import { addFocusedToBtn, addPictureBasketOrArrow, findObjectById } from '../../features/tools';
 import { expenses } from '../../data/database_new';
 import { makeMainHtml, addExpensesItem } from './expenses-pageHtml';
 import stringToElement from '../../components/stringToElement';
-import setHash from '../../features/setHash';
+import { makeExpenseDetailHtml, makeModalBlockForElement } from '../expense-detail-page/expense-detail';
+import getLangObj from '../../features/getLangObj';
+
+const langObj = getLangObj();
 
 const addButtonItemElementLogic = (e: MouseEvent) => {
     if (e.currentTarget instanceof HTMLElement) {
-        console.log(e.currentTarget?.dataset.expense);
-        setHash(e);
-
-        console.log(window.location.hash);
+        const expenseid = e.currentTarget?.dataset.expenseid;
+        if (expenseid) {
+            const expenseObject = findObjectById(expenses, Number(expenseid));
+            if (expenseObject?.title) {
+                makeExpenseDetailHtml(
+                    expenseObject.title,
+                    'basket',
+                    expenseObject.amount,
+                    'USD',
+                    expenseObject.by.name,
+                    expenseObject.for.length,
+                    expenseObject.by.name,
+                    expenseObject.for[0].name,
+                    String(expenseObject.date),
+                    '',
+                    'display-none'
+                );
+                makeModalBlockForElement(expenseObject);
+                window.location.hash = '#/expense_detail';
+            } else if (expenseObject) {
+                makeExpenseDetailHtml(
+                    langObj.payment,
+                    'arrow',
+                    expenseObject.amount,
+                    'USD',
+                    expenseObject.by.name,
+                    expenseObject.for.length,
+                    expenseObject.by.name,
+                    expenseObject.for[0].name,
+                    String(expenseObject.date),
+                    'display-none',
+                    ''
+                );
+                window.location.hash = '#/goods_detail';
+            }
+        }
     }
 };
 
@@ -21,7 +56,7 @@ const addExpensesPageHtml = () => {
     expenses.forEach((expense) => {
         const expensesItemString = expense.title
             ? addExpensesItem(
-                  'goods_page',
+                  'goods',
                   expense.id,
                   expense.title,
                   String(expense.by.name),
@@ -29,7 +64,7 @@ const addExpensesPageHtml = () => {
                   addPictureBasketOrArrow('basket')
               )
             : addExpensesItem(
-                  'payment_page',
+                  'settle',
                   expense.id,
                   `From ${expense.by.name}`,
                   `To ${expense.for[0].name}`,

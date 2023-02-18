@@ -73,6 +73,17 @@ const english: { readonly [x: string]: string } = {
     textDate: 'Date',
     buttonMore: 'More',
     buttonLess: 'Less',
+
+    amount: 'Amount',
+    currencies: 'Currency',
+    by: 'By',
+    forWhom: 'For',
+    from: 'From',
+    to: 'To',
+    date: 'Date',
+    persons: 'persons',
+    payment: 'Payment',
+
 };
 
 export default english;

@@ -26,10 +26,10 @@ export const addModalBtnPlusHtml = (newGroup: string, choiceGroup: string, makeC
   <h3 class="modal1__plus-h3">${makeChoice}</h3>
   <div class="modal1__plus-links">
     <button class="modal1__btn-new">    
-      <a href="/" class="modal1__plus-new">${newGroup}</a>
+      <a href="/#/new_group" class="modal1__plus-new">${newGroup}</a>
     </button>
     <button class="modal1__btn-choice">
-      <a href="/" class="modal1__plus-choice">${choiceGroup}</a>
+      <a href="/#/join_group" class="modal1__plus-choice">${choiceGroup}</a>
     </button>
   </div>
 </div>`;
