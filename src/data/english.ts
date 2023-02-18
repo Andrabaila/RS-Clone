@@ -83,7 +83,6 @@ const english: { readonly [x: string]: string } = {
     date: 'Date',
     persons: 'persons',
     payment: 'Payment',
-
 };
 
 export default english;
