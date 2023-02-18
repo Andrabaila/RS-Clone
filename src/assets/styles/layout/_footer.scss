@@ -44,15 +44,11 @@
 }
 
 .footer__item_github-link:hover {
-    color: $color-hover;
+    transform: scale(1.05);
 }
 
 .footer__item_rsschool-link:hover {
-    background-color: $color-hover;
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    border: 1px solid $color-primary;
+    transform: scale(1.05);
 }
 
 @media (min-width: 768px) {

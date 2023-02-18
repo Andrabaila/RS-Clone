@@ -1,5 +1,5 @@
 .input {
-    border: none;
+    border: 1px solid transparent;
     outline: none;
     border-radius: 2px;
 
@@ -27,7 +27,10 @@ input[type='number']:focus {
 .input_new-group,
 .input_join-group {
     width: 100%;
+    height: unset;
+    padding: 10px;
 
+    font-size: $font-size-text_largest;
     text-align: center;
 }
 
@@ -38,7 +41,7 @@ input[type='number']:focus {
 }
 
 .input::-webkit-input-placeholder {
-    font-size: $font-size-text_large;
+    font-size: $font-size-text_largest;
     color: $color-placeholder;
     text-align: center;
 }

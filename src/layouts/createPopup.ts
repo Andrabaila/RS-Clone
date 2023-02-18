@@ -12,7 +12,7 @@ function createPopup() {
     });
     getHtmlElement({ parent: 'main', style: ['popup'] });
     getHtmlElement({ parent: '.popup', style: ['wrapper', 'wrapper_popup'] });
-    const xButton = getHtmlElement({ parent: '.popup', style: ['button', 'button_x'], content: 'x' });
+    const xButton = getHtmlElement({ parent: '.popup', style: ['button', 'button_x'] });
     xButton.addEventListener('click', () => {
         togglePopup();
         window.history.back();
