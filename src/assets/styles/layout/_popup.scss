@@ -3,7 +3,8 @@
     top: -300%;
 
     display: flex;
-    width: 50%;
+    width: 70%;
+    max-width: $max-width-popup;
     padding: 3rem;
     gap: 1rem;
 
@@ -11,7 +12,7 @@
     background: $color-background;
     border-radius: 10px;
     opacity: 0;
-    transition: opacity 0.4s;
+    transition: opacity 0.3s;
 }
 
 .popup_invite {

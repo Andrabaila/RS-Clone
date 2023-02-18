@@ -3,6 +3,7 @@ import togglePopup from '../features/togglePopup';
 import createFooter from '../layouts/createFooter';
 import createJoinGroupMain from '../layouts/createJoinGroupMain';
 import createJoinPopup from '../layouts/createJoinPopup';
+import createStartPage from './createStartPage';
 
 function createJoinGroupPage() {
     document.querySelector('header')?.remove();
@@ -11,8 +12,9 @@ function createJoinGroupPage() {
 
         createFooter();
     } else {
+        createStartPage();
         createJoinPopup();
-        togglePopup();
+        togglePopup('.popup');
     }
 }
 export default createJoinGroupPage;

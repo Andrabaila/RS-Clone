@@ -170,7 +170,7 @@ body {
   justify-content: space-between;
   min-height: 100%;
   background: #ff7b00;
-  color: #e8e9e9;
+  color: #ffffff;
 }
 
 .main {
@@ -303,15 +303,11 @@ body {
 }
 
 .footer__item_github-link:hover {
-  color: #ff0015;
+  transform: scale(1.05);
 }
 
 .footer__item_rsschool-link:hover {
-  background-color: #ff0015;
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: 1px solid #b9000f;
+  transform: scale(1.05);
 }
 
 @media (min-width: 768px) {
@@ -343,14 +339,15 @@ body {
   position: absolute;
   top: -300%;
   display: flex;
-  width: 50%;
+  width: 70%;
+  max-width: 680px;
   padding: 3rem;
   gap: 1rem;
   font-size: 30px;
   background: #ff7b00;
   border-radius: 10px;
   opacity: 0;
-  transition: opacity 0.4s;
+  transition: opacity 0.3s;
 }
 
 .popup_invite {
@@ -447,15 +444,19 @@ body {
   padding: 1.5rem 5rem;
   border-radius: 2.5rem;
   height: 5rem;
-  background-color: #e8e9e9;
+  background-color: #ffffff;
   border: none;
   cursor: pointer;
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
   font-size: 2rem;
   color: #ff7b00;
-  text-decoration: none;
   transition: all 0.2s;
+}
+
+.button_start-page {
+  background-color: #ffffff;
 }
 
 .button_main-header {
@@ -482,16 +483,16 @@ body {
   position: absolute;
   right: 8px;
   top: 5px;
-  display: block;
+  display: inline-block;
   width: 35px;
   height: 35px;
   padding: 2px;
   justify-self: flex-start;
-  background-color: #ff7b00;
-  color: #ffffff;
-  font-size: 3rem;
-  line-height: 3rem;
-  text-align: center;
+  background-color: transparent;
+  background-image: url("../../../assets/icons/close.svg");
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 .button_overview {
@@ -514,6 +515,10 @@ body {
 
 .button:hover {
   transform: scale(1.05);
+}
+
+.button_x:hover {
+  transform: rotateZ(90deg);
 }
 
 .button_add {
@@ -539,10 +544,6 @@ body {
 
 .button_currency:hover {
   transform: scale(1);
-}
-
-.button_x:hover {
-  transform: none;
 }
 
 .button_disabled {
@@ -598,8 +599,12 @@ h3 {
   font-weight: 700;
 }
 
+.title_start {
+  color: #ffffff;
+}
+
 .input {
-  border: none;
+  border: 1px solid transparent;
   outline: none;
   border-radius: 2px;
   background-color: #ffffff;
@@ -626,6 +631,9 @@ input[type=number]:focus {
 .input_new-group,
 .input_join-group {
   width: 100%;
+  height: unset;
+  padding: 10px;
+  font-size: 2.4rem;
   text-align: center;
 }
 
@@ -636,7 +644,7 @@ input[type=number]:focus {
 }
 
 .input::-webkit-input-placeholder {
-  font-size: 2rem;
+  font-size: 2.4rem;
   color: #adadad;
   text-align: center;
 }
@@ -674,6 +682,10 @@ input[type=number]:focus {
 .text_invite {
   padding: 1rem 7rem;
   text-align: center;
+}
+
+.text_start-page {
+  color: #e8e9e9;
 }
 
 .text_invite {

@@ -8,7 +8,7 @@ function createStartPageMain() {
 
     getHtmlElement({ parent: 'body', tag: 'main', style: ['main', 'main_start-page'] });
     getHtmlElement({ parent: '.main', style: ['main__wrapper', 'main__wrapper_start-page'] });
-    getHtmlElement({ parent: '.main__wrapper', tag: 'h1', style: ['main__title'], content: langObj.startPageTitle });
+    getHtmlElement({ parent: '.main__wrapper', tag: 'h1', style: ['title_start'], content: langObj.startPageTitle });
     getHtmlElement({
         parent: '.main__wrapper',
         tag: 'p',
@@ -26,7 +26,7 @@ function createStartPageMain() {
     getHtmlElement({
         parent: '.wrapper_start-page-buttons',
         tag: 'button',
-        style: ['button'],
+        style: ['button', 'button_start-page'],
         id: 'startPageButtonJoin',
         content: langObj.startPageButtonJoin,
     }).dataset.hash = 'join_group';
