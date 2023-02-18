@@ -26,6 +26,15 @@
     gap: $gap * 2;
 }
 
+.wrapper_popup-add {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    gap: calc($gap * 2);
+}
+
 @media (min-width: 768px) {
     .wrapper_start-page-buttons {
         display: flex;

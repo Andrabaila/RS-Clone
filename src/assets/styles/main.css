@@ -22,6 +22,7 @@ html {
   height: 100%;
   -webkit-user-select: none;
      -moz-user-select: none;
+      -ms-user-select: none;
           user-select: none;
   width: 100%;
   font-family: "Roboto";
@@ -157,6 +158,10 @@ a:visited {
   visibility: hidden;
 }
 
+.absolute {
+  position: absolute;
+}
+
 body {
   position: relative;
   display: flex;
@@ -169,6 +174,7 @@ body {
 }
 
 .main {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -193,7 +199,8 @@ body {
   padding: 1rem;
 }
 
-.main_overview {
+.main_overview,
+.main_add-payment-page {
   padding: 0;
   background-color: #e8e9e9;
 }
@@ -222,15 +229,34 @@ body {
   padding: 0;
 }
 
-.main__wrapper_overview {
+.main__wrapper_overview,
+.main__wrapper_add-payment-page {
+  justify-content: flex-start;
   padding: 2rem 0;
   gap: 2rem;
+  flex-grow: 1;
+}
+
+.main__wrapper_add-payment-page {
+  padding: 0 1rem 2rem 1rem;
 }
 
 .main__header {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  padding: 0.5rem;
+  background-color: #ff7b00;
+}
+
+.main__footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+  min-height: 180px;
+  padding-right: 20px;
+  flex-grow: 1;
 }
 
 .footer {
@@ -315,8 +341,7 @@ body {
 
 .popup {
   position: absolute;
-  top: -200%;
-  left: 25%;
+  top: -300%;
   display: flex;
   width: 50%;
   padding: 3rem;
@@ -334,10 +359,24 @@ body {
   color: #000000;
 }
 
+.popup_add {
+  width: 100%;
+  padding-right: 20px;
+  background-color: transparent;
+  border-radius: 2px;
+  color: #000000;
+}
+
 .popup_active {
-  top: 35%;
+  top: 50%;
+  left: 50%;
   z-index: 20;
   opacity: 1;
+  transform: translate(-50%, -50%);
+}
+.popup_active.popup_add {
+  top: unset;
+  bottom: -30px;
 }
 
 .popup__title_invite {
@@ -346,11 +385,33 @@ body {
   background-color: #e8e9e9;
   -webkit-user-select: auto;
      -moz-user-select: auto;
+      -ms-user-select: auto;
           user-select: auto;
+}
+
+.popup-add__item {
+  display: flex;
+  gap: 2rem;
+}
+
+.popup-add__item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.popup-add__item-title {
+  color: #000000;
+  text-align: right;
 }
 
 .popup__content {
   text-align: center;
+}
+
+.popup-add__item-text {
+  color: #767474;
+  font-size: 1.6rem;
 }
 
 .popup__close {
@@ -455,6 +516,27 @@ body {
   transform: scale(1.05);
 }
 
+.button_add {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  padding: 0;
+  color: #ffffff;
+  background-color: #ff7b00;
+}
+
+.button_add-light {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  padding: 0 0 3px 0;
+  font-size: 25px;
+  color: #ff7b00;
+  background-color: #ffffff;
+  border: 1px solid #d8d9d9;
+  box-shadow: 0 1px 3px #b8b9b9;
+}
+
 .button_currency:hover {
   transform: scale(1);
 }
@@ -547,6 +629,12 @@ input[type=number]:focus {
   text-align: center;
 }
 
+.input_add-payment {
+  width: 100px;
+  flex-grow: 2;
+  text-align: right;
+}
+
 .input::-webkit-input-placeholder {
   font-size: 2rem;
   color: #adadad;
@@ -620,6 +708,15 @@ input[type=number]:focus {
   gap: 2rem;
 }
 
+.wrapper_popup-add {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  gap: 2rem;
+}
+
 @media (min-width: 768px) {
   .wrapper_start-page-buttons {
     display: flex;
@@ -635,9 +732,44 @@ input[type=number]:focus {
   gap: 1rem;
 }
 
+.form_add-payment {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 480px;
+  gap: 1.5rem;
+  color: #000000;
+}
+
+.form__item_amount,
+.form__item_from-to,
+.form__item_date {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.form__amount,
+.form__currency,
+.form__from,
+.form__to,
+.form__date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  gap: 1rem;
+  background-color: #ffffff;
+}
+
+.form__amount {
+  padding: 7px 10px;
+}
+
 .message {
   position: absolute;
-  top: 35%;
+  top: 50%;
+  left: 50%;
   z-index: 30;
   padding: 2rem;
   gap: 1rem;
@@ -648,6 +780,7 @@ input[type=number]:focus {
   color: #e8e9e9;
   background: #ff7b00;
   border-radius: 5px;
+  transform: translate(-50%, -50%);
   transition: all 0.3s;
 }
 
@@ -918,6 +1051,7 @@ input[type=number]:focus {
   top: 0;
   right: 0;
   bottom: 0;
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   height: 30rem;
@@ -964,6 +1098,7 @@ input[type=number]:focus {
 
 .button-overview,
 .button-expenses {
+  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding: 12px 33px;
@@ -1077,6 +1212,9 @@ input[type=number]:focus {
 .upage-row2-input::-moz-placeholder {
   color: white;
 }
+.upage-row2-input:-ms-input-placeholder {
+  color: white;
+}
 .upage-row2-input::placeholder {
   color: white;
 }
@@ -1135,6 +1273,7 @@ input.bordered {
 }
 
 .button-upage {
+  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding: 8px 33px;

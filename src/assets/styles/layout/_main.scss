@@ -1,4 +1,6 @@
 .main {
+    position: relative;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -23,7 +25,8 @@
     padding: 1rem;
 }
 
-.main_overview {
+.main_overview,
+.main_add-payment-page {
     padding: 0;
     background-color: $color-background-lightest;
 }
@@ -52,13 +55,33 @@
     padding: 0;
 }
 
-.main__wrapper_overview {
+.main__wrapper_overview,
+.main__wrapper_add-payment-page {
+    justify-content: flex-start;
     padding: 2rem 0;
     gap: 2rem;
+    flex-grow: 1;
+}
+
+.main__wrapper_add-payment-page {
+    padding: 0 1rem 2rem 1rem;
 }
 
 .main__header {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    padding: 0.5rem;
+
+    background-color: $color-background;
+}
+
+.main__footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+    min-height: 180px;
+    padding-right: 20px;
+    flex-grow: 1;
 }

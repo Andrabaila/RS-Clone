@@ -6,3 +6,39 @@
     flex-direction: column;
     gap: $gap;
 }
+
+.form_add-payment {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: $max-width-content;
+    gap: calc($gap * 1.5);
+
+    color: $color-text_dark;
+}
+
+.form__item_amount,
+.form__item_from-to,
+.form__item_date {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.form__amount,
+.form__currency,
+.form__from,
+.form__to,
+.form__date {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    gap: $gap;
+
+    background-color: $color-light;
+}
+
+.form__amount {
+    padding: 7px 10px;
+}

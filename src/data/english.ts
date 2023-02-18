@@ -56,6 +56,23 @@ const english: { readonly [x: string]: string } = {
     deletePerson: 'Delete',
     btnCancel: 'Cancel',
     btnDelete: 'Delete',
+
+    buttonAdd: '+',
+    popupTitleNewExpense: 'New expense',
+    popupTitleNewPayment: 'New payment',
+    popupTextNewExpense: 'A purchase made for the group',
+    popupTextNewPayment: 'A payment within the group',
+    buttonNewExpense: '⚖',
+    buttonNewPayment: '→',
+
+    buttonSave: 'SAVE',
+    textAmount: 'Amount',
+    textCurrency: 'Currency',
+    textFrom: 'From',
+    textTo: 'To',
+    textDate: 'Date',
+    buttonMore: 'More',
+    buttonLess: 'Less',
 };
 
 export default english;

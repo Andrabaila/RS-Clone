@@ -5,13 +5,8 @@ import togglePopup from '../features/togglePopup';
 
 function createInvitePopup() {
     const langObj = getLangObj();
-    document.querySelector('.shadow')?.remove();
-    const shadow = getHtmlElement({ parent: 'body', style: ['shadow'] });
-    shadow.addEventListener('click', () => {
-        togglePopup();
-    });
 
-    document.querySelector('.popup')?.remove();
+    document.querySelector('.popup_invite')?.remove();
     getHtmlElement({ parent: 'main', style: ['popup', 'popup_invite'] });
     getHtmlElement({ parent: '.popup', style: ['wrapper', 'wrapper_popup'] });
 
@@ -33,13 +28,15 @@ function createInvitePopup() {
             const message = getHtmlElement({ parent: '.main', style: ['message'], content: langObj.confirmingMessage });
             showMessageWithTimer(message, 2000);
         }
-        togglePopup();
+        togglePopup('.popup_invite');
     });
     getHtmlElement({
         parent: '.wrapper_popup',
         tag: 'button',
         style: ['button', 'button_later'],
         content: langObj.buttonLater,
-    }).addEventListener('click', togglePopup);
+    }).addEventListener('click', () => {
+        togglePopup('.popup_invite');
+    });
 }
 export default createInvitePopup;

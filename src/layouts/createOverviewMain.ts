@@ -26,6 +26,19 @@ function createOverviewMain() {
         tag: 'button',
         style: ['button', 'button_overview'],
         content: langObj.buttonInvite,
-    }).addEventListener('click', togglePopup);
+    }).addEventListener('click', () => {
+        togglePopup('.popup_invite');
+    });
+
+    getHtmlElement({ parent: '.main__wrapper', style: ['main__footer'] });
+
+    getHtmlElement({
+        parent: '.main__footer',
+        tag: 'button',
+        style: ['button', 'button_add'],
+        content: langObj.buttonAdd,
+    }).addEventListener('click', () => {
+        togglePopup('.popup_add');
+    });
 }
 export default createOverviewMain;
