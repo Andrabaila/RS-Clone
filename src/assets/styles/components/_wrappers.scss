@@ -11,8 +11,13 @@
 .wrapper_currency,
 .wrapper_input-new-group {
     width: 100%;
-    padding: 0 8rem;
+    padding: 0 11em;
     justify-content: space-between;
+}
+
+.wrapper_input-new-group {
+    display: flex;
+    justify-content: center;
 }
 
 .wrapper_popup {

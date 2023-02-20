@@ -57,3 +57,7 @@ export interface GetExpense {
     for: UserInGroup[]; // перечень пользователей для кого купили
     date: number; // дата платежа
 }
+
+export interface CurrencyObj {
+    [index: string]: string | number;
+}

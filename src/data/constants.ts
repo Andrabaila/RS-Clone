@@ -7,8 +7,16 @@ export const REGULAR_EXPRESSIONS: RegularExpressions = {
 };
 
 export const API = {
-    baseUrl: 'http://127.0.0.1:3000/',
-    endpoint: 'endpoint',
+    baseUrl: 'https://back-for-rs-clone-production.up.railway.app/',
+    groups: 'groups',
+    users: 'users',
+    expenses: 'expenses',
+};
+
+export const API_NBRB = {
+    baseUrl: 'https://www.nbrb.by/api/exrates/',
+    currencies: 'currencies',
+    rates: 'rates',
 };
 
 export const MAX_MOBILE_WIDTH = 768;
