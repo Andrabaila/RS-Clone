@@ -5,6 +5,7 @@ import createOverviewPage from '../pages/createOverviewPage';
 import createUserPage from '../pages/createUserPage';
 import createExpensesPage from '../pages/createExpensesPage';
 import createAddPaymentPage from '../pages/createAddPaymentPage';
+import createCurrenciesPage from '../pages/createCurrenciesPage';
 
 function routePages() {
     const { hash } = window.location;
@@ -31,6 +32,9 @@ function routePages() {
             break;
         case '#/add_payment':
             createAddPaymentPage();
+            break;
+        case '#/currencies':
+            createCurrenciesPage();
             break;
         default:
             createExpensesPage();

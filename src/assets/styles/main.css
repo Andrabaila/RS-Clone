@@ -196,7 +196,7 @@ body {
 }
 
 .main_new-group-page {
-  padding: 1rem;
+  padding: 0rem;
 }
 
 .main_overview,
@@ -226,6 +226,7 @@ body {
 }
 
 .main__wrapper_new-group-page {
+  max-width: 1200px;
   padding: 0;
 }
 
@@ -294,11 +295,10 @@ body {
   width: 74px;
   height: 30px;
   background-image: url("https://rs.school/images/rs_school_js.svg");
-  background-color: #ffffff;
+  background-color: transparent;
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  border: 1px solid #ffffff;
   border-radius: 4px;
 }
 
@@ -460,8 +460,18 @@ body {
 }
 
 .button_main-header {
+  padding: 1.5rem 1.5rem;
   background-color: #ff7b00;
   color: #ffffff;
+}
+
+.button_back {
+  width: 40px;
+  height: 40px;
+  background-image: url("../../assets/icons/arrow_back.svg");
+  background-size: 24px 24px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .button_currency {
@@ -631,6 +641,7 @@ input[type=number]:focus {
 .input_new-group,
 .input_join-group {
   width: 100%;
+  max-width: 480px;
   height: unset;
   padding: 10px;
   font-size: 2.4rem;
@@ -706,8 +717,13 @@ input[type=number]:focus {
 .wrapper_currency,
 .wrapper_input-new-group {
   width: 100%;
-  padding: 0 8rem;
+  padding: 0 11em;
   justify-content: space-between;
+}
+
+.wrapper_input-new-group {
+  display: flex;
+  justify-content: center;
 }
 
 .wrapper_popup {

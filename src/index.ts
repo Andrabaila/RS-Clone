@@ -1,3 +1,4 @@
+import getCurrencies from './api/getCurrencies';
 import routePages from './features/routePages';
 import setHash from './features/setHash';
 
@@ -7,4 +8,9 @@ if (!localStorage.getItem('language')) {
     localStorage.setItem('language', 'english');
 }
 
+if (!localStorage.getItem('currency')) {
+    localStorage.setItem('currency', 'BYN');
+}
+
+getCurrencies();
 routePages();

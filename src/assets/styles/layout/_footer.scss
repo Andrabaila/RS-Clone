@@ -35,11 +35,10 @@
 .footer__item_rsschool-link {
     @include size(74px, 30px);
     background-image: url('https://rs.school/images/rs_school_js.svg');
-    background-color: $color-light;
+    background-color: transparent;
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
-    border: 1px solid $color-light;
     border-radius: 4px;
 }
 

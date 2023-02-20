@@ -21,8 +21,18 @@
 }
 
 .button_main-header {
+    padding: 1.5rem 1.5rem;
+
     background-color: $color-background;
     color: $color-light;
+}
+
+.button_back {
+    @include size(40px);
+    background-image: url('../../assets/icons/arrow_back.svg');
+    background-size: 24px 24px;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .button_currency {

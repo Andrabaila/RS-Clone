@@ -29,12 +29,12 @@ const english: { readonly [x: string]: string } = {
     choiceGroupButton: 'Choice group',
     makeChoiceButton: 'Make choice',
 
-    buttonBack: '←',
     buttonCreate: 'CREATE',
     placeholderNewGroup: 'Name',
     buttonCurrency: 'Currency',
     currency: 'BYN',
     addGroupTitle: 'Enter a group name',
+    errorMessageAddGroup: 'Error with add group fetch request!',
 
     buttonJoin: 'JOIN',
     placeholderJoinGroup: 'code',

@@ -22,7 +22,7 @@
 }
 
 .main_new-group-page {
-    padding: 1rem;
+    padding: 0rem;
 }
 
 .main_overview,
@@ -52,6 +52,7 @@
 }
 
 .main__wrapper_new-group-page {
+    max-width: $max-width-layout;
     padding: 0;
 }
 
