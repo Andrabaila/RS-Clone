@@ -6,13 +6,13 @@ import { removeUserFromGroup } from "./group";
 export async function removeGroupFromUser(userId: number, groupId: number): Promise<void> {
   const connection = pool.promise();
 
-  connection.execute('SELECT groups FROM users WHERE id = ?', [userId])
+  connection.execute('SELECT groupList FROM users WHERE id = ?', [userId])
     .then((user: User[][]) => {
-      let newGroups = user[0][0].groups;
+      let newGroups = user[0][0].groupList;
       newGroups = newGroups.filter((group) => group !== groupId);
       return JSON.stringify(newGroups);
     })
-    .then((groups: JsonGroup) => connection.query('UPDATE users SET groups = ? WHERE id = ?', [groups, userId]))
+    .then((groups: JsonGroup) => connection.query('UPDATE users SET groupList = ? WHERE id = ?', [groups, userId]))
 }
 
 export async function deleteUser(userId: number, response: Response): Promise<void> {
@@ -21,7 +21,7 @@ export async function deleteUser(userId: number, response: Response): Promise<vo
   connection.query('SELECT * FROM users WHERE id = ?', userId)
     .then((user: User[][]) => {
       const awaitDeleteUsers: Promise<Response>[] = [];
-      user[0][0].groups.forEach((group) => awaitDeleteUsers.push(removeUserFromGroup(userId, group)));
+      user[0][0].groupList.forEach((group) => awaitDeleteUsers.push(removeUserFromGroup(userId, group)));
 
       return awaitDeleteUsers;
     })

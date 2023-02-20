@@ -13,7 +13,7 @@ export function jsonGroupToGroup(jsonGroup: JsonGroup): Group {
 export function jsonUserToUser(jsonUser: JsonUser): User {
   const user: User = {
     ...jsonUser,
-    groups: JSON.parse(jsonUser.groups),
+    groupList: JSON.parse(jsonUser.groupList),
   }
 
   return user;
@@ -32,7 +32,7 @@ export function groupToJsonGroup(group: Group): JsonGroup {
 export function userToJsonUser(user: User): JsonUser {
   const JsonUser: JsonUser = {
     ...user,
-    groups: JSON.stringify(user.groups),
+    groupList: JSON.stringify(user.groupList),
   }
 
   return JsonUser;

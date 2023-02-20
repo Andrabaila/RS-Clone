@@ -11,7 +11,7 @@ export function getUserInGroup(id: number): Promise<UserInGroup> {
 export async function updateBalance(groupId: number): Promise<void> {
   const connection = pool.promise();
 
-  await connection.execute('SELECT * FROM groups WHERE id = ?', [groupId])
+  await connection.execute('SELECT * FROM groupList WHERE id = ?', [groupId])
     .then(async (group: Group[][]) => { 
       const { expenses } = group[0][0];
       const { users } = group[0][0];
@@ -49,6 +49,6 @@ export async function updateBalance(groupId: number): Promise<void> {
 
       const newUsers = JSON.stringify(users);
 
-      await connection.execute('UPDATE groups SET users = ? WHERE id = ?', [newUsers, groupId]);
+      await connection.execute('UPDATE groupList SET users = ? WHERE id = ?', [newUsers, groupId]);
     });
   }

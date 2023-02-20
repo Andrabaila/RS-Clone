@@ -1,29 +1,45 @@
 
-// fetch('http://localhost:3333/users/4', {
+// fetch('https://back-for-rs-clone-production.up.railway.app/users/1', {
 //   method: 'DELETE'
 // }).then((res) => res.json()).then((res) => console.log(res))
-fetch('http://localhost:3333/users/5/groups').then((res) => res.json()).then((res) => console.log(res));
 
-// fetch('http://localhost:3333/users/1', {
+// fetch('https://back-for-rs-clone-production.up.railway.app/users').then((res) => res.json()).then((res) => console.log(res));
+
+// fetch('https://back-for-rs-clone-production.up.railway.app/users/1/groups').then((res) => res.json()).then((res) => console.log(res));
+
+// fetch('https://back-for-rs-clone-production.up.railway.app/users/1', {
 //   method: 'PUT',
 //   headers: {
 //     'Content-Type': 'application/json;charset=utf-8'
 //   },
 //   body: JSON.stringify({
-//     name: 'sdsdfsfd Pet',
-//     groups: [4, 5]
+//     id: 1,
+//     name: 'alpha',
+//     groupList: [1]
 //   })
 // }).then((res) => res.json()).then((res) => console.log(res))
 
-// fetch('http://localhost:3333/groups', {
+// fetch('https://back-for-rs-clone-production.up.railway.app/users', {
 //   method: 'POST',
 //   headers: {
 //     'Content-Type': 'application/json;charset=utf-8'
 //   },
 //   body: JSON.stringify({
-//     name: 'first',
-//     photo: 'https://photo.jpg',
-//     users: [4, 5, 6],
+//     id: 1,
+//     name: 'alpha',
+//     groupList: [1]
+//   })
+// }).then((res) => res.json()).then((res) => console.log(res))
+
+// fetch('https://back-for-rs-clone-production.up.railway.app/groups', {
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'application/json;charset=utf-8'
+//   },
+//   body: JSON.stringify({
+//     name: 'second',
+//     photo: 'https://www.nastol.com.ua/download.php?img=201406/2560x1600/nastol.com.ua-101411.jpg',
+//     users: [1,3],
 //     expenses: [
 //       {
 //         title: 'fgg', // название платежа (необязательное поле)
@@ -36,14 +52,14 @@ fetch('http://localhost:3333/users/5/groups').then((res) => res.json()).then((re
 //   })
 // }).then((res) => res.json()).then((res) => console.log(res))
 
-// fetch('http://localhost:3333/groups/5', {
+// fetch('https://back-for-rs-clone-production.up.railway.app/groups/1', {
 //   method: 'DELETE'
 // }).then((res) => res.json()).then((res) => console.log(res))
 
-// fetch('http://localhost:3333/groups/5').then((res) => res.json()).then((res) => console.log(res));
+// fetch('https://back-for-rs-clone-production.up.railway.app/groups/1').then((res) => res.json()).then((res) => console.log(res));
 
-// fetch('http://localhost:3333/expenses/6').then((res) => res.json()).then((res) => console.log(res));
-// fetch('http://localhost:3333/expenses/7/1', {
+// fetch('https://back-for-rs-clone-production.up.railway.app/expenses/2/1').then((res) => res.json()).then((res) => console.log(res));
+// fetch('https://back-for-rs-clone-production.up.railway.app/expenses/1/1', {
 //   method: 'PUT',
 //   headers: {
 //     'Content-Type': 'application/json;charset=utf-8'
@@ -57,6 +73,6 @@ fetch('http://localhost:3333/users/5/groups').then((res) => res.json()).then((re
 //   })
 // }).then((res) => res.json()).then((res) => console.log(res));
 
-// fetch('http://localhost:3333/expenses/7/1', {
+// fetch('https://back-for-rs-clone-production.up.railway.app/expenses/7/1', {
 //   method: 'DELETE'
 // }).then((res) => res.json()).then((res) => console.log(res))

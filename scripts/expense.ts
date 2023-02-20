@@ -6,13 +6,13 @@ import { updateBalance } from './userInGroup';
 export function addExpense(groupId: number, expense: Expense, response: Response): void {
   const connection = pool.promise();
 
-  connection.execute('SELECT * FROM groups WHERE id = ?', [groupId])
+  connection.execute('SELECT * FROM groupList WHERE id = ?', [groupId])
     .then((group: Group[][]) => { 
       const { expenses } = group[0][0];
       expenses.push(expense)
       let newExpenses = JSON.stringify(expenses);
 
-      connection.execute('UPDATE groups SET expenses = ? WHERE id = ?', [newExpenses, groupId])
+      connection.execute('UPDATE groupList SET expenses = ? WHERE id = ?', [newExpenses, groupId])
         .then(() => updateBalance(groupId).then(() => response.send('Expense created')));
     });
 }
@@ -20,13 +20,13 @@ export function addExpense(groupId: number, expense: Expense, response: Response
 export function deleteExpense(groupId: number, expenceId: number, response: Response): void {
   const connection = pool.promise();
 
-  connection.execute('SELECT expenses FROM groups WHERE id = ?', [groupId])
+  connection.execute('SELECT expenses FROM groupList WHERE id = ?', [groupId])
     .then((group: Group[][]) => { 
       let { expenses } = group[0][0];
       expenses = expenses.filter((expense) => expense.id !== expenceId)
       let newExpenses = JSON.stringify(expenses);
 
-      connection.execute('UPDATE groups SET expenses = ? WHERE id = ?', [newExpenses, groupId])
+      connection.execute('UPDATE groupList SET expenses = ? WHERE id = ?', [newExpenses, groupId])
         .then(() => updateBalance(groupId).then(() => response.send('Expense deleted')));
     });
 }
@@ -34,7 +34,7 @@ export function deleteExpense(groupId: number, expenceId: number, response: Resp
 export function getExpenses(groupId: number, response: Response) {
   const connection = pool.promise();
 
-  connection.execute('SELECT * FROM groups WHERE id = ?', [groupId])
+  connection.execute('SELECT * FROM groupList WHERE id = ?', [groupId])
     .then((group: Group[][]) => {
       const { expenses } = group[0][0];
       const awaitExpenses = expenses.map((expense) => convertExpenseToGet(expense, group[0][0]))
@@ -45,7 +45,7 @@ export function getExpenses(groupId: number, response: Response) {
 export function getExpense(groupId: number, expenseId: number, response: Response) {
   const connection = pool.promise();
 
-  connection.execute('SELECT * FROM groups WHERE id = ?', [groupId])
+  connection.execute('SELECT * FROM groupList WHERE id = ?', [groupId])
     .then((group: Group[][]) => {
       const { expenses } = group[0][0];
       const desiredExpense = expenses.find((expense: Expense) => expense.id === expenseId);
@@ -58,7 +58,7 @@ export function getExpense(groupId: number, expenseId: number, response: Respons
 export function updateExpanse(groupId: number, expenseId: number, expense: Expense, response: Response) {
   const connection = pool.promise();
 
-  connection.execute('SELECT * FROM groups WHERE id = ?', [groupId])
+  connection.execute('SELECT * FROM groupList WHERE id = ?', [groupId])
     .then((group: Group[][]) => {
       const { expenses } = group[0][0];
       const desiredExpense = expenses.find((expense: Expense) => expense.id === expenseId);
@@ -69,7 +69,7 @@ export function updateExpanse(groupId: number, expenseId: number, expense: Expen
       expenses[expensePosition] = expense;
       const newExpenses = JSON.stringify(expenses);
       
-      connection.execute('UPDATE groups SET expenses = ? WHERE id = ?', [newExpenses, groupId])
+      connection.execute('UPDATE groupList SET expenses = ? WHERE id = ?', [newExpenses, groupId])
         .then(() => updateBalance(groupId).then(() => response.send('Expense updated')));
     });
 }

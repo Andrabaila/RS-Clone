@@ -1,9 +1,10 @@
 const mysql = require('mysql2');
 const config = {
-  host: 'localhost',
+  host: 'containers-us-west-199.railway.app',
   user: 'root',
-  password: 'root',
-  database: 'flycutlet',
+  password: 'tUabvMWr8DKRezLZefJJ',
+  database: 'railway',
+  port: '6610'
 };
 
 const pool = mysql.createPool(config);

@@ -1,13 +1,13 @@
 export interface User {
   id: number;
   name: string; // имя человека
-  groups: number[]; // перечень групп который подключил/создал пользователь
+  groupList: number[]; // перечень групп который подключил/создал пользователь
 }
 
 export interface JsonUser {
   id: number;
   name: string; // имя человека
-  groups: string; // перечень групп который подключил/создал пользователь
+  groupList: string; // перечень групп который подключил/создал пользователь
 }
 
 export interface UserInGroup {

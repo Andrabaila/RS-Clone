@@ -37,7 +37,7 @@ const router = (app: Express) => {
   app.put('/users/:id', (request: Request, response: Response) => {
     pool.query(
       'UPDATE users SET ? WHERE id = ?', 
-      [request.params.id, userToJsonUser(request.body)], 
+      [userToJsonUser(request.body), request.params.id],
       (error: Error) => response.send(error || 'User updated')
     );
   });
@@ -46,7 +46,7 @@ const router = (app: Express) => {
 
   app.get('/groups/:id', (request: Request, response: Response) => {
     pool.query(
-      'SELECT * FROM groups WHERE id = ?',
+      'SELECT * FROM groupList WHERE id = ?',
       request.params.id,
       (error: Error, group: Group[]) => response.send(error || group[0])
     );
@@ -54,14 +54,14 @@ const router = (app: Express) => {
 
   app.get('/groups', (_, response: Response) => {
     pool.query(
-      'SELECT * FROM groups',
+      'SELECT * FROM groupList',
       (error: Error, groups: Group[]) => response.send(error || groups)
     );
   });
 
   app.post('/groups', (request: Request, response: Response) => {
     pool.query(
-      'INSERT INTO groups SET ?',
+      'INSERT INTO groupList SET ?',
       groupToJsonGroup(request.body), 
       (error: Error) => response.send(error || 'Group created')
     );
@@ -69,7 +69,7 @@ const router = (app: Express) => {
 
   app.put('/groups/:id', (request: Request, response: Response) => {
     pool.query(
-      'UPDATE groups SET ? WHERE id = ?', 
+      'UPDATE groupList SET ? WHERE id = ?', 
       [groupToJsonGroup(request.body), request.params.id], 
       (error: Error) => response.send(error || 'Group updated')
     );
