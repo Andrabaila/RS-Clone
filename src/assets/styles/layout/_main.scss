@@ -21,7 +21,8 @@
     gap: $gap;
 }
 
-.main_new-group-page {
+.main_new-group-page,
+.main_currencies-page {
     padding: 0rem;
 }
 
@@ -51,9 +52,15 @@
     gap: $gap;
 }
 
-.main__wrapper_new-group-page {
+.main__wrapper_new-group-page,
+.main__wrapper_currencies-page {
     max-width: $max-width-layout;
     padding: 0;
+}
+
+.main__wrapper_currencies-page {
+    background-color: $color-background-lightest;
+    gap: calc($gap * 2);
 }
 
 .main__wrapper_overview,
