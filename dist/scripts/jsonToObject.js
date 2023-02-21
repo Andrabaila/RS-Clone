@@ -18,7 +18,7 @@ function jsonGroupToGroup(jsonGroup) {
 }
 exports.jsonGroupToGroup = jsonGroupToGroup;
 function jsonUserToUser(jsonUser) {
-    var user = __assign(__assign({}, jsonUser), { groups: JSON.parse(jsonUser.groups) });
+    var user = __assign(__assign({}, jsonUser), { groupList: JSON.parse(jsonUser.groupList) });
     return user;
 }
 exports.jsonUserToUser = jsonUserToUser;
@@ -28,7 +28,7 @@ function groupToJsonGroup(group) {
 }
 exports.groupToJsonGroup = groupToJsonGroup;
 function userToJsonUser(user) {
-    var JsonUser = __assign(__assign({}, user), { groups: JSON.stringify(user.groups) });
+    var JsonUser = __assign(__assign({}, user), { groupList: JSON.stringify(user.groupList) });
     return JsonUser;
 }
 exports.userToJsonUser = userToJsonUser;

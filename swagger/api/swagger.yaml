@@ -1,0 +1,614 @@
+---
+swagger: "2.0"
+info:
+  title: "Api для Flycutlets."
+  version: "1.0"
+host: "back-for-rs-clone-production.up.railway.app"
+tags:
+- name: "users"
+  description: "Операции над пользователями"
+- name: "groups"
+  description: "Операции над группами"
+- name: "expenses"
+  description: "Операции над покупками"
+schemes:
+- "https"
+- "http"
+paths:
+  /users:
+    get:
+      tags:
+      - "users"
+      summary: "Получить данные всех пользователей"
+      operationId: "getAllUsers"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "Результат запроса"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/User"
+      x-swagger-router-controller: "Users"
+    post:
+      tags:
+      - "users"
+      summary: "Создание нового пользователя"
+      operationId: "addUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        "200":
+          description: "Результат запроса"
+          schema:
+            $ref: "#/definitions/User"
+      x-swagger-router-controller: "Users"
+  /users/{id}:
+    get:
+      tags:
+      - "users"
+      summary: "Получить данные пользователя по его id"
+      operationId: "getUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id пользователя"
+        required: true
+        type : "integer"
+      responses:
+        "200":
+          description: "Результат запроса"
+          schema:
+            $ref: "#/definitions/User"
+      x-swagger-router-controller: "Users"
+    put:
+      tags:
+      - "users"
+      summary: "Обновление данных пользователя по его id"
+      operationId: "updateUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id пользователя"
+        required: true
+        type : "integer"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        "200":
+          description: "Результат запроса"
+          schema:
+            $ref: "#/definitions/User"
+      x-swagger-router-controller: "Users"
+    delete:
+      tags:
+      - "users"
+      summary: "Удаление пользователя по его id"
+      operationId: "deleteUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id пользователя"
+        required: true
+        type : "integer"
+      responses:
+        "200":
+          description: "Пользователь удален"
+      x-swagger-router-controller: "Users"
+  /users/{id}/groups:
+    get:
+      tags:
+      - "users"
+      summary: "Получить все группы пользователя"
+      operationId: "getUserGroups"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id пользователя"
+        required: true
+        type : "integer"
+      responses:
+        "200":
+          description: "Результат запроса"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/GroupGet"
+      x-swagger-router-controller: "Users"
+  /groups:
+    get:
+      tags:
+      - "groups"
+      summary: "Получить данные всех групп"
+      operationId: "getAllgroups"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "Результат запроса"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Group"
+      x-swagger-router-controller: "Groups"
+    post:
+      tags:
+      - "groups"
+      summary: "Создание новой группы"
+      operationId: "addUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/GroupSet"
+      responses:
+        "200":
+          description: "Группа создана"
+          schema:
+            $ref: "#/definitions/GroupSet"
+      x-swagger-router-controller: "Groups"
+  /groups/{id}:
+    get:
+      tags:
+      - "groups"
+      summary: "Получить данные группы по ее id"
+      operationId: "getGroup"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id группы"
+        required: true
+        type : "integer"
+      responses:
+        "200":
+          description: "Результат запроса"
+          schema:
+            $ref: "#/definitions/Group"
+      x-swagger-router-controller: "Groups"
+    put:
+      tags:
+      - "groups"
+      summary: "Обновление данных группы по ее id"
+      operationId: "updateGroup"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id группы"
+        required: true
+        type : "integer"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Group"
+      responses:
+        "200":
+          description: "Результат запроса"
+          schema:
+            $ref: "#/definitions/Group"
+      x-swagger-router-controller: "Groups"
+    delete:
+      tags:
+      - "groups"
+      summary: "Удаление группы по ее id"
+      operationId: "deleteGroup"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "id группы"
+        required: true
+        type : "integer"
+      responses:
+        "200":
+          description: "Группа удалена"
+      x-swagger-router-controller: "Groups"
+  /expenses/{groupId}:
+    get:
+      tags:
+      - "expenses"
+      summary: "Получить данные всех покупок"
+      operationId: "getAllExpenses"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "groupId"
+        in: "path"
+        description: "id группы"
+        required: true
+        type : "integer"
+      responses:
+        "200":
+          description: "Результат запроса"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Expense"
+      x-swagger-router-controller: "Expenses"
+    post:
+      tags:
+      - "expenses"
+      summary: "Создание новой покупки"
+      operationId: "addExpense"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "groupId"
+        in: "path"
+        description: "id группы"
+        required: true
+        type : "integer"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/ExpenseSet"
+      responses:
+        "200":
+          description: "Покупка создана"
+          schema:
+            $ref: "#/definitions/Expense"
+      x-swagger-router-controller: "Expenses"
+  /expenses/{groupId}/{expenseId}:
+    get:
+      tags:
+      - "expenses"
+      summary: "Получить данные покупки по ее id"
+      operationId: "getGroup"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "groupId"
+        in: "path"
+        description: "id группы"
+        required: true
+        type : "integer"
+      - name: "expenseId"
+        in: "path"
+        description: "id покупки"
+        required: true
+        type : "integer"
+      responses:
+        "200":
+          description: "Результат запроса"
+          schema:
+            $ref: "#/definitions/Expense"
+      x-swagger-router-controller: "Expenses"
+    put:
+      tags:
+      - "expenses"
+      summary: "Обновление данных покупки по ее id"
+      operationId: "updateGroup"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "groupId"
+        in: "path"
+        description: "id группы"
+        required: true
+        type : "integer"
+      - name: "expenseId"
+        in: "path"
+        description: "id покупки"
+        required: true
+        type : "integer"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/ExpenseSet"
+      responses:
+        "200":
+          description: "Результат запроса"
+          schema:
+            $ref: "#/definitions/Expense"
+      x-swagger-router-controller: "Expenses"
+    delete:
+      tags:
+      - "expenses"
+      summary: "Удаление покупки по ее id"
+      operationId: "deleteGroup"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "groupId"
+        in: "path"
+        description: "id группы"
+        required: true
+        type : "integer"
+      - name: "expenseId"
+        in: "path"
+        description: "id покупки"
+        required: true
+        type : "integer"
+      responses:
+        "200":
+          description: "Покупка удалена"
+      x-swagger-router-controller: "Expenses"
+definitions:
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "number"
+        example: 1.0
+      name:
+        type: "string"
+        example: "Linkoln"
+      groupList:
+        type: "array"
+        items: [{}]
+        example: "[1, 2]"
+    example:
+      name: "Linkoln"
+      groupList: "[1, 2]"
+      id: 1.0
+  UserInGroup:
+    type: "object"
+    properties:
+      id:
+        type: "number"
+        example: 1.0
+      name:
+        type: "string"
+        example: "Linkoln"
+      balance:
+        type: "number"
+        example: 15522.0
+    example:
+      balance: 15522.0
+      name: "Linkoln"
+      id: 1.0
+  Group:
+    type: "object"
+    properties:
+      id:
+        example: "1"
+      name:
+        example: "First group"
+      photo:
+        example: "https://photo.jpg"
+      currency:
+        example: "USD"
+      users:
+        type: "array"
+        items:
+          $ref: "#/definitions/UserInGroup"
+      expenses:
+        type: "array"
+        items:
+          $ref: "#/definitions/Expense"
+    example:
+      name: "First group"
+      photo: "https://photo.jpg"
+      currency: "USD"
+      id: "1"
+      users:
+      - balance: 15522.0
+        name: "Linkoln"
+        id: 1.0
+      - balance: 15522.0
+        name: "Linkoln"
+        id: 1.0
+      expenses:
+      - date: "2555225215"
+        amount: "15225"
+        by:
+          balance: 15522.0
+          name: "Linkoln"
+          id: 1.0
+        for:
+        - balance: 15522.0
+          name: "Linkoln"
+          id: 1.0
+        - balance: 15522.0
+          name: "Linkoln"
+          id: 1.0
+        id: "1"
+        title: "Oil"
+      - date: "2555225215"
+        amount: "15225"
+        by:
+          balance: 15522.0
+          name: "Linkoln"
+          id: 1.0
+        for:
+        - balance: 15522.0
+          name: "Linkoln"
+          id: 1.0
+        - balance: 15522.0
+          name: "Linkoln"
+          id: 1.0
+        id: "1"
+        title: "Oil"
+  GroupSet:
+    type: "object"
+    properties:
+      id:
+        example: "1"
+      name:
+        example: "First group"
+      photo:
+        example: "https://photo.jpg"
+      currency:
+        example: "USD"
+      users:
+        type: "array"
+        items: [{}]
+        example: ""
+      expenses:
+        type: "array"
+        items: [{}]
+        example: ""
+    example:
+      name: "First group"
+      photo: "https://photo.jpg"
+      currency: "USD"
+      id: "1"
+      users: ""
+      expenses: ""
+  GroupGet:
+    type: "object"
+    properties:
+      id:
+        example: "1"
+      name:
+        example: "First group"
+      photo:
+        example: "https://photo.jpg"
+      currency:
+        example: "USD"
+      users:
+        type: "array"
+        items:
+          $ref: "#/definitions/UserInGroup"
+      expenses:
+        type: "array"
+        items:
+          $ref: "#/definitions/Expense"
+    example:
+      name: "First group"
+      photo: "https://photo.jpg"
+      currency: "USD"
+      id: "1"
+      users:
+      - balance: 15522.0
+        name: "Linkoln"
+        id: 1.0
+      - balance: 15522.0
+        name: "Linkoln"
+        id: 1.0
+      expenses:
+      - date: "2555225215"
+        amount: "15225"
+        by:
+          balance: 15522.0
+          name: "Linkoln"
+          id: 1.0
+        for:
+        - balance: 15522.0
+          name: "Linkoln"
+          id: 1.0
+        - balance: 15522.0
+          name: "Linkoln"
+          id: 1.0
+        id: "1"
+        title: "Oil"
+      - date: "2555225215"
+        amount: "15225"
+        by:
+          balance: 15522.0
+          name: "Linkoln"
+          id: 1.0
+        for:
+        - balance: 15522.0
+          name: "Linkoln"
+          id: 1.0
+        - balance: 15522.0
+          name: "Linkoln"
+          id: 1.0
+        id: "1"
+        title: "Oil"
+  Expense:
+    type: "object"
+    properties:
+      id:
+        example: "1"
+      title:
+        example: "Oil"
+      by:
+        $ref: "#/definitions/UserInGroup"
+      for:
+        type: "array"
+        items:
+          $ref: "#/definitions/UserInGroup"
+      amount:
+        example: "15225"
+      date:
+        example: "2555225215"
+    example:
+      date: "2555225215"
+      amount: "15225"
+      by:
+        balance: 15522.0
+        name: "Linkoln"
+        id: 1.0
+      for:
+      - balance: 15522.0
+        name: "Linkoln"
+        id: 1.0
+      - balance: 15522.0
+        name: "Linkoln"
+        id: 1.0
+      id: "1"
+      title: "Oil"
+  ExpenseSet:
+    type: "object"
+    properties:
+      id:
+        example: "1"
+      title:
+        example: "Oil"
+      by:
+        example: "1"
+      for:
+        type: "array"
+        items: [{}]
+        example: ""
+      amount:
+        example: "15225"
+      date:
+        example: "2555225215"
+    example:
+      date: "2555225215"
+      amount: "15225"
+      by: "1"
+      for: ""
+      id: "1"
+      title: "Oil"

@@ -44,13 +44,13 @@ function removeGroupFromUser(userId, groupId) {
         var connection;
         return __generator(this, function (_a) {
             connection = config_1.pool.promise();
-            connection.execute('SELECT groups FROM users WHERE id = ?', [userId])
+            connection.execute('SELECT groupList FROM users WHERE id = ?', [userId])
                 .then(function (user) {
-                var newGroups = user[0][0].groups;
+                var newGroups = user[0][0].groupList;
                 newGroups = newGroups.filter(function (group) { return group !== groupId; });
                 return JSON.stringify(newGroups);
             })
-                .then(function (groups) { return connection.query('UPDATE users SET groups = ? WHERE id = ?', [groups, userId]); });
+                .then(function (groups) { return connection.query('UPDATE users SET groupList = ? WHERE id = ?', [groups, userId]); });
             return [2 /*return*/];
         });
     });
@@ -64,7 +64,7 @@ function deleteUser(userId, response) {
             connection.query('SELECT * FROM users WHERE id = ?', userId)
                 .then(function (user) {
                 var awaitDeleteUsers = [];
-                user[0][0].groups.forEach(function (group) { return awaitDeleteUsers.push((0, group_1.removeUserFromGroup)(userId, group)); });
+                user[0][0].groupList.forEach(function (group) { return awaitDeleteUsers.push((0, group_1.removeUserFromGroup)(userId, group)); });
                 return awaitDeleteUsers;
             })
                 .then(function (awaitDeleteUsers) {

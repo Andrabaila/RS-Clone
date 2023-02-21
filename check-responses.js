@@ -56,7 +56,7 @@
 //   method: 'DELETE'
 // }).then((res) => res.json()).then((res) => console.log(res))
 
-// fetch('https://back-for-rs-clone-production.up.railway.app/groups/1').then((res) => res.json()).then((res) => console.log(res));
+fetch('https://back-for-rs-clone-production.up.railway.app/groups/1').then((res) => res.json()).then((res) => console.log(res));
 
 // fetch('https://back-for-rs-clone-production.up.railway.app/expenses/2/1').then((res) => res.json()).then((res) => console.log(res));
 // fetch('https://back-for-rs-clone-production.up.railway.app/expenses/1/1', {

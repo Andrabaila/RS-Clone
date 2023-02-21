@@ -54,7 +54,7 @@ function updateBalance(groupId) {
             switch (_a.label) {
                 case 0:
                     connection = config_1.pool.promise();
-                    return [4 /*yield*/, connection.execute('SELECT * FROM groups WHERE id = ?', [groupId])
+                    return [4 /*yield*/, connection.execute('SELECT * FROM groupList WHERE id = ?', [groupId])
                             .then(function (group) { return __awaiter(_this, void 0, void 0, function () {
                             var expenses, users, newUsers;
                             return __generator(this, function (_a) {
@@ -88,7 +88,7 @@ function updateBalance(groupId) {
                                             });
                                         });
                                         newUsers = JSON.stringify(users);
-                                        return [4 /*yield*/, connection.execute('UPDATE groups SET users = ? WHERE id = ?', [newUsers, groupId])];
+                                        return [4 /*yield*/, connection.execute('UPDATE groupList SET users = ? WHERE id = ?', [newUsers, groupId])];
                                     case 1:
                                         _a.sent();
                                         return [2 /*return*/];

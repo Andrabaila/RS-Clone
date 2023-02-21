@@ -19,20 +19,20 @@ var router = function (app) {
         config_1.pool.query('INSERT INTO users SET ?', (0, jsonToObject_1.userToJsonUser)(request.body), function (error) { return response.send(error || 'User created'); });
     });
     app.put('/users/:id', function (request, response) {
-        config_1.pool.query('UPDATE users SET ? WHERE id = ?', [request.params.id, (0, jsonToObject_1.userToJsonUser)(request.body)], function (error) { return response.send(error || 'User updated'); });
+        config_1.pool.query('UPDATE users SET ? WHERE id = ?', [(0, jsonToObject_1.userToJsonUser)(request.body), request.params.id], function (error) { return response.send(error || 'User updated'); });
     });
     app["delete"]('/users/:id', function (request, response) { return (0, user_1.deleteUser)(+request.params.id, response); });
     app.get('/groups/:id', function (request, response) {
-        config_1.pool.query('SELECT * FROM groups WHERE id = ?', request.params.id, function (error, group) { return response.send(error || group[0]); });
+        config_1.pool.query('SELECT * FROM groupList WHERE id = ?', request.params.id, function (error, group) { return response.send(error || group[0]); });
     });
     app.get('/groups', function (_, response) {
-        config_1.pool.query('SELECT * FROM groups', function (error, groups) { return response.send(error || groups); });
+        config_1.pool.query('SELECT * FROM groupList', function (error, groups) { return response.send(error || groups); });
     });
     app.post('/groups', function (request, response) {
-        config_1.pool.query('INSERT INTO groups SET ?', (0, jsonToObject_1.groupToJsonGroup)(request.body), function (error) { return response.send(error || 'Group created'); });
+        config_1.pool.query('INSERT INTO groupList SET ?', (0, jsonToObject_1.groupToJsonGroup)(request.body), function (error) { return response.send(error || 'Group created'); });
     });
     app.put('/groups/:id', function (request, response) {
-        config_1.pool.query('UPDATE groups SET ? WHERE id = ?', [(0, jsonToObject_1.groupToJsonGroup)(request.body), request.params.id], function (error) { return response.send(error || 'Group updated'); });
+        config_1.pool.query('UPDATE groupList SET ? WHERE id = ?', [(0, jsonToObject_1.groupToJsonGroup)(request.body), request.params.id], function (error) { return response.send(error || 'Group updated'); });
     });
     app["delete"]('/groups/:id', function (request, response) {
         (0, group_1.removeGroup)(+request.params.id, response);

@@ -44,13 +44,13 @@ function removeUserFromGroup(userId, groupId) {
         var connection;
         return __generator(this, function (_a) {
             connection = config_1.pool.promise();
-            return [2 /*return*/, connection.execute('SELECT users FROM groups WHERE id = ?', [groupId])
+            return [2 /*return*/, connection.execute('SELECT users FROM groupList WHERE id = ?', [groupId])
                     .then(function (group) {
                     var users = group[0][0].users;
                     users = users.filter(function (user) { return user.id !== userId; });
                     return JSON.stringify(users);
                 })
-                    .then(function (users) { return connection.query('UPDATE groups SET users = ? WHERE id = ?', [users, groupId]); })];
+                    .then(function (users) { return connection.query('UPDATE groupList SET users = ? WHERE id = ?', [users, groupId]); })];
         });
     });
 }
@@ -61,7 +61,7 @@ function removeGroup(groupId, response) {
         return __generator(this, function (_a) {
             connection = config_1.pool.promise();
             awaitGroupDeleteFromUsers = [];
-            connection.execute('SELECT users FROM groups WHERE id = ?', [groupId])
+            connection.execute('SELECT users FROM groupList WHERE id = ?', [groupId])
                 .then(function (group) {
                 group[0][0].users.forEach(function (user) {
                     awaitGroupDeleteFromUsers.push((0, user_1.removeGroupFromUser)(user.id, groupId));
@@ -69,7 +69,7 @@ function removeGroup(groupId, response) {
             });
             Promise.allSettled(awaitGroupDeleteFromUsers)
                 .then(function () {
-                config_1.pool.query('DELETE FROM groups WHERE id = ?', groupId, function (error) { return response.send(error || 'Group deleted'); });
+                config_1.pool.query('DELETE FROM groupList WHERE id = ?', groupId, function (error) { return response.send(error || 'Group deleted'); });
             });
             return [2 /*return*/];
         });
@@ -79,10 +79,10 @@ exports.removeGroup = removeGroup;
 function getUsersGroup(userId, response) {
     var connection = config_1.pool.promise();
     var awaitGroups = [];
-    connection.execute('SELECT groups FROM users WHERE id = ?', [userId])
+    connection.execute('SELECT groupList FROM users WHERE id = ?', [userId])
         .then(function (user) {
-        user[0][0].groups.forEach(function (groupId) {
-            awaitGroups.push(connection.execute('SELECT * FROM groups WHERE id = ?', [groupId]));
+        user[0][0].groupList.forEach(function (groupId) {
+            awaitGroups.push(connection.execute('SELECT * FROM groupList WHERE id = ?', [groupId]));
         });
     })
         .then(function () { return Promise.all(awaitGroups).then(function (groups) { return response.send(groups[0][0]); }); });
