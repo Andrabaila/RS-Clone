@@ -7,9 +7,9 @@ const belarusian: { readonly [x: string]: string } = {
     applicationCreationYear: '2023',
 
     startPageTitle: 'Паехалі!',
-    startPageText: 'Вы хочаце стварыць новую групу ці далучыцца да існуючай?',
+    startPageText: 'Вы хочаце стварыць новы гурт ці далучыцца да існуючага?',
     startPageButtonNew: 'Новы гурт',
-    startPageButtonJoin: 'Далучыцца да групы',
+    startPageButtonJoin: 'Далучыцца да гурту',
 
     headerLeftButton: 'Агляд',
     headerRightButton: 'Выдаткі',
@@ -36,7 +36,7 @@ const belarusian: { readonly [x: string]: string } = {
     buttonCurrency: 'Валюта',
     currency: 'BYN',
     addGroupTitle: 'Увядзіце назву гурта',
-    errorMessageAddGroup: 'Памылка запыту на даданне групы!',
+    errorMessageAddGroup: 'Памылка запыту на даданне гурту!',
 
     buttonJoin: 'ДАЛУЧЫЦЦА',
     placeholderJoinGroup: 'код',
@@ -46,7 +46,7 @@ const belarusian: { readonly [x: string]: string } = {
     buttonCopy: 'КАПІРАВАЦЬ',
     buttonLater: 'ПАЗНЕЙ',
 
-    inviteText: 'Іншыя могуць атрымаць доступ да вашай групы, выкарыстоўваючы гэты код',
+    inviteText: 'Іншыя могуць атрымаць доступ да вашага гурту, выкарыстоўваючы гэты код',
     confirmingMessage: 'Код паспяхова скапіяваны ў буфер абмену',
 
     btnEdit: 'Рэдагаваць',
