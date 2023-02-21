@@ -195,7 +195,8 @@ body {
   gap: 1rem;
 }
 
-.main_new-group-page {
+.main_new-group-page,
+.main_currencies-page {
   padding: 0rem;
 }
 
@@ -225,9 +226,15 @@ body {
   gap: 1rem;
 }
 
-.main__wrapper_new-group-page {
+.main__wrapper_new-group-page,
+.main__wrapper_currencies-page {
   max-width: 1200px;
   padding: 0;
+}
+
+.main__wrapper_currencies-page {
+  background-color: #e8e9e9;
+  gap: 2rem;
 }
 
 .main__wrapper_overview,
@@ -810,6 +817,26 @@ input[type=number]:focus {
   border-radius: 5px;
   transform: translate(-50%, -50%);
   transition: all 0.3s;
+}
+
+.currencies {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 1px;
+  background-color: #e8e9e9;
+}
+
+.currencies__item {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  color: #000000;
+  cursor: pointer;
+  background-color: #ffffff;
 }
 
 .header__wrapper-expense-detail, .header__wrapper-upage, .dotted__nav, .header__wrapper {
