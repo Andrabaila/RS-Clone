@@ -1,5 +1,7 @@
 import getHtmlElement from '../components/getHtmlElement';
 import getLangObj from '../features/getLangObj';
+import switchLanguage from '../features/switchLanguage';
+import createFooter from './createFooter';
 
 function createStartPageMain() {
     const langObj = getLangObj();
@@ -30,6 +32,18 @@ function createStartPageMain() {
         id: 'startPageButtonJoin',
         content: langObj.startPageButtonJoin,
     }).dataset.hash = 'join_group';
+
+    getHtmlElement({
+        parent: '.main',
+        tag: 'button',
+        style: ['button', 'button_language'],
+        id: 'startPageButtonLanguage',
+        content: langObj.language,
+    }).addEventListener('click', () => {
+        switchLanguage();
+        createStartPageMain();
+        createFooter();
+    });
 }
 
 export default createStartPageMain;

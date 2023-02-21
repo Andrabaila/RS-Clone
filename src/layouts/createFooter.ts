@@ -2,6 +2,7 @@ import getLangObj from '../features/getLangObj';
 
 function createFooter() {
     const langObj = getLangObj();
+    document.querySelector('.footer')?.remove();
 
     if (document.querySelector('.footer') instanceof Node && document.querySelector('.main') instanceof Node) {
         document.querySelector('.main')?.after(<Node>document.querySelector('.footer'));

@@ -16,6 +16,18 @@
     transition: all 0.2s;
 }
 
+.button_language {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    margin: 0.5rem 2rem;
+    padding: 0;
+
+    background-color: $color-background;
+    color: $color-light;
+}
+
 .button_start-page {
     background-color: $color-light;
 }
