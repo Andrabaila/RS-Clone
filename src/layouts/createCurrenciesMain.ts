@@ -11,6 +11,16 @@ function createCurrenciesMain() {
         currency = <string>localStorage.getItem('currency');
     }
 
+    let currencyNameProperty = 'Cur_Name_Eng';
+    if (localStorage.getItem('language')) {
+        if (localStorage.getItem('language') === 'russian') {
+            currencyNameProperty = 'Cur_Name';
+        }
+        if (localStorage.getItem('language') === 'belarusian') {
+            currencyNameProperty = 'Cur_Name_Bel';
+        }
+    }
+
     const main = getHtmlElement({ parent: 'body', tag: 'main', style: ['main', 'main_currencies-page'] });
     main.addEventListener('click', setCurrency);
     getHtmlElement({ parent: '.main', style: ['main__wrapper', 'main__wrapper_currencies-page'] });
@@ -26,7 +36,7 @@ function createCurrenciesMain() {
     let currencyName = '';
     currenciesArr.forEach((currencyObj) => {
         if (currencyObj.Cur_Abbreviation === currency) {
-            currencyName = <string>currencyObj.Cur_Name_Eng;
+            currencyName = <string>currencyObj[currencyNameProperty];
         }
     });
 
@@ -65,7 +75,7 @@ function createCurrenciesMain() {
                 parent: '.currencies__item',
                 tag: 'span',
                 style: ['currencies__currency-name'],
-                content: <string>currencyObj.Cur_Name_Eng,
+                content: <string>currencyObj[currencyNameProperty],
             }).id = <string>currencyObj.Cur_Abbreviation;
         }
     });

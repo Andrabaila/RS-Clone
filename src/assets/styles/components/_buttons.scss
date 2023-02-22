@@ -128,6 +128,27 @@
     box-shadow: 0 1px 3px darker($color-background-lightest, 3);
 }
 
+.button_add-popup {
+    background-image: url('../../assets/icons/add.svg');
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
+.button_add-expense {
+    background-image: url('../../assets/icons/add_expense.svg');
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
+.button_forward {
+    background-image: url('../../assets/icons/arrow_forward.svg');
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
 .button_currency:hover {
     transform: scale(1);
 }
