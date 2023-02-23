@@ -1,4 +1,6 @@
 const english: { readonly [x: string]: string } = {
+    language: 'ENGLISH',
+
     githubLinkFirstTeammate: 'Yury Andrabaila',
     githubLinkSecondTeammate: 'Alexandr Rylkov',
     githubLinkThirdTeammate: 'Pavel Poleshchuk',

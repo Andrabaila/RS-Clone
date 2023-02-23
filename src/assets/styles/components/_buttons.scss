@@ -16,6 +16,18 @@
     transition: all 0.2s;
 }
 
+.button_language {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    margin: 0.5rem 2rem;
+    padding: 0;
+
+    background-color: $color-background;
+    color: $color-light;
+}
+
 .button_start-page {
     background-color: $color-light;
 }
@@ -114,6 +126,27 @@
     background-color: $color-light;
     border: 1px solid darker($color-background-lightest, 1);
     box-shadow: 0 1px 3px darker($color-background-lightest, 3);
+}
+
+.button_add-popup {
+    background-image: url('../../assets/icons/add.svg');
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
+.button_add-expense {
+    background-image: url('../../assets/icons/add_expense.svg');
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
+.button_forward {
+    background-image: url('../../assets/icons/arrow_forward.svg');
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
 }
 
 .button_currency:hover {

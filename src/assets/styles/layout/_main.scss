@@ -21,7 +21,8 @@
     gap: $gap;
 }
 
-.main_new-group-page {
+.main_new-group-page,
+.main_currencies-page {
     padding: 0rem;
 }
 
@@ -37,6 +38,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    max-width: $max-width-layout;
     padding: 1rem 2rem;
     gap: $gap;
 }
@@ -51,9 +53,15 @@
     gap: $gap;
 }
 
-.main__wrapper_new-group-page {
+.main__wrapper_new-group-page,
+.main__wrapper_currencies-page {
     max-width: $max-width-layout;
     padding: 0;
+}
+
+.main__wrapper_currencies-page {
+    background-color: $color-background-lightest;
+    gap: calc($gap * 2);
 }
 
 .main__wrapper_overview,
@@ -62,6 +70,7 @@
     padding: 2rem 0;
     gap: 2rem;
     flex-grow: 1;
+    max-width: $max-width-layout;
 }
 
 .main__wrapper_add-payment-page {

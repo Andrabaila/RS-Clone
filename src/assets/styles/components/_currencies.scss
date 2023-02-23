@@ -1,0 +1,22 @@
+.currencies {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1px;
+
+    background-color: $color-background-lightest;
+}
+
+.currencies__item {
+    display: flex;
+    width: 100%;
+    gap: $gap;
+    padding: 1rem 2rem;
+
+    font-size: $font-size-text_large;
+    color: $color-dark;
+    cursor: pointer;
+
+    background-color: $color-light;
+}

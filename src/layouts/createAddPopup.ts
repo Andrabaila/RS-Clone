@@ -27,8 +27,7 @@ function createAddPopup() {
     getHtmlElement({
         parent: '.popup-add__item',
         tag: 'button',
-        style: ['button', 'button_add-light'],
-        content: langObj.buttonNewExpense,
+        style: ['button', 'button_add-light', 'button_add-expense'],
     }).dataset.hash = 'add_expense';
 
     const newPaymentItem = getHtmlElement({ parent: '.wrapper_popup-add', style: ['popup-add__item'] });
@@ -48,8 +47,7 @@ function createAddPopup() {
     getHtmlElement({
         parentNode: newPaymentItem,
         tag: 'button',
-        style: ['button', 'button_add-light'],
-        content: langObj.buttonNewPayment,
+        style: ['button', 'button_add-light', 'button_forward'],
     }).dataset.hash = 'add_payment';
 }
 export default createAddPopup;

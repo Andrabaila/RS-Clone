@@ -9,12 +9,24 @@ import {
     addRemoveClassInElement,
 } from '../../features/tools';
 import getLangObj from '../../features/getLangObj';
+import { groupsArr } from '../../data/database';
 
 const langObj = getLangObj();
 
 const DOCUMENT_BODY = document.body;
 
 const addHeaderHtml = (): void => {
+    let groupName = '';
+    if (typeof localStorage.getItem('currentGroup') === 'string') {
+        const currentGroupId = localStorage.getItem('currentGroup');
+
+        groupsArr.forEach((groupObj) => {
+            if (String(groupObj.id) === currentGroupId) {
+                groupName = groupObj.name;
+            }
+        });
+    }
+
     const headerHtml = getHeaderHtml(
         langObj.burgerTop,
         langObj.burgerFeedback,
@@ -27,7 +39,8 @@ const addHeaderHtml = (): void => {
         langObj.headerLeftButton,
         langObj.headerRightButton,
         penSvg,
-        'Group name API'
+        groupName
+        /*         'Group name API' */
     );
 
     DOCUMENT_BODY.prepend(stringToElement(headerHtml));
@@ -118,17 +131,12 @@ const addBurgerGroupNameHtml = (groupName: string, id = groupName): void => {
     parentDiv?.append(btnItem);
 };
 
-const FAKE_SERVER = [
-    { nameGroup: 'API info1', id: 'groupId1' },
-    { nameGroup: 'API info2', id: 'groupId2' },
-    { nameGroup: 'API info3', id: 'groupId3' },
-];
 const addGroupNames = () => {
     const namesContainer = document.querySelector('.burger__row2');
     if (namesContainer) {
         namesContainer.innerHTML = '';
     }
-    FAKE_SERVER.forEach((obj) => addBurgerGroupNameHtml(obj.nameGroup, obj.id));
+    groupsArr.forEach((obj) => addBurgerGroupNameHtml(obj.name, String(obj.id)));
 };
 const createHeader = () => {
     if (!isElementInBody('.header')) {
