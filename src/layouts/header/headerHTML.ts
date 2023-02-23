@@ -90,8 +90,8 @@ export const getHeaderHtml = (
     </div>
     <div class="header__row2">
       <div class="header__btn-wrapper">
-        <button class="button button-overview">${buttonOverview}</button>
-        <button class="button button-expenses">${buttonExpenses}</button>
+        <button data-hash="overview" class="button button-overview">${buttonOverview}</button>
+        <button data-hash="expenses_page" class="button button-expenses">${buttonExpenses}</button>
       </div>
     </div>
   </div>

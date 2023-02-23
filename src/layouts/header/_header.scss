@@ -129,6 +129,7 @@
 .burger__row2 {
     font-size: 2rem;
     color: white;
+    overflow-y: auto;
     & svg {
         pointer-events: none;
     }
@@ -286,7 +287,7 @@
 }
 
 .group-name_span {
-    width: 240px;
+    width: 20rem;
     display: inline-block;
     padding-top: 2px;
 }
