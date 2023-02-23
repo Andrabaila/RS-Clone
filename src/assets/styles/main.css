@@ -212,6 +212,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
+  max-width: 1200px;
   padding: 1rem 2rem;
   gap: 1rem;
 }
@@ -243,6 +244,7 @@ body {
   padding: 2rem 0;
   gap: 2rem;
   flex-grow: 1;
+  max-width: 1200px;
 }
 
 .main__wrapper_add-payment-page {
@@ -272,6 +274,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
+  max-width: 1200px;
   padding: 2rem;
   gap: 2rem;
   background-color: #ff7b00;
@@ -365,6 +368,7 @@ body {
 
 .popup_add {
   width: 100%;
+  max-width: 1200px;
   padding-right: 20px;
   background-color: transparent;
   border-radius: 2px;
@@ -567,6 +571,27 @@ body {
   background-color: #ffffff;
   border: 1px solid #d8d9d9;
   box-shadow: 0 1px 3px #b8b9b9;
+}
+
+.button_add-popup {
+  background-image: url("../../assets/icons/add.svg");
+  background-position: center;
+  background-size: 50%;
+  background-repeat: no-repeat;
+}
+
+.button_add-expense {
+  background-image: url("../../assets/icons/add_expense.svg");
+  background-position: center;
+  background-size: 50%;
+  background-repeat: no-repeat;
+}
+
+.button_forward {
+  background-image: url("../../assets/icons/arrow_forward.svg");
+  background-position: center;
+  background-size: 50%;
+  background-repeat: no-repeat;
 }
 
 .button_currency:hover {

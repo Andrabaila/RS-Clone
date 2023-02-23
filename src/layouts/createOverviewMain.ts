@@ -27,6 +27,13 @@ function createOverviewMain() {
         style: ['button', 'button_overview'],
         content: langObj.buttonInvite,
     }).addEventListener('click', () => {
+        if (localStorage.getItem('currentGroup')) {
+            const code = localStorage.getItem('currentGroup');
+            const codeField = document.querySelector('.popup__title_invite');
+            if (codeField instanceof HTMLElement && code) {
+                codeField.textContent = code;
+            }
+        }
         togglePopup('.popup_invite');
     });
 
@@ -35,8 +42,7 @@ function createOverviewMain() {
     getHtmlElement({
         parent: '.main__footer',
         tag: 'button',
-        style: ['button', 'button_add'],
-        content: langObj.buttonAdd,
+        style: ['button', 'button_add', 'button_add-popup'],
     }).addEventListener('click', () => {
         togglePopup('.popup_add');
     });
