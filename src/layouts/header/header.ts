@@ -162,6 +162,7 @@ const addListenerForBurgerMenu = () => {
 };
 
 const createHeader = () => {
+    document.querySelector('.header')?.remove();
     if (!isElementInBody('.header')) {
         addHeaderHtml();
     }

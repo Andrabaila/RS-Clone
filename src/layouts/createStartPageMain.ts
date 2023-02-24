@@ -5,9 +5,10 @@ import createFooter from './createFooter';
 
 function createStartPageMain() {
     const langObj = getLangObj();
+    document.querySelector('header')?.remove();
 
     document.querySelector('.main')?.remove();
-
+    getHtmlElement({ parent: 'body', tag: 'header', style: ['header_start-page'] });
     getHtmlElement({ parent: 'body', tag: 'main', style: ['main', 'main_start-page'] });
     getHtmlElement({ parent: '.main', style: ['main__wrapper', 'main__wrapper_start-page'] });
     getHtmlElement({ parent: '.main__wrapper', tag: 'h1', style: ['title_start'], content: langObj.startPageTitle });
@@ -34,7 +35,7 @@ function createStartPageMain() {
     }).dataset.hash = 'join_group';
 
     getHtmlElement({
-        parent: '.main',
+        parent: '.header_start-page',
         tag: 'button',
         style: ['button', 'button_language'],
         id: 'startPageButtonLanguage',

@@ -17,6 +17,8 @@
 }
 
 html {
+  display: flex;
+  justify-content: center;
   box-sizing: border-box;
   scroll-behavior: smooth;
   height: 100%;
@@ -27,6 +29,7 @@ html {
   font-family: "Roboto";
   font-size: 10px;
   color: #e8e9e9;
+  background-color: #ffffff;
 }
 
 *,
@@ -168,6 +171,8 @@ body {
   align-items: center;
   justify-content: space-between;
   min-height: 100%;
+  width: 100%;
+  max-width: 1200px;
   background: #ff7b00;
   color: #ffffff;
 }
@@ -468,6 +473,7 @@ body {
   position: absolute;
   right: 0;
   top: 0;
+  z-index: 10;
   margin: 0.5rem 2rem;
   padding: 0;
   background-color: #ff7b00;

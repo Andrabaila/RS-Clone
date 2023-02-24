@@ -1,5 +1,8 @@
 import getHtmlElement from '../components/getHtmlElement';
+import { groupsArr } from '../data/database';
+import { GetGroup } from '../data/types';
 import getLangObj from '../features/getLangObj';
+import setCurrentGroup from '../features/setCurrentGroup';
 import togglePopup from '../features/togglePopup';
 
 function createJoinPopup() {
@@ -21,15 +24,25 @@ function createJoinPopup() {
     });
     getHtmlElement({ parent: '.wrapper_popup', tag: 'h1', style: ['popup__title'], content: langObj.joinPageText });
     getHtmlElement({ parent: '.wrapper_popup', tag: 'form', style: ['form', 'form_add-group'] });
-    (<HTMLInputElement>(
+    const inputCode = <HTMLInputElement>(
         getHtmlElement({ parent: '.form', tag: 'input', style: ['input', 'input_new-group'] })
-    )).placeholder = langObj.placeholderJoinGroup;
+    );
+    inputCode.placeholder = langObj.placeholderJoinGroup;
 
-    getHtmlElement({
+    const buttonJoin = getHtmlElement({
         parent: '.wrapper_popup',
         tag: 'button',
         style: ['button'],
         content: langObj.buttonJoin,
-    }).dataset.hash = 'overview';
+    });
+    buttonJoin.dataset.hash = 'overview';
+
+    buttonJoin.addEventListener('click', () => {
+        groupsArr.forEach((groupObj: GetGroup) => {
+            if (String(groupObj.id) === inputCode.value) {
+                setCurrentGroup(inputCode.value);
+            }
+        });
+    });
 }
 export default createJoinPopup;

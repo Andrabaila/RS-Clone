@@ -85,6 +85,8 @@ const russian: { readonly [x: string]: string } = {
     date: 'Дата',
     persons: 'лица',
     payment: 'Оплата',
+
+    noGroupMessage: 'Извините, нет группы с номером ',
 };
 
 export default russian;

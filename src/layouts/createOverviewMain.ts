@@ -1,24 +1,41 @@
 import getHtmlElement from '../components/getHtmlElement';
 import getLangObj from '../features/getLangObj';
 import togglePopup from '../features/togglePopup';
+import { groupsArr } from '../data/database';
+import { UserInGroup } from '../data/types';
 
 function createOverviewMain() {
     const langObj = getLangObj();
+    let currentGroupId: number;
+    const currentGroupUsersArr: UserInGroup[] = [];
+
+    if (localStorage.getItem('currentGroup')) {
+        currentGroupId = Number(localStorage.getItem('currentGroup'));
+    }
+
+    groupsArr.forEach((groupObj) => {
+        if (groupObj.id === currentGroupId) {
+            groupObj.users.forEach((userInGroup) => {
+                currentGroupUsersArr.push(userInGroup);
+            });
+        }
+    });
 
     document.querySelector('.main')?.remove();
 
     getHtmlElement({ parent: 'body', tag: 'main', style: ['main', 'main_overview'] });
     getHtmlElement({ parent: '.main', style: ['main__wrapper', 'main__wrapper_overview'] });
     getHtmlElement({ parent: '.main__wrapper', tag: 'ul', style: ['members-list'] });
-
-    const listItem = getHtmlElement({ parent: '.members-list', tag: 'li', style: ['members-list__item'] });
-    listItem.dataset.hash = 'user_page';
-    getHtmlElement({ parentNode: listItem, tag: 'span', style: ['members-list__text'], content: 'person.name' });
-    getHtmlElement({
-        parentNode: listItem,
-        tag: 'span',
-        style: ['members-list__text'],
-        content: String('person.balance'),
+    currentGroupUsersArr.forEach((userObj) => {
+        const listItem = getHtmlElement({ parent: '.members-list', tag: 'li', style: ['members-list__item'] });
+        listItem.dataset.hash = 'user_page';
+        getHtmlElement({ parentNode: listItem, tag: 'span', style: ['members-list__text'], content: userObj.name });
+        getHtmlElement({
+            parentNode: listItem,
+            tag: 'span',
+            style: ['members-list__text'],
+            content: String(userObj.balance),
+        });
     });
 
     getHtmlElement({
