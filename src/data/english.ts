@@ -85,6 +85,8 @@ const english: { readonly [x: string]: string } = {
     date: 'Date',
     persons: 'persons',
     payment: 'Payment',
+
+    noGroupMessage: 'Sorry, there is no group with id ',
 };
 
 export default english;

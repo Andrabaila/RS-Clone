@@ -139,6 +139,7 @@ const addGroupNames = () => {
     groupsArr.forEach((obj) => addBurgerGroupNameHtml(obj.name, String(obj.id)));
 };
 const createHeader = () => {
+    document.querySelector('.header')?.remove();
     if (!isElementInBody('.header')) {
         addHeaderHtml();
     }
