@@ -30,8 +30,10 @@
     display: flex;
     justify-content: space-around;
     h2 {
+        min-width: 28rem;
         background: none;
         font-size: 4.5rem;
+        text-align: center;
     }
 }
 
@@ -89,7 +91,7 @@
 }
 
 .burger__top {
-    height: 350px;
+    height: 450px;
     padding: 15px 0 15px 0;
 }
 
@@ -127,6 +129,7 @@
     padding: 15px 15px 30px 15px;
 }
 .burger__row2 {
+    height: 320px;
     font-size: 2rem;
     color: white;
     overflow-y: auto;
@@ -136,8 +139,13 @@
 }
 
 .burger__group-name {
-    background-color: #f9b77a;
     padding: 5px;
+}
+.background-group-name {
+    background-color: #f9b77a;
+}
+.burger__group-name:hover {
+    background-color: #ffca98;
 }
 .group-name_trash {
     display: inline-block;
@@ -159,7 +167,7 @@
 
 .button__add-groupe {
     position: absolute;
-    top: 300px;
+    top: 400px;
     right: 12px;
 
     border-radius: 50%;
@@ -278,7 +286,7 @@
 }
 
 .focused {
-  background: #fb912e;
+    background: #fb912e;
 }
 
 .button-overview:focus,
@@ -290,6 +298,7 @@
     width: 20rem;
     display: inline-block;
     padding-top: 2px;
+    pointer-events: none;
 }
 
 .display-none {

@@ -7,26 +7,27 @@ import {
     addRemoveClassInAllElements,
     isElementInBody,
     addRemoveClassInElement,
+    findNameInObjectById,
+    toggleClassInElementById,
 } from '../../features/tools';
 import getLangObj from '../../features/getLangObj';
 import { groupsArr } from '../../data/database';
+import { GetGroup } from '../../data/types';
+import getGroupsData from '../../api/getGroupsData';
+import deleteGroup from '../../api/deleteGroup';
+import getGroups from '../../api/getGroups';
 
 const langObj = getLangObj();
 
 const DOCUMENT_BODY = document.body;
 
+const changeHeaderGroupText = async (currentGroupId: string, fromServer: string) => {
+    const arr = fromServer ? await getGroupsData() : groupsArr;
+    const groupName = findNameInObjectById(arr, Number(currentGroupId)) || 'NO API groupName';
+    innerHtmlInElement('.header__group-name', groupName);
+};
+
 const addHeaderHtml = (): void => {
-    let groupName = '';
-    if (typeof localStorage.getItem('currentGroup') === 'string') {
-        const currentGroupId = localStorage.getItem('currentGroup');
-
-        groupsArr.forEach((groupObj) => {
-            if (String(groupObj.id) === currentGroupId) {
-                groupName = groupObj.name;
-            }
-        });
-    }
-
     const headerHtml = getHeaderHtml(
         langObj.burgerTop,
         langObj.burgerFeedback,
@@ -38,16 +39,15 @@ const addHeaderHtml = (): void => {
         langObj.dottedLeaveGroup,
         langObj.headerLeftButton,
         langObj.headerRightButton,
-        penSvg,
-        groupName
-        /*         'Group name API' */
+        penSvg
     );
 
     DOCUMENT_BODY.prepend(stringToElement(headerHtml));
-};
 
-const addListenerForBurgerMenu = () => {
-    addListenerOpenCloseModal('.burger__menu', '.modal', 'modal-open', '.burger__nav');
+    const currentGroupId = localStorage.getItem('currentGroup');
+    if (currentGroupId) {
+        changeHeaderGroupText(currentGroupId, 'server');
+    }
 };
 
 const addListenerForDottedMenu = () =>
@@ -101,6 +101,13 @@ const closeModal = () => {
 const addTrashButtonLogic = (e: Event) => {
     if (e.target instanceof HTMLElement) {
         const targetGroupId = e.target.dataset.id;
+        const mainGroupId = e.target.id;
+        if (mainGroupId) {
+            localStorage.setItem('currentGroup', `${mainGroupId}`);
+            changeHeaderGroupText(mainGroupId, '');
+            addRemoveClassInAllElements('.burger__row2', '.burger__group-name', 'background-group-name', 'remove');
+            toggleClassInElementById(mainGroupId, 'background-group-name');
+        }
         if (targetGroupId) {
             innerHtmlInElement(
                 '.modal1',
@@ -115,6 +122,14 @@ const addTrashButtonLogic = (e: Event) => {
                         addRemoveClassInElement('.modal1', 'modal-open', 'remove');
                     } else if (targetId1 === 'leave') {
                         removeElementFromBody(targetGroupId);
+                        (async () => {
+                            await deleteGroup(targetGroupId);
+                            const nextGroupObj = await getGroups();
+                            const nextGroupId = nextGroupObj[0].id;
+                            changeHeaderGroupText(String(nextGroupId), '');
+                            toggleClassInElementById(String(nextGroupId), 'background-group-name');
+                            localStorage.setItem('currentGroup', `${nextGroupId}`);
+                        })();
                         addRemoveClassInElement('.modal1', 'modal-open', 'remove');
                     }
                 }
@@ -130,14 +145,22 @@ const addBurgerGroupNameHtml = (groupName: string, id = groupName): void => {
     btnItem.addEventListener('click', addTrashButtonLogic);
     parentDiv?.append(btnItem);
 };
-
-const addGroupNames = () => {
+const addGroupNames = async () => {
+    const arrOfGroups: GetGroup[] = await getGroupsData();
     const namesContainer = document.querySelector('.burger__row2');
     if (namesContainer) {
         namesContainer.innerHTML = '';
     }
-    groupsArr.forEach((obj) => addBurgerGroupNameHtml(obj.name, String(obj.id)));
+    arrOfGroups?.forEach((obj) => addBurgerGroupNameHtml(obj.name, String(obj.id)));
+    const currentGroupId = localStorage.getItem('currentGroup');
+    if (currentGroupId) {
+        toggleClassInElementById(currentGroupId, 'background-group-name');
+    }
 };
+const addListenerForBurgerMenu = () => {
+    addListenerOpenCloseModal('.burger__menu', '.modal', 'modal-open', '.burger__nav', addGroupNames);
+};
+
 const createHeader = () => {
     if (!isElementInBody('.header')) {
         addHeaderHtml();
@@ -145,7 +168,6 @@ const createHeader = () => {
     closeModal();
     closeModal1();
     changeInnerBtnPen();
-    addGroupNames();
     addListenerForBurgerMenu();
     addListenerForDottedMenu();
     addListenerForPlusMenu();

@@ -45,8 +45,8 @@ export const getHeaderHtml = (
     leaveGroup: string,
     buttonOverview: string,
     buttonExpenses: string,
-    svgPen: string,
-    groupName = 'XXXX'
+    svgPen: string
+    // groupName?: string
 ) => `<header class="header">
   <div class="header__wrapper">
     <div class="header__row1">
@@ -67,12 +67,12 @@ export const getHeaderHtml = (
         </div>
         <div class="burger__bottom">
           <ul class="burger__list">
-            <li><a href="/" class="burger__link1">${feedback}</a></li>
+            <li><a href="mailto:ppl@vivanta.by" class="burger__link1">${feedback}</a></li>
             <li><a href="/" class="burger__link2">${about}</a></li>
           </ul>
         </div>
       </nav>
-      <h2 class="header__group-name">${groupName}</h2>
+      <h2 class="header__group-name"></h2>
       <div class="dot__menu-wrap">
       <div class="dot__menu">
         <span></span>
@@ -84,7 +84,6 @@ export const getHeaderHtml = (
           <li><a href="/" class="dotted__link">${addPhoto}</a></li>
           <li><a href="/" class="dotted__link">${changeName}</a></li>
           <li><a href="/" class="dotted__link">${changeCurrency}</a></li>
-          <li><a href="/" class="dotted__link">${leaveGroup}</a></li>
         </ul>
       </nav>
     </div>
