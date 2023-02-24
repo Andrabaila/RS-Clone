@@ -27,7 +27,6 @@ const addButtonItemElementLogic = (e: MouseEvent) => {
                     'display-none'
                 );
                 makeModalBlockForElement(expenseObject);
-                window.location.hash = '#/expense_detail';
             } else if (expenseObject) {
                 makeExpenseDetailHtml(
                     langObj.payment,
@@ -42,7 +41,6 @@ const addButtonItemElementLogic = (e: MouseEvent) => {
                     'display-none',
                     ''
                 );
-                window.location.hash = '#/goods_detail';
             }
         }
     }

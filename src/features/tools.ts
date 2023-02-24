@@ -1,4 +1,4 @@
-import { GetExpense } from '../data/types';
+import { GetExpense, GetGroup } from '../data/types';
 
 export function isElementInBody(element: string) {
     const elem = document.querySelector(element);
@@ -39,6 +39,12 @@ export function toggleClassInElement(elementClass: string, toggleClass: string) 
     elem?.classList.toggle(toggleClass);
 }
 
+export function toggleClassInElementById(elementId: string, toggleClass: string) {
+    console.log('toggle');
+    const elem = document.getElementById(elementId);
+    elem?.classList.toggle(toggleClass);
+}
+
 export function addFocusedToBtn(parentNode: string, btnClass: string) {
     addRemoveClassInAllElements(parentNode, '.button', 'focused', 'remove');
     toggleClassInElement(btnClass, 'focused');
@@ -48,16 +54,20 @@ export const innerHtmlInElement = (elemClass: string, insertHtml: string) => {
     const elem = document.querySelector(elemClass);
     if (elem) elem.innerHTML = insertHtml;
 };
-
+// addListenerOpenCloseModal('.burger__menu', '.modal', 'modal-open', '.burger__nav');
 export const addListenerOpenCloseModal = (
     btnClass: string,
     modalClass: string,
     addClass: string,
-    menuClass?: string
+    menuClass?: string,
+    startFunction?: () => void
 ): void => {
     const btn = document.querySelector(btnClass);
 
     btn?.addEventListener('click', () => {
+        if (startFunction) {
+            startFunction();
+        }
         if (menuClass) {
             const menu = document.querySelector(menuClass);
             menu?.classList.add(addClass);
@@ -79,3 +89,8 @@ export const findObjectById = (arr: GetExpense[], id: number) => {
 };
 
 export const roundTwoDigitsAfter = (num: number) => Math.round(num * 100) / 100;
+
+export const findNameInObjectById = (arr: GetGroup[], id: number) => {
+    console.log('arr in findNameInObjectById=', arr, 'id=', id, arr.find((obj) => obj.id === id)?.name);
+    return arr.find((obj) => obj.id === id)?.name;
+};

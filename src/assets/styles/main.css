@@ -24,7 +24,6 @@ html {
   height: 100%;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   width: 100%;
   font-family: "Roboto";
@@ -398,7 +397,6 @@ body {
   background-color: #e8e9e9;
   -webkit-user-select: auto;
      -moz-user-select: auto;
-      -ms-user-select: auto;
           user-select: auto;
 }
 
@@ -925,8 +923,10 @@ input[type=number]:focus {
   justify-content: space-around;
 }
 .header__row1 h2 {
+  min-width: 28rem;
   background: none;
   font-size: 4.5rem;
+  text-align: center;
 }
 
 .header__btn-wrapper {
@@ -991,7 +991,7 @@ input[type=number]:focus {
 }
 
 .burger__top {
-  height: 350px;
+  height: 450px;
   padding: 15px 0 15px 0;
 }
 
@@ -1044,16 +1044,25 @@ input[type=number]:focus {
 }
 
 .burger__row2 {
+  height: 320px;
   font-size: 2rem;
   color: white;
+  overflow-y: auto;
 }
 .burger__row2 svg {
   pointer-events: none;
 }
 
 .burger__group-name {
-  background-color: #f9b77a;
   padding: 5px;
+}
+
+.background-group-name {
+  background-color: #f9b77a;
+}
+
+.burger__group-name:hover {
+  background-color: #ffca98;
 }
 
 .group-name_trash {
@@ -1076,7 +1085,7 @@ input[type=number]:focus {
 
 .button__add-groupe {
   position: absolute;
-  top: 300px;
+  top: 400px;
   right: 12px;
   border-radius: 50%;
   height: 10rem;
@@ -1147,7 +1156,6 @@ input[type=number]:focus {
   top: 0;
   right: 0;
   bottom: 0;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   height: 30rem;
@@ -1194,7 +1202,6 @@ input[type=number]:focus {
 
 .button-overview,
 .button-expenses {
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding: 12px 33px;
@@ -1214,9 +1221,10 @@ input[type=number]:focus {
 }
 
 .group-name_span {
-  width: 240px;
+  width: 20rem;
   display: inline-block;
   padding-top: 2px;
+  pointer-events: none;
 }
 
 .display-none {
@@ -1308,9 +1316,6 @@ input[type=number]:focus {
 .upage-row2-input::-moz-placeholder {
   color: white;
 }
-.upage-row2-input:-ms-input-placeholder {
-  color: white;
-}
 .upage-row2-input::placeholder {
   color: white;
 }
@@ -1369,7 +1374,6 @@ input.bordered {
 }
 
 .button-upage {
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding: 8px 33px;
@@ -1468,9 +1472,6 @@ input.bordered {
 .expense-detail-input::-moz-placeholder {
   color: white;
 }
-.expense-detail-input:-ms-input-placeholder {
-  color: white;
-}
 .expense-detail-input::placeholder {
   color: white;
 }
@@ -1533,7 +1534,6 @@ input.bordered {
 }
 
 .button-expense-detail {
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding: 8px 33px;
