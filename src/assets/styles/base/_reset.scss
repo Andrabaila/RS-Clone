@@ -1,4 +1,6 @@
 html {
+    display: flex;
+    justify-content: center;
     box-sizing: border-box;
     scroll-behavior: smooth;
     height: 100%;
@@ -8,6 +10,7 @@ html {
     font-family: 'Roboto';
     font-size: 10px;
     color: $color-text;
+    background-color: $color-light;
 }
 
 *,

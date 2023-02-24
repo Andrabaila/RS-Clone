@@ -8,6 +8,7 @@ import createAddPopup from '../layouts/createAddPopup';
 
 function createOverviewPage() {
     document.querySelector('.shadow')?.remove();
+    document.querySelector('header')?.remove();
     createShadow();
     createHeader();
     addFocusedToBtn('.header__btn-wrapper', '.button-overview');

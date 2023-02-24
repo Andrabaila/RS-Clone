@@ -85,6 +85,8 @@ const belarusian: { readonly [x: string]: string } = {
     date: 'Дата',
     persons: 'асобы',
     payment: 'Аплата',
+
+    noGroupMessage: 'На жаль, няма групы з нумарам ',
 };
 
 export default belarusian;

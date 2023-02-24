@@ -16,7 +16,18 @@ async function createGroup(name: string) {
                 name,
                 currency,
                 photo: '../assets/icons/group_logo.svg',
-                users: [],
+                users: [
+                    {
+                        balance: 522,
+                        name: 'Linkoln',
+                        id: 1,
+                    },
+                    {
+                        balance: 15,
+                        name: 'Peter',
+                        id: 2,
+                    },
+                ],
                 expenses: [],
             }),
         });

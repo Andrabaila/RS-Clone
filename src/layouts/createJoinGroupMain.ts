@@ -3,6 +3,7 @@ import getLangObj from '../features/getLangObj';
 import setCurrentGroup from '../features/setCurrentGroup';
 import { groupsArr } from '../data/database';
 import { GetGroup } from '../data/types';
+import showMessageWithTimer from '../features/showMessageWithTimer';
 
 function createJoinGroupMain() {
     const langObj = getLangObj();
@@ -26,7 +27,6 @@ function createJoinGroupMain() {
         style: ['button', 'button_main-header'],
         content: langObj.buttonJoin,
     });
-    buttonJoin.dataset.hash = 'overview';
 
     getHtmlElement({ parent: '.main__wrapper', style: ['wrapper', 'wrapper_input-new-group'] });
 
@@ -34,13 +34,48 @@ function createJoinGroupMain() {
         getHtmlElement({ parent: '.wrapper_input-new-group', tag: 'input', style: ['input', 'input_join-group'] })
     );
     inputCode.placeholder = langObj.placeholderJoinGroup;
+    inputCode.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' && inputCode.value !== '') {
+            let isGroupExisting = false;
+            groupsArr.forEach((groupObj: GetGroup) => {
+                if (String(groupObj.id) === inputCode.value) {
+                    isGroupExisting = true;
+                    setCurrentGroup(inputCode.value);
+                    window.location.hash = '#/overview';
+                }
+            });
+
+            if (!isGroupExisting) {
+                document.querySelector('.message')?.remove();
+                const message = getHtmlElement({
+                    parent: '.main',
+                    style: ['message'],
+                    content: `${langObj.noGroupMessage}${inputCode.value}`,
+                });
+                showMessageWithTimer(message, 3000);
+            }
+        }
+    });
 
     buttonJoin.addEventListener('click', () => {
+        let isGroupExisting = false;
         groupsArr.forEach((groupObj: GetGroup) => {
             if (String(groupObj.id) === inputCode.value) {
+                isGroupExisting = true;
                 setCurrentGroup(inputCode.value);
+                window.location.hash = '#/overview';
             }
         });
+
+        if (!isGroupExisting && inputCode.value !== '') {
+            document.querySelector('.message')?.remove();
+            const message = getHtmlElement({
+                parent: '.main',
+                style: ['message'],
+                content: `${langObj.noGroupMessage}${inputCode.value}`,
+            });
+            showMessageWithTimer(message, 3000);
+        }
     });
 
     inputCode.focus();
