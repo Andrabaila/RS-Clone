@@ -36,9 +36,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.getUsersGroup = exports.removeGroup = exports.removeUserFromGroup = void 0;
+exports.getUsersGroup = exports.updateGroup = exports.createGroup = exports.getAllGroups = exports.getGroup = exports.removeGroup = exports.deleteUserFromGroup = exports.addUserForGroup = exports.removeUserFromGroup = void 0;
 var config_1 = require("../data/config");
 var user_1 = require("./user");
+var jsonToObject_1 = require("./jsonToObject");
 function removeUserFromGroup(userId, groupId) {
     return __awaiter(this, void 0, void 0, function () {
         var connection;
@@ -55,6 +56,72 @@ function removeUserFromGroup(userId, groupId) {
     });
 }
 exports.removeUserFromGroup = removeUserFromGroup;
+function addUserForGroup(request, response) {
+    return __awaiter(this, void 0, void 0, function () {
+        var userId, groupId, connection, userInGroup, group;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    userId = request.params.userId;
+                    groupId = request.params.groupId;
+                    connection = config_1.pool.promise();
+                    return [4 /*yield*/, connection.execute('SELECT * FROM users WHERE id = ?', [userId])
+                            .then(function (user) { return user[0][0]; })
+                            .then(function (user) {
+                            var userInGroup = {
+                                id: user.id,
+                                name: user.name,
+                                balance: 0
+                            };
+                            if (user.groupList.includes(+groupId))
+                                return "User is already in group";
+                            user.groupList.push(+groupId);
+                            config_1.pool.query('UPDATE users SET ? WHERE id = ?', [(0, jsonToObject_1.userToJsonUser)(user), userId]);
+                            return userInGroup;
+                        })];
+                case 1:
+                    userInGroup = _a.sent();
+                    if (typeof userInGroup === 'string')
+                        return [2 /*return*/, response.status(400).send(userInGroup)];
+                    return [4 /*yield*/, connection.execute('SELECT * FROM groupList WHERE id = ?', [groupId])
+                            .then(function (group) {
+                            group[0][0].users.push(userInGroup);
+                            return group[0][0];
+                        })];
+                case 2:
+                    group = _a.sent();
+                    config_1.pool.query('UPDATE groupList SET ? WHERE id = ?', [(0, jsonToObject_1.groupToJsonGroup)(group), groupId], function (error) { return response.send(error || 'User added to group'); });
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+exports.addUserForGroup = addUserForGroup;
+function deleteUserFromGroup(request, response) {
+    return __awaiter(this, void 0, void 0, function () {
+        var userId, groupId, connection;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    userId = +request.params.userId;
+                    groupId = +request.params.groupId;
+                    connection = config_1.pool.promise();
+                    return [4 /*yield*/, connection.execute('SELECT groupList FROM users WHERE id = ?', [userId])
+                            .then(function (user) { return user[0][0]; })
+                            .then(function (user) {
+                            user.groupList.filter(function (id) { return id !== groupId; });
+                            config_1.pool.query('UPDATE users SET ? WHERE id = ?', [(0, jsonToObject_1.userToJsonUser)(user), userId]);
+                        })];
+                case 1:
+                    _a.sent();
+                    removeUserFromGroup(userId, groupId)
+                        .then(function () { return response.send('User removed from group'); });
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+exports.deleteUserFromGroup = deleteUserFromGroup;
 function removeGroup(groupId, response) {
     return __awaiter(this, void 0, void 0, function () {
         var connection, awaitGroupDeleteFromUsers;
@@ -76,6 +143,91 @@ function removeGroup(groupId, response) {
     });
 }
 exports.removeGroup = removeGroup;
+function validateGroup(group) {
+    var fields = ['name', 'photo', 'currency', 'expenses', 'users'];
+    for (var i = 0; i < fields.length; i++) {
+        if (!group.hasOwnProperty(fields[i]))
+            return "\u041E\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u043F\u043E\u043B\u0435 ".concat(fields[i]);
+    }
+    if (typeof group.name !== 'string' || group.name.trim().length === 0)
+        return 'Поле name должно быть не пустой строкой';
+    if (typeof group.photo !== 'string' || group.photo.trim().length === 0)
+        return 'Поле photo должно быть не пустой строкой';
+    if (typeof group.currency !== 'string' || group.currency.trim().length === 0)
+        return 'Поле currency должно быть не пустой строкой';
+    if (!Array.isArray(group.expenses))
+        return 'Поле expenses должно быть массивом';
+    if (!Array.isArray(group.users))
+        return 'Поле users должно быть пустым массивом или массивом чисел';
+}
+function createId() {
+    return __awaiter(this, void 0, void 0, function () {
+        var connection, id, result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    connection = config_1.pool.promise();
+                    id = Math.floor(Math.random() * (999999999 - 1000 + 1)) + 1000;
+                    return [4 /*yield*/, connection.query('SELECT id FROM groupList WHERE id = ?', id)];
+                case 1:
+                    result = _a.sent();
+                    return [2 /*return*/, result[0].length ? createId() : id];
+            }
+        });
+    });
+}
+function getGroup(request, response) {
+    config_1.pool.query('SELECT * FROM groupList WHERE id = ?', request.params.id, function (error, group) { return response.send(error || group[0]); });
+}
+exports.getGroup = getGroup;
+function getAllGroups(response) {
+    config_1.pool.query('SELECT * FROM groupList', function (error, groups) { return response.send(error || groups); });
+}
+exports.getAllGroups = getAllGroups;
+function createGroup(request, response) {
+    return __awaiter(this, void 0, void 0, function () {
+        var recivedGroup, groupIsNotGroup, id, group;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    recivedGroup = request.body;
+                    groupIsNotGroup = validateGroup(recivedGroup);
+                    if (groupIsNotGroup)
+                        return [2 /*return*/, response.status(400).send(groupIsNotGroup)];
+                    return [4 /*yield*/, createId()];
+                case 1:
+                    id = _a.sent();
+                    group = {
+                        id: id,
+                        name: recivedGroup.name,
+                        photo: recivedGroup.photo,
+                        currency: recivedGroup.currency,
+                        users: recivedGroup.users,
+                        expenses: recivedGroup.expenses
+                    };
+                    config_1.pool.query('INSERT INTO groupList SET ?', (0, jsonToObject_1.groupToJsonGroup)(group), function (error) { return response.send(error || group); });
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+exports.createGroup = createGroup;
+function updateGroup(request, response) {
+    var recivedGroup = request.body;
+    var groupIsNotGroup = validateGroup(recivedGroup);
+    if (groupIsNotGroup)
+        return response.status(400).send(groupIsNotGroup);
+    var group = {
+        id: +request.params.id,
+        name: recivedGroup.name,
+        photo: recivedGroup.photo,
+        currency: recivedGroup.currency,
+        users: recivedGroup.users,
+        expenses: recivedGroup.expenses
+    };
+    config_1.pool.query('UPDATE groupList SET ? WHERE id = ?', [(0, jsonToObject_1.groupToJsonGroup)(group), request.params.id], function (error) { return response.send(error || group); });
+}
+exports.updateGroup = updateGroup;
 function getUsersGroup(userId, response) {
     var connection = config_1.pool.promise();
     var awaitGroups = [];

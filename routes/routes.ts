@@ -1,25 +1,40 @@
-import { pool } from "../data/config";
-import { Request, Response, Express } from 'express';
-import { deleteUser } from "../scripts/user";
-import { groupToJsonGroup, userToJsonUser } from "../scripts/jsonToObject";
-import { Group, User } from "../data/interfaces";
-import { addExpense, deleteExpense, getExpense, getExpenses, updateExpanse } from "../scripts/expense";
-import { getUsersGroup, removeGroup } from "../scripts/group";
+import { 
+  Request, 
+  Response, 
+  Express 
+} from 'express';
+import { 
+  createUser, 
+  deleteUser, 
+  getAllUsers, 
+  getUser, 
+  updateUser
+} from "../scripts/user";
+import { 
+  addExpense, 
+  deleteExpense, 
+  getExpense, 
+  getExpenses, 
+  updateExpanse 
+} from "../scripts/expense";
+import { 
+  getUsersGroup, 
+  removeGroup, 
+  getGroup, 
+  getAllGroups, 
+  createGroup, 
+  updateGroup, 
+  addUserForGroup,
+  deleteUserFromGroup
+} from "../scripts/group";
 
 const router = (app: Express) => {
-  app.get('/users', (_, response: Response) => {
-    pool.query(
-      'SELECT * FROM users', 
-      (error: Error, users: User[]) => response.send(error || users)
-    );
+  app.get('/users', (request: Request, response: Response) => {
+    getAllUsers(response);
   });
 
   app.get('/users/:id', (request: Request, response: Response) => {
-    pool.query(
-      'SELECT * FROM users WHERE id = ?', 
-      request.params.id, 
-      (error: Error, user: User[]) => response.send(error || user[0])
-    );
+    getUser(request, response);
   });
 
   app.get('/users/:id/groups', (request: Request, response: Response) => {
@@ -27,52 +42,37 @@ const router = (app: Express) => {
   });
 
   app.post('/users', (request: Request, response: Response) => {
-    pool.query(
-      'INSERT INTO users SET ?', 
-      userToJsonUser(request.body), 
-      (error: Error) => response.send(error || 'User created')
-    );
+    createUser(request, response);
   });
 
   app.put('/users/:id', (request: Request, response: Response) => {
-    pool.query(
-      'UPDATE users SET ? WHERE id = ?', 
-      [userToJsonUser(request.body), request.params.id],
-      (error: Error) => response.send(error || 'User updated')
-    );
+    updateUser(request, response);
   });
 
   app.delete('/users/:id', (request: Request, response: Response) => deleteUser(+request.params.id, response));
 
   app.get('/groups/:id', (request: Request, response: Response) => {
-    pool.query(
-      'SELECT * FROM groupList WHERE id = ?',
-      request.params.id,
-      (error: Error, group: Group[]) => response.send(error || group[0])
-    );
+    getGroup(request, response);
   });
 
-  app.get('/groups', (_, response: Response) => {
-    pool.query(
-      'SELECT * FROM groupList',
-      (error: Error, groups: Group[]) => response.send(error || groups)
-    );
+  app.get('/groups', (request: Request, response: Response) => {
+    getAllGroups(response);
   });
 
   app.post('/groups', (request: Request, response: Response) => {
-    pool.query(
-      'INSERT INTO groupList SET ?',
-      groupToJsonGroup(request.body), 
-      (error: Error) => response.send(error || 'Group created')
-    );
+    createGroup(request, response);
+  });
+
+  app.post('/groups/user/:groupId/:userId', (request: Request, response: Response) => {
+    addUserForGroup(request, response);
+  });
+
+  app.delete('/groups/user/:groupId/:userId', (request: Request, response: Response) => {
+    deleteUserFromGroup(request, response);
   });
 
   app.put('/groups/:id', (request: Request, response: Response) => {
-    pool.query(
-      'UPDATE groupList SET ? WHERE id = ?', 
-      [groupToJsonGroup(request.body), request.params.id], 
-      (error: Error) => response.send(error || 'Group updated')
-    );
+    updateGroup(request, response);
   });
 
   app.delete('/groups/:id', (request: Request, response: Response) => {
@@ -80,7 +80,7 @@ const router = (app: Express) => {
   });
 
   app.get('/expenses/:groupId', (request: Request, response: Response) => {
-    getExpenses(+request.params.groupId, response)
+    getExpenses(+request.params.groupId, response);
   });
 
   app.get('/expenses/:groupId/:expenseId', (request: Request, response: Response) => {

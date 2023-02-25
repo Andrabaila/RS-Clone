@@ -1,4 +1,4 @@
-import { Group, JsonGroup, JsonUser, User } from "data/interfaces";
+import { Group, JsonGroup, JsonUser, User, UserSet } from "data/interfaces";
 
 export function jsonGroupToGroup(jsonGroup: JsonGroup): Group {
   const group: Group = {

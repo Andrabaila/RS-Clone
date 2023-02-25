@@ -19,17 +19,17 @@
 //   })
 // }).then((res) => res.json()).then((res) => console.log(res))
 
-// fetch('https://back-for-rs-clone-production.up.railway.app/users', {
-//   method: 'POST',
-//   headers: {
-//     'Content-Type': 'application/json;charset=utf-8'
-//   },
-//   body: JSON.stringify({
-//     id: 1,
-//     name: 'alpha',
-//     groupList: [1]
-//   })
-// }).then((res) => res.json()).then((res) => console.log(res))
+fetch('http://localhost:3333/users', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8'
+  },
+  body: JSON.stringify({
+    id: 1523,
+    name: 'hgdff',
+    groupList: [1]
+  })
+}).then((res) => res.json()).then((res) => console.log(res))
 
 // fetch('https://back-for-rs-clone-production.up.railway.app/groups', {
 //   method: 'POST',
@@ -56,7 +56,7 @@
 //   method: 'DELETE'
 // }).then((res) => res.json()).then((res) => console.log(res))
 
-fetch('https://back-for-rs-clone-production.up.railway.app/groups/1').then((res) => res.json()).then((res) => console.log(res));
+// fetch('https://back-for-rs-clone-production.up.railway.app/groups/1').then((res) => res.json()).then((res) => console.log(res));
 
 // fetch('https://back-for-rs-clone-production.up.railway.app/expenses/2/1').then((res) => res.json()).then((res) => console.log(res));
 // fetch('https://back-for-rs-clone-production.up.railway.app/expenses/1/1', {

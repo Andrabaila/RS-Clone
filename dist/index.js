@@ -16,7 +16,6 @@ var spec = fs.readFileSync('./swagger/api/swagger.yaml', 'utf8');
 var swaggerDoc = jsyaml.safeLoad(spec);
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
     app.use(middleware.swaggerMetadata());
-    app.use(middleware.swaggerValidator());
     app.use(middleware.swaggerUi());
     app.use((0, cors_1["default"])());
     app.use(body_parser_1["default"].json());

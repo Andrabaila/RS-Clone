@@ -18,8 +18,6 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware: { swaggerMet
 
   app.use(middleware.swaggerMetadata());
 
-  app.use(middleware.swaggerValidator());
-
   app.use(middleware.swaggerUi());
 
   app.use(cors());

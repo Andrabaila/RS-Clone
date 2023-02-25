@@ -36,9 +36,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.deleteUser = exports.removeGroupFromUser = void 0;
+exports.createUser = exports.updateUser = exports.getUser = exports.getAllUsers = exports.deleteUser = exports.removeGroupFromUser = void 0;
 var config_1 = require("../data/config");
 var group_1 = require("./group");
+var jsonToObject_1 = require("./jsonToObject");
 function removeGroupFromUser(userId, groupId) {
     return __awaiter(this, void 0, void 0, function () {
         var connection;
@@ -78,3 +79,80 @@ function deleteUser(userId, response) {
     });
 }
 exports.deleteUser = deleteUser;
+function createId() {
+    return __awaiter(this, void 0, void 0, function () {
+        var connection, id, result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    connection = config_1.pool.promise();
+                    id = Math.floor(Math.random() * (999999999 - 1000 + 1)) + 1000;
+                    return [4 /*yield*/, connection.query('SELECT id FROM users WHERE id = ?', id)];
+                case 1:
+                    result = _a.sent();
+                    return [2 /*return*/, result[0].length ? createId() : id];
+            }
+        });
+    });
+}
+function getAllUsers(response) {
+    config_1.pool.query('SELECT * FROM users', function (error, users) { return response.send(error || users); });
+}
+exports.getAllUsers = getAllUsers;
+function getUser(request, response) {
+    config_1.pool.query('SELECT * FROM users WHERE id = ?', request.params.id, function (error, user) { return response.send(error || user[0]); });
+}
+exports.getUser = getUser;
+function isNumberArray(groupList) {
+    if (!Array.isArray(groupList))
+        return false;
+    if (!groupList.every(function (group) { return typeof group === 'number'; }))
+        return false;
+    return true;
+}
+function validateUser(recivedUser) {
+    if (!recivedUser.hasOwnProperty('name') || !recivedUser.hasOwnProperty('groupList'))
+        return 'Ненайдены поле name или поле groupList';
+    if ((typeof recivedUser.name !== 'string') || recivedUser.name.trim().length === 0)
+        return 'Поле name должно быть непустой строкой';
+    if (!isNumberArray(recivedUser.groupList))
+        return 'Поле groupList должно быть пустым массивом или массивом чисел';
+}
+function updateUser(request, response) {
+    var recivedUser = request.body;
+    var userIsNotUser = validateUser(recivedUser);
+    if (userIsNotUser)
+        return response.status(400).send(userIsNotUser);
+    var user = {
+        id: +request.params.id,
+        name: recivedUser.name,
+        groupList: recivedUser.groupList
+    };
+    config_1.pool.query('UPDATE users SET ? WHERE id = ?', [(0, jsonToObject_1.userToJsonUser)(user), request.params.id], function (error) { return response.send(error || user); });
+}
+exports.updateUser = updateUser;
+function createUser(request, response) {
+    return __awaiter(this, void 0, void 0, function () {
+        var recivedUser, userIsNotUser, id, user;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    recivedUser = request.body;
+                    userIsNotUser = validateUser(recivedUser);
+                    if (userIsNotUser)
+                        return [2 /*return*/, response.status(400).send(userIsNotUser)];
+                    return [4 /*yield*/, createId()];
+                case 1:
+                    id = _a.sent();
+                    user = {
+                        id: id,
+                        name: recivedUser.name,
+                        groupList: recivedUser.groupList
+                    };
+                    config_1.pool.query('INSERT INTO users SET ?', (0, jsonToObject_1.userToJsonUser)(user), function (error) { return response.send(error || user); });
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+exports.createUser = createUser;

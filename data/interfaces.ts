@@ -4,6 +4,11 @@ export interface User {
   groupList: number[]; // перечень групп который подключил/создал пользователь
 }
 
+export interface UserSet {
+  name: string; // имя человека
+  groupList: number[]; // перечень групп который подключил/создал пользователь
+}
+
 export interface JsonUser {
   id: number;
   name: string; // имя человека

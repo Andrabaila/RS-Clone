@@ -46,7 +46,7 @@ paths:
         name: "body"
         required: true
         schema:
-          $ref: "#/definitions/User"
+          $ref: "#/definitions/UserSend"
       responses:
         "200":
           description: "Результат запроса"
@@ -243,6 +243,57 @@ paths:
         "200":
           description: "Группа удалена"
       x-swagger-router-controller: "Groups"
+  /groups/user/{groupId}/{userId}:
+    post:
+      tags:
+      - "groups"
+      summary: "Добавление пользователя в группу"
+      operationId: "addUserToGroup"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "groupId"
+        in: "path"
+        description: "id группы"
+        required: true
+        type : "integer"
+      - name: "userId"
+        in: "path"
+        description: "id пользователя"
+        required: true
+        type : "integer"
+      responses:
+        "200":
+          description: "Пользователь добавлен"
+        "400":
+          description: "Пользователь уже находится в группе"
+      x-swagger-router-controller: "Groups"
+    delete:
+      tags:
+      - "groups"
+      summary: "Удаление пользователя из группы"
+      operationId: "deleteUserFromGroup"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "groupId"
+        in: "path"
+        description: "id группы"
+        required: true
+        type : "integer"
+      - name: "userId"
+        in: "path"
+        description: "id пользователя"
+        required: true
+        type : "integer"
+      responses:
+        "200":
+          description: "Пользователь удален"
+      x-swagger-router-controller: "Groups"
   /expenses/{groupId}:
     get:
       tags:
@@ -384,11 +435,24 @@ definitions:
       groupList:
         type: "array"
         items: [{}]
-        example: "[1, 2]"
+        example: [1, 2]
     example:
       name: "Linkoln"
-      groupList: "[1, 2]"
+      groupList: [1, 2]
       id: 1.0
+  UserSend:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        example: "Linkoln"
+      groupList:
+        type: "array"
+        items: [{}]
+        example: [1, 2]
+    example:
+      name: "Linkoln"
+      groupList: [1, 2]
   UserInGroup:
     type: "object"
     properties:
@@ -409,7 +473,7 @@ definitions:
     type: "object"
     properties:
       id:
-        example: "1"
+        example: 1
       name:
         example: "First group"
       photo:
@@ -428,7 +492,7 @@ definitions:
       name: "First group"
       photo: "https://photo.jpg"
       currency: "USD"
-      id: "1"
+      id: 1
       users:
       - balance: 15522.0
         name: "Linkoln"
@@ -450,7 +514,7 @@ definitions:
         - balance: 15522.0
           name: "Linkoln"
           id: 1.0
-        id: "1"
+        id: 1
         title: "Oil"
       - date: "2555225215"
         amount: "15225"
@@ -465,13 +529,13 @@ definitions:
         - balance: 15522.0
           name: "Linkoln"
           id: 1.0
-        id: "1"
+        id: 1
         title: "Oil"
   GroupSet:
     type: "object"
     properties:
       id:
-        example: "1"
+        example: 1
       name:
         example: "First group"
       photo:
@@ -490,14 +554,14 @@ definitions:
       name: "First group"
       photo: "https://photo.jpg"
       currency: "USD"
-      id: "1"
-      users: ""
-      expenses: ""
+      id: 1
+      users: []
+      expenses: []
   GroupGet:
     type: "object"
     properties:
       id:
-        example: "1"
+        example: 1
       name:
         example: "First group"
       photo:
@@ -516,7 +580,7 @@ definitions:
       name: "First group"
       photo: "https://photo.jpg"
       currency: "USD"
-      id: "1"
+      id: 1
       users:
       - balance: 15522.0
         name: "Linkoln"
@@ -538,7 +602,7 @@ definitions:
         - balance: 15522.0
           name: "Linkoln"
           id: 1.0
-        id: "1"
+        id: 1
         title: "Oil"
       - date: "2555225215"
         amount: "15225"
@@ -553,13 +617,13 @@ definitions:
         - balance: 15522.0
           name: "Linkoln"
           id: 1.0
-        id: "1"
+        id: 1
         title: "Oil"
   Expense:
     type: "object"
     properties:
       id:
-        example: "1"
+        example: 1
       title:
         example: "Oil"
       by:
@@ -569,12 +633,12 @@ definitions:
         items:
           $ref: "#/definitions/UserInGroup"
       amount:
-        example: "15225"
+        example: 15225
       date:
         example: "2555225215"
     example:
-      date: "2555225215"
-      amount: "15225"
+      date: 2555225215
+      amount: 15225
       by:
         balance: 15522.0
         name: "Linkoln"
@@ -591,24 +655,21 @@ definitions:
   ExpenseSet:
     type: "object"
     properties:
-      id:
-        example: "1"
       title:
         example: "Oil"
       by:
-        example: "1"
+        example: 1
       for:
         type: "array"
         items: [{}]
-        example: ""
+        example: [2,3]
       amount:
-        example: "15225"
+        example: 15225
       date:
-        example: "2555225215"
+        example: 2555225215
     example:
-      date: "2555225215"
-      amount: "15225"
-      by: "1"
-      for: ""
-      id: "1"
+      date: 2555225215
+      amount: 15225
+      by: 1
+      for: [2,3]
       title: "Oil"
