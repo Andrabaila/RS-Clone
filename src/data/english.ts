@@ -58,6 +58,7 @@ const english: { readonly [x: string]: string } = {
     deletePerson: 'Delete',
     btnCancel: 'Cancel',
     btnDelete: 'Delete',
+    joinGroup: 'Join group',
 
     buttonAdd: '+',
     popupTitleNewExpense: 'New expense',

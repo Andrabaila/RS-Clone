@@ -21,7 +21,7 @@ export const addModalTrashCanHtml = (btnCancel: string, btnLeave: string, leaveG
   </div>
 </div>`;
 
-export const addModalBtnPlusHtml = (newGroup: string, choiceGroup: string, makeChoice: string) => `
+export const addModalBtnPlusHtml = (newGroup: string, joinGroup: string, makeChoice: string) => `
 <div class="modal1__plus-block">
   <h3 class="modal1__plus-h3">${makeChoice}</h3>
   <div class="modal1__plus-links">
@@ -29,7 +29,7 @@ export const addModalBtnPlusHtml = (newGroup: string, choiceGroup: string, makeC
       <a href="/#/new_group" class="modal1__plus-new">${newGroup}</a>
     </button>
     <button class="modal1__btn-choice">
-      <a href="/#/join_group" class="modal1__plus-choice">${choiceGroup}</a>
+      <a href="/#/join_group" class="modal1__plus-choice">${joinGroup}</a>
     </button>
   </div>
 </div>`;

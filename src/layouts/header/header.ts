@@ -5,7 +5,8 @@ import {
     addListenerOpenCloseModal,
     removeElementFromBody,
     addRemoveClassInAllElements,
-    isElementInBody,
+    addRemoveClassInElementById,
+    // isElementInBody,
     addRemoveClassInElement,
     findNameInObjectById,
     toggleClassInElementById,
@@ -58,7 +59,7 @@ const addListenerForPlusMenu = () => {
     plusBtn?.addEventListener('click', () => {
         innerHtmlInElement(
             '.modal1',
-            addModalBtnPlusHtml(langObj.newGroupButton, langObj.choiceGroupButton, langObj.makeChoiceButton)
+            addModalBtnPlusHtml(langObj.newGroupButton, langObj.joinGroup, langObj.makeChoiceButton)
         );
         addRemoveClassInElement('.modal1', 'modal-open', 'add');
     });
@@ -106,7 +107,8 @@ const addTrashButtonLogic = (e: Event) => {
             localStorage.setItem('currentGroup', `${mainGroupId}`);
             changeHeaderGroupText(mainGroupId, '');
             addRemoveClassInAllElements('.burger__row2', '.burger__group-name', 'background-group-name', 'remove');
-            toggleClassInElementById(mainGroupId, 'background-group-name');
+            // toggleClassInElementById(mainGroupId, 'background-group-name');
+            addRemoveClassInElementById(mainGroupId, 'background-group-name', 'add');
         }
         if (targetGroupId) {
             innerHtmlInElement(
@@ -163,9 +165,9 @@ const addListenerForBurgerMenu = () => {
 
 const createHeader = () => {
     document.querySelector('.header')?.remove();
-    if (!isElementInBody('.header')) {
-        addHeaderHtml();
-    }
+    // if (!isElementInBody('.header')) {
+    addHeaderHtml();
+    // }
     closeModal();
     closeModal1();
     changeInnerBtnPen();
