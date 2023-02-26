@@ -88,6 +88,10 @@ const belarusian: { readonly [x: string]: string } = {
     payment: 'Аплата',
 
     noGroupMessage: 'На жаль, няма групы з нумарам ',
+
+    createUserGreeting: 'Прадстаўцеся',
+    createUserButton: 'Увайсці',
+    errorMessageAddNewUser: 'Cервер не даступны',
 };
 
 export default belarusian;

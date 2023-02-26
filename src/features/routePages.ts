@@ -1,20 +1,25 @@
 import createNewGroupPage from '../pages/createNewGroupPage';
-import createStartPage from '../pages/createStartPage';
 import createJoinGroupPage from '../pages/createJoinGroupPage';
 import createOverviewPage from '../pages/createOverviewPage';
 import createUserPage from '../pages/createUserPage';
 import createExpensesPage from '../pages/createExpensesPage';
 import createAddPaymentPage from '../pages/createAddPaymentPage';
 import createCurrenciesPage from '../pages/createCurrenciesPage';
+import createGreetingPage from '../pages/createGreetingPage';
 
 function routePages() {
     const { hash } = window.location;
     const page = hash.split('-')[0];
 
     switch (page) {
-        case '':
-            createStartPage();
+        case '': {
+            if (localStorage.getItem('user')) {
+                createOverviewPage();
+            } else {
+                createGreetingPage();
+            }
             break;
+        }
         case '#/new_group':
             createNewGroupPage();
             break;
