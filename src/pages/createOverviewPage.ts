@@ -9,6 +9,7 @@ import createAddPopup from '../layouts/createAddPopup';
 function createOverviewPage() {
     document.querySelector('.shadow')?.remove();
     document.querySelector('header')?.remove();
+    document.querySelector('main')?.remove(); // Добавил Павел для удаления накладывания нового HTML на новый в области main
     createShadow();
     createHeader();
     addFocusedToBtn('.header__btn-wrapper', '.button-overview');

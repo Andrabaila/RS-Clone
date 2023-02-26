@@ -6,6 +6,7 @@ import createStartPage from './createStartPage';
 
 function createNewGroupPage() {
     document.querySelector('header')?.remove();
+    document.querySelector('main')?.remove(); // Добавил Павел для удаления накладывания нового HTML на новый в области main
     if (window.innerWidth < MAX_MOBILE_WIDTH) {
         createNewGroupMain();
 

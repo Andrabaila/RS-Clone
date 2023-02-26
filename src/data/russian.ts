@@ -58,6 +58,7 @@ const russian: { readonly [x: string]: string } = {
     deletePerson: 'Удалить',
     btnCancel: 'Отмена',
     btnDelete: 'Удалить',
+    joinGroup: 'Присоединиться к группе',
 
     buttonAdd: '+',
     popupTitleNewExpense: 'Новый расход',

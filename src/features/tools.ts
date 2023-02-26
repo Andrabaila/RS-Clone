@@ -33,6 +33,15 @@ export function addRemoveClassInElement(elementClass: string, addDeleteClass: st
         elem?.classList.add(addDeleteClass);
     }
 }
+export function addRemoveClassInElementById(id: string, addDeleteClass: string, addRemove: string) {
+    const elem = document.getElementById(id);
+
+    if (addRemove === 'remove') {
+        elem?.classList.remove(addDeleteClass);
+    } else if (addRemove === 'add') {
+        elem?.classList.add(addDeleteClass);
+    }
+}
 
 export function toggleClassInElement(elementClass: string, toggleClass: string) {
     const elem = document.querySelector(elementClass);

@@ -2,11 +2,18 @@ import { ERROR_MESSAGE, API } from '../data/constants';
 import getHtmlElement from '../components/getHtmlElement';
 import getLangObj from '../features/getLangObj';
 import showMessageWithTimer from '../features/showMessageWithTimer';
-
-async function createGroup(name: string) {
+// {
+//   "name": "Linkoln",
+//   "groupList": [
+//     1,
+//     2
+//   ]
+// }
+async function createNewUser(name: string) {
     const langObj = getLangObj();
     const currency = localStorage.getItem('currency');
-    const request = `${API.baseUrl}${API.groups}`;
+    const request = `${API.baseUrl}${API.users}`;
+    console.log('Post new User request=', request);
 
     try {
         const response = await fetch(request, {
@@ -16,7 +23,18 @@ async function createGroup(name: string) {
                 name,
                 currency,
                 photo: '../assets/icons/group_logo.svg',
-                users: [],
+                users: [
+                    {
+                        balance: 522,
+                        name: 'Linkoln',
+                        id: 1,
+                    },
+                    {
+                        balance: 15,
+                        name: 'Peter',
+                        id: 2,
+                    },
+                ],
                 expenses: [],
             }),
         });
@@ -33,4 +51,4 @@ async function createGroup(name: string) {
     }
 }
 
-export default createGroup;
+export default createNewUser;
