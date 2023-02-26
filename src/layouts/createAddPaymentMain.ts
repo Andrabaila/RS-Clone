@@ -1,9 +1,12 @@
+import getGroup from '../api/getGroup';
 import getHtmlElement from '../components/getHtmlElement';
+import getCurrentDate from '../features/getCurrentDate';
 import getLangObj from '../features/getLangObj';
+import setPayment from '../features/setPayment';
 import toggleText from '../features/toggleText';
 import toggleVisibility from '../features/toggleVisibility';
 
-function createAddPaymentMain() {
+async function createAddPaymentMain() {
     const langObj = getLangObj();
 
     document.querySelector('.main')?.remove();
@@ -19,12 +22,18 @@ function createAddPaymentMain() {
     }).addEventListener('click', () => {
         window.history.back();
     });
-    getHtmlElement({
+    const btnSave = getHtmlElement({
         parent: '.main__header',
         tag: 'button',
         style: ['button', 'button_main-header'],
         content: langObj.buttonSave,
-    }).dataset.hash = 'overview';
+    });
+
+    btnSave.addEventListener('click', () => {
+        setPayment().then(() => {
+            window.location.hash = '#/overview';
+        });
+    });
 
     getHtmlElement({ parent: '.main__wrapper', tag: 'form', style: ['form_add-payment'] });
 
@@ -38,7 +47,12 @@ function createAddPaymentMain() {
         style: ['text', 'text_add-payment'],
         content: langObj.textAmount,
     });
-    getHtmlElement({ parent: '.form__amount', tag: 'input', style: ['input', 'input_add-payment'] });
+    const amount = getHtmlElement({
+        parent: '.form__amount',
+        tag: 'input',
+        style: ['input', 'input_add-payment'],
+    }) as HTMLInputElement;
+    amount.required = true;
     getHtmlElement({ parent: '.form__amount', tag: 'span', style: ['text', 'text_add-payment'], content: 'Br' });
 
     const currencyItem = getHtmlElement({
@@ -62,13 +76,29 @@ function createAddPaymentMain() {
 
     getHtmlElement({ parent: '.form_add-payment', style: ['form__item_from-to'] });
     getHtmlElement({ parent: '.form__item_from-to', style: ['form__from'] });
+
     getHtmlElement({
         parent: '.form__from',
         tag: 'span',
         style: ['text', 'text_add-payment'],
         content: langObj.textFrom,
     });
-    getHtmlElement({ parent: '.form__from', tag: 'span', style: ['text', 'text_add-payment'], content: 'One' });
+    getHtmlElement({
+        parent: '.form__from',
+        tag: 'select',
+        style: ['select', 'select_add-payment'],
+    });
+
+    const group = await getGroup();
+
+    group.users.forEach((user) => {
+        getHtmlElement({
+            parent: '.select',
+            tag: 'option',
+            style: ['input', 'input_add-payment'],
+            content: user.name,
+        }).dataset.userId = `${user.id}`;
+    });
 
     getHtmlElement({ parent: '.form__item_from-to', style: ['form__to'] });
     getHtmlElement({
@@ -92,7 +122,12 @@ function createAddPaymentMain() {
         style: ['text', 'text_add-payment'],
         content: langObj.textDate,
     });
-    getHtmlElement({ parent: '.form__date', tag: 'span', style: ['text', 'text_add-payment'], content: '18.02.2023' });
+    getHtmlElement({
+        parent: '.form__date',
+        tag: 'span',
+        style: ['text', 'text_add-payment'],
+        content: getCurrentDate(),
+    });
 
     const buttonMore = getHtmlElement({
         parent: '.main__wrapper',
