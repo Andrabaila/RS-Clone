@@ -1,6 +1,7 @@
 import { RegularExpressions } from './types';
 
 export const ERROR_MESSAGE = 'Error with fetch request!';
+export const ERROR_MESSAGE1 = 'Error with fetch in getExpenses!';
 
 export const REGULAR_EXPRESSIONS: RegularExpressions = {
     name: /[a-zA-Z]{3,}\s[a-zA-Z]{3,}/,
