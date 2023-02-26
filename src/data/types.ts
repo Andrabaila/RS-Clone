@@ -40,7 +40,6 @@ export interface GetGroup {
 
 // отправляете на сервер
 export interface SendExpense {
-    id: number;
     title?: string; // название платежа (необязательное поле)
     amount: number; // сумма платежа
     by: number; // id того кто купил
