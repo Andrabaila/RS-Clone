@@ -88,6 +88,10 @@ const english: { readonly [x: string]: string } = {
     payment: 'Payment',
 
     noGroupMessage: 'Sorry, there is no group with id ',
+
+    createUserGreeting: 'Introduce yourself',
+    createUserButton: 'Log in',
+    errorMessageAddNewUser: 'Server is not available',
 };
 
 export default english;

@@ -88,6 +88,10 @@ const russian: { readonly [x: string]: string } = {
     payment: 'Оплата',
 
     noGroupMessage: 'Извините, нет группы с номером ',
+
+    createUserGreeting: 'Представьтесь',
+    createUserButton: 'Войти',
+    errorMessageAddNewUser: 'Cервер не доступен',
 };
 
 export default russian;
