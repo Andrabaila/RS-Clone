@@ -1,8 +1,8 @@
 .expenses-main {
-    height: 73vh;
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-grow: 1;
     font-size: 2.2rem;
     color: black;
     background-color: #f0f0f0;
@@ -15,6 +15,7 @@
 .expenses-item {
     @extend %flex-row-align-center;
     justify-content: space-between;
+    font-size: 1.8rem;
 }
 .expenses-picture-text-wrapper {
     @extend %flex-row-align-center;
