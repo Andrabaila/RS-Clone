@@ -6,6 +6,7 @@ import setPayment from '../features/setPayment';
 import toggleText from '../features/toggleText';
 import toggleVisibility from '../features/toggleVisibility';
 
+const currentСurrency = localStorage.getItem('currency');
 async function createAddPaymentMain() {
     const langObj = getLangObj();
 
@@ -53,7 +54,12 @@ async function createAddPaymentMain() {
         style: ['input', 'input_add-payment'],
     }) as HTMLInputElement;
     amount.required = true;
-    getHtmlElement({ parent: '.form__amount', tag: 'span', style: ['text', 'text_add-payment'], content: 'Br' });
+    getHtmlElement({
+        parent: '.form__amount',
+        tag: 'span',
+        style: ['text', 'text_add-payment'],
+        content: '',
+    });
 
     const currencyItem = getHtmlElement({
         parent: '.form__item_amount',
@@ -69,7 +75,7 @@ async function createAddPaymentMain() {
         parent: '.form__currency',
         tag: 'span',
         style: ['text', 'text_add-payment'],
-        content: 'Br (BYN)',
+        content: currentСurrency || 'error LS current currency',
     });
 
     //* ***************************second item***********************************
@@ -107,7 +113,21 @@ async function createAddPaymentMain() {
         style: ['text', 'text_add-payment'],
         content: langObj.textTo,
     });
-    getHtmlElement({ parent: '.form__to', tag: 'span', style: ['text', 'text_add-payment'], content: 'Another' });
+    getHtmlElement({
+        parent: '.form__to',
+        tag: 'select',
+        style: ['select', 'select_add-payment-to'],
+    });
+
+    group.users.forEach((user) => {
+        getHtmlElement({
+            parent: '.select_add-payment-to',
+            tag: 'option',
+            style: ['input', 'input_add-payment'],
+            content: user.name,
+        }).dataset.userId = `${user.id}`;
+    });
+    // getHtmlElement({ parent: '.form__to', tag: 'span', style: ['text', 'text_add-payment'], content: 'Another' });
 
     //* ***************************third item***********************************
 

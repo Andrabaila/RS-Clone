@@ -92,6 +92,8 @@ const english: { readonly [x: string]: string } = {
     createUserGreeting: 'Introduce yourself',
     createUserButton: 'Log in',
     errorMessageAddNewUser: 'Server is not available',
+
+    buttonBack: 'Back',
 };
 
 export default english;

@@ -92,6 +92,8 @@ const belarusian: { readonly [x: string]: string } = {
     createUserGreeting: 'Прадстаўцеся',
     createUserButton: 'Увайсці',
     errorMessageAddNewUser: 'Cервер не даступны',
+
+    buttonBack: 'Вярнуцца',
 };
 
 export default belarusian;

@@ -49,7 +49,6 @@ export function toggleClassInElement(elementClass: string, toggleClass: string) 
 }
 
 export function toggleClassInElementById(elementId: string, toggleClass: string) {
-    console.log('toggle');
     const elem = document.getElementById(elementId);
     elem?.classList.toggle(toggleClass);
 }
@@ -100,6 +99,5 @@ export const findObjectById = (arr: GetExpense[], id: number) => {
 export const roundTwoDigitsAfter = (num: number) => Math.round(num * 100) / 100;
 
 export const findNameInObjectById = (arr: GetGroup[], id: number) => {
-    console.log('arr in findNameInObjectById=', arr, 'id=', id, arr.find((obj) => obj.id === id)?.name);
     return arr.find((obj) => obj.id === id)?.name;
 };
