@@ -2,7 +2,7 @@ import createExpense from '../api/createExpense';
 import getGroup from '../api/getGroup';
 import { SendExpense, UserInGroup } from '../data/types';
 
-export default async function setPayment() {
+export default async function setExpense() {
     const paymentForm = document.querySelector('.form_add-payment');
     if (!(paymentForm instanceof HTMLFormElement)) return;
 

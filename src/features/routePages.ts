@@ -4,6 +4,7 @@ import createOverviewPage from '../pages/createOverviewPage';
 import createUserPage from '../pages/createUserPage';
 import createExpensesPage from '../pages/createExpensesPage';
 import createAddPaymentPage from '../pages/createAddPaymentPage';
+import createAddExpensePage from '../pages/createAddExpensePage';
 import createCurrenciesPage from '../pages/createCurrenciesPage';
 import createGreetingPage from '../pages/createGreetingPage';
 
@@ -37,6 +38,9 @@ function routePages() {
             break;
         case '#/add_payment':
             createAddPaymentPage();
+            break;
+        case '#/add_expense':
+            createAddExpensePage();
             break;
         case '#/currencies':
             createCurrenciesPage();

@@ -6,13 +6,11 @@ import {
     removeElementFromBody,
     addRemoveClassInAllElements,
     addRemoveClassInElementById,
-    // isElementInBody,
     addRemoveClassInElement,
-    findNameInObjectById,
+    changeHeaderGroupText,
     toggleClassInElementById,
 } from '../../features/tools';
 import getLangObj from '../../features/getLangObj';
-import { groupsArr } from '../../data/database';
 import { GetGroup } from '../../data/types';
 import getGroupsData from '../../api/getGroupsData';
 import deleteGroup from '../../api/deleteGroup';
@@ -21,12 +19,6 @@ import getGroups from '../../api/getGroups';
 const langObj = getLangObj();
 
 const DOCUMENT_BODY = document.body;
-
-const changeHeaderGroupText = async (currentGroupId: string, fromServer: string) => {
-    const arr = fromServer ? await getGroupsData() : groupsArr;
-    const groupName = findNameInObjectById(arr, Number(currentGroupId)) || 'NO API groupName';
-    innerHtmlInElement('.header__group-name', groupName);
-};
 
 const addHeaderHtml = (): void => {
     const headerHtml = getHeaderHtml(

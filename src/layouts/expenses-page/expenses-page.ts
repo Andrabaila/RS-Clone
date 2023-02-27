@@ -5,49 +5,6 @@ import stringToElement from '../../components/stringToElement';
 import { makeExpenseDetailHtml, makeModalBlockForElement } from '../expense-detail-page/expense-detail';
 import getLangObj from '../../features/getLangObj';
 
-// [
-//   {
-//       "by": {
-//           "id": 49848441,
-//           "name": "Alex",
-//           "balance": -12000
-//       },
-//       "id": 882969475,
-//       "for": [
-//           {
-//               "id": 95992185,
-//               "name": "Peter",
-//               "balance": 5333.333333333333
-//           },
-//           {
-//               "id": 185707768,
-//               "name": "Skyner",
-//               "balance": -6666.666666666667
-//           }
-//       ],
-//       "date": 1677431324504,
-//       "title": "Oil",
-//       "amount": 10000
-//   },
-//   {
-//       "by": {
-//           "id": 95992185,
-//           "name": "Peter",
-//           "balance": 5333.333333333333
-//       },
-//       "id": 826869450,
-//       "for": [
-//           {
-//               "id": 49848441,
-//               "name": "Alex",
-//               "balance": -12000
-//           }
-//       ],
-//       "date": 1677431324600,
-//       "title": "",
-//       "amount": 12000
-//   }
-// ]
 const langObj = getLangObj();
 
 const addButtonItemElementLogic = (e: MouseEvent) => {

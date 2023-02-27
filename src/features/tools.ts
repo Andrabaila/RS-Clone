@@ -1,4 +1,10 @@
 import { GetExpense, GetGroup } from '../data/types';
+import { groupsArr } from '../data/database';
+// import getGroups from '../api/getGroups';
+import getGroupsData from '../api/getGroupsData';
+import getLangObj from './getLangObj';
+
+const langObj = getLangObj();
 
 export function isElementInBody(element: string) {
     const elem = document.querySelector(element);
@@ -101,3 +107,17 @@ export const roundTwoDigitsAfter = (num: number) => Math.round(num * 100) / 100;
 export const findNameInObjectById = (arr: GetGroup[], id: number) => {
     return arr.find((obj) => obj.id === id)?.name;
 };
+
+export const changeHeaderGroupText = async (currentGroupId: string, fromServer: string) => {
+    const arr = fromServer ? await getGroupsData() : groupsArr;
+    console.log('fromServer=', fromServer, 'arr=', arr);
+    const groupName = findNameInObjectById(arr, Number(currentGroupId)) || `${langObj.chooseGroup}`;
+    innerHtmlInElement('.header__group-name', groupName);
+};
+
+// export const addCurrentGroupInLocalStorage = async () => {
+//     const nextGroupObj = await getGroups();
+//     const nextGroupId = nextGroupObj[0].id;
+//     changeHeaderGroupText(String(nextGroupId), '');
+//     localStorage.setItem('currentGroup', `${nextGroupId}`);
+// };
