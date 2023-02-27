@@ -1,8 +1,8 @@
+import joinGroup from '../api/joinGroup';
 import getHtmlElement from '../components/getHtmlElement';
-import { groupsArr } from '../data/database';
-import { GetGroup } from '../data/types';
 import getLangObj from '../features/getLangObj';
 import setCurrentGroup from '../features/setCurrentGroup';
+import showMessageWithTimer from '../features/showMessageWithTimer';
 import togglePopup from '../features/togglePopup';
 
 function createJoinPopup() {
@@ -38,11 +38,24 @@ function createJoinPopup() {
     buttonJoin.dataset.hash = 'overview';
 
     buttonJoin.addEventListener('click', () => {
-        groupsArr.forEach((groupObj: GetGroup) => {
-            if (String(groupObj.id) === inputCode.value) {
-                setCurrentGroup(inputCode.value);
-            }
-        });
+        joinGroup(inputCode.value)
+            .then((status) => {
+                if (status === 200) {
+                    setCurrentGroup(inputCode.value);
+                    window.location.hash = '#/overview';
+                } else {
+                    throw new Error();
+                }
+            })
+            .catch(() => {
+                document.querySelector('.message')?.remove();
+                const message = getHtmlElement({
+                    parent: '.main',
+                    style: ['message'],
+                    content: `${langObj.noGroupMessage}${inputCode.value}`,
+                });
+                showMessageWithTimer(message, 3000);
+            });
     });
 }
 export default createJoinPopup;

@@ -2,35 +2,38 @@ import { ERROR_MESSAGE, API } from '../data/constants';
 import getHtmlElement from '../components/getHtmlElement';
 import getLangObj from '../features/getLangObj';
 import showMessageWithTimer from '../features/showMessageWithTimer';
+import { GetGroup } from '../data/types';
 
-async function createGroup(name: string) {
+export default async function createGroup(name: string) {
     const langObj = getLangObj();
     const currency = localStorage.getItem('currency');
-    const request = `${API.baseUrl}${API.groups}`;
 
-    try {
-        const response = await fetch(request, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json;charset=utf-8' },
-            body: JSON.stringify({
-                name,
-                currency,
-                photo: '../assets/icons/group_logo.svg',
-                users: [],
-                expenses: [],
-            }),
+    return fetch(`${API.baseUrl}${API.groups}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json;charset=utf-8' },
+        body: JSON.stringify({
+            name,
+            currency,
+            photo: '../assets/icons/group_logo.svg',
+            users: [],
+            expenses: [],
+        }),
+    })
+        .then((response) => {
+            if (response.status !== 200) {
+                const message = getHtmlElement({
+                    parent: '.main',
+                    style: ['message'],
+                    content: langObj.errorMessageAddGroup,
+                });
+                showMessageWithTimer(message, 3000);
+            }
+
+            return response.json();
+        })
+        .then((group: GetGroup) => group)
+        .catch((err) => {
+            console.log(err);
+            throw new Error(ERROR_MESSAGE);
         });
-        if (response.status !== 200) {
-            const message = getHtmlElement({
-                parent: '.main',
-                style: ['message'],
-                content: langObj.errorMessageAddGroup,
-            });
-            showMessageWithTimer(message, 3000);
-        }
-    } catch {
-        throw new Error(ERROR_MESSAGE);
-    }
 }
-
-export default createGroup;

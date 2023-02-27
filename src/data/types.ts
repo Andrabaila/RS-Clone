@@ -12,6 +12,11 @@ export interface User {
     groups: number[]; // перечень групп который подключил/создал пользователь
 }
 
+export interface SendUser {
+    name: string; // имя человека
+    groups: number[]; // перечень групп который подключил/создал пользователь
+}
+
 export interface UserInGroup {
     id: number;
     name: string; // имя человека

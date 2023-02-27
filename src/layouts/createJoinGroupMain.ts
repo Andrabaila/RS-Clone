@@ -1,9 +1,8 @@
 import getHtmlElement from '../components/getHtmlElement';
 import getLangObj from '../features/getLangObj';
 import setCurrentGroup from '../features/setCurrentGroup';
-import { groupsArr } from '../data/database';
-import { GetGroup } from '../data/types';
 import showMessageWithTimer from '../features/showMessageWithTimer';
+import joinGroup from '../api/joinGroup';
 
 function createJoinGroupMain() {
     const langObj = getLangObj();
@@ -36,16 +35,38 @@ function createJoinGroupMain() {
     inputCode.placeholder = langObj.placeholderJoinGroup;
     inputCode.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' && inputCode.value !== '') {
-            let isGroupExisting = false;
-            groupsArr.forEach((groupObj: GetGroup) => {
-                if (String(groupObj.id) === inputCode.value) {
-                    isGroupExisting = true;
+            joinGroup(inputCode.value)
+                .then((status) => {
+                    if (status === 200) {
+                        setCurrentGroup(inputCode.value);
+                        window.location.hash = '#/overview';
+                    } else {
+                        throw new Error();
+                    }
+                })
+                .catch(() => {
+                    document.querySelector('.message')?.remove();
+                    const message = getHtmlElement({
+                        parent: '.main',
+                        style: ['message'],
+                        content: `${langObj.noGroupMessage}${inputCode.value}`,
+                    });
+                    showMessageWithTimer(message, 3000);
+                });
+        }
+    });
+
+    buttonJoin.addEventListener('click', () => {
+        joinGroup(inputCode.value)
+            .then((status) => {
+                if (status === 200) {
                     setCurrentGroup(inputCode.value);
                     window.location.hash = '#/overview';
+                } else {
+                    throw new Error();
                 }
-            });
-
-            if (!isGroupExisting) {
+            })
+            .catch(() => {
                 document.querySelector('.message')?.remove();
                 const message = getHtmlElement({
                     parent: '.main',
@@ -53,29 +74,7 @@ function createJoinGroupMain() {
                     content: `${langObj.noGroupMessage}${inputCode.value}`,
                 });
                 showMessageWithTimer(message, 3000);
-            }
-        }
-    });
-
-    buttonJoin.addEventListener('click', () => {
-        let isGroupExisting = false;
-        groupsArr.forEach((groupObj: GetGroup) => {
-            if (String(groupObj.id) === inputCode.value) {
-                isGroupExisting = true;
-                setCurrentGroup(inputCode.value);
-                window.location.hash = '#/overview';
-            }
-        });
-
-        if (!isGroupExisting && inputCode.value !== '') {
-            document.querySelector('.message')?.remove();
-            const message = getHtmlElement({
-                parent: '.main',
-                style: ['message'],
-                content: `${langObj.noGroupMessage}${inputCode.value}`,
             });
-            showMessageWithTimer(message, 3000);
-        }
     });
 
     inputCode.focus();
