@@ -1,5 +1,7 @@
 import createGroup from '../api/createGroup';
+import joinGroup from '../api/joinGroup';
 import getHtmlElement from '../components/getHtmlElement';
+import { GetGroup } from '../data/types';
 import getLangObj from '../features/getLangObj';
 
 function createNewGroupMain() {
@@ -34,8 +36,13 @@ function createNewGroupMain() {
     inputName.placeholder = langObj.placeholderNewGroup;
 
     buttonCreate.addEventListener('click', () => {
-        createGroup(inputName.value).then(() => {
-            window.location.hash = '/overview';
+        const group = createGroup(inputName.value);
+
+        group.then((newGroup: GetGroup) => {
+            localStorage.currentGroup = newGroup.id;
+            joinGroup().then(() => {
+                window.location.hash = '/overview';
+            });
         });
     });
 

@@ -2,6 +2,8 @@ import getHtmlElement from '../components/getHtmlElement';
 import getLangObj from '../features/getLangObj';
 import togglePopup from '../features/togglePopup';
 import createGroup from '../api/createGroup';
+import joinGroup from '../api/joinGroup';
+import { GetGroup } from '../data/types';
 
 function createPopup() {
     const langObj = getLangObj();
@@ -51,8 +53,13 @@ function createPopup() {
         content: langObj.buttonCreate,
     });
     buttonCreate.addEventListener('click', () => {
-        createGroup(inputName.value).then(() => {
-            window.location.hash = '/overview';
+        const group = createGroup(inputName.value);
+
+        group.then((newGroup: GetGroup) => {
+            localStorage.currentGroup = newGroup.id;
+            joinGroup().then(() => {
+                window.location.hash = '/overview';
+            });
         });
     });
 }
