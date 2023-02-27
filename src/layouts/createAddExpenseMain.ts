@@ -2,11 +2,11 @@ import getGroup from '../api/getGroup';
 import getHtmlElement from '../components/getHtmlElement';
 import getCurrentDate from '../features/getCurrentDate';
 import getLangObj from '../features/getLangObj';
-import setPayment from '../features/setPayment';
+import setExpense from '../features/setExpense';
 import toggleText from '../features/toggleText';
 import toggleVisibility from '../features/toggleVisibility';
 
-const currentСurrency = localStorage.getItem('currency');
+const currentCurrency = localStorage.getItem('currency');
 async function createAddPaymentMain() {
     const langObj = getLangObj();
 
@@ -31,7 +31,7 @@ async function createAddPaymentMain() {
     });
 
     btnSave.addEventListener('click', () => {
-        setPayment().then(() => {
+        setExpense().then(() => {
             window.location.hash = '#/overview';
         });
     });
@@ -75,7 +75,7 @@ async function createAddPaymentMain() {
         parent: '.form__currency',
         tag: 'span',
         style: ['text', 'text_add-payment'],
-        content: currentСurrency || 'error LS current currency',
+        content: currentCurrency || 'error LS current currency',
     });
 
     //* ***************************second item***********************************
@@ -113,21 +113,21 @@ async function createAddPaymentMain() {
         style: ['text', 'text_add-payment'],
         content: langObj.textTo,
     });
-    getHtmlElement({
-        parent: '.form__to',
-        tag: 'select',
-        style: ['select', 'select_add-payment-to'],
-    });
+    // getHtmlElement({
+    //     parent: '.form__to',
+    //     tag: 'select',
+    //     style: ['select', 'select_add-payment-to'],
+    // });
 
-    group.users.forEach((user) => {
-        getHtmlElement({
-            parent: '.select_add-payment-to',
-            tag: 'option',
-            style: ['input', 'input_add-payment'],
-            content: user.name,
-        }).dataset.userId = `${user.id}`;
-    });
-    // getHtmlElement({ parent: '.form__to', tag: 'span', style: ['text', 'text_add-payment'], content: 'Another' });
+    // group.users.forEach((user) => {
+    //     getHtmlElement({
+    //         parent: '.select_add-payment-to',
+    //         tag: 'option',
+    //         style: ['input', 'input_add-payment'],
+    //         content: user.name,
+    //     }).dataset.userId = `${user.id}`;
+    // });
+    getHtmlElement({ parent: '.form__to', tag: 'span', style: ['text', 'text_add-payment'], content: 'Another' });
 
     //* ***************************third item***********************************
 

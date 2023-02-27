@@ -92,6 +92,8 @@ const russian: { readonly [x: string]: string } = {
     createUserGreeting: 'Представьтесь',
     createUserButton: 'Войти',
     errorMessageAddNewUser: 'Cервер не доступен',
+
+    buttonBack: 'Назад',
 };
 
 export default russian;

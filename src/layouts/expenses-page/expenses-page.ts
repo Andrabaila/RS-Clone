@@ -1,5 +1,5 @@
 import { addFocusedToBtn, addPictureBasketOrArrow, findObjectById } from '../../features/tools';
-import { expenses } from '../../data/database_new';
+import { expensesArr } from '../../data/database';
 import { makeMainHtml, addExpensesItem } from './expenses-pageHtml';
 import stringToElement from '../../components/stringToElement';
 import { makeExpenseDetailHtml, makeModalBlockForElement } from '../expense-detail-page/expense-detail';
@@ -11,7 +11,7 @@ const addButtonItemElementLogic = (e: MouseEvent) => {
     if (e.currentTarget instanceof HTMLElement) {
         const expenseid = e.currentTarget?.dataset.expenseid;
         if (expenseid) {
-            const expenseObject = findObjectById(expenses, Number(expenseid));
+            const expenseObject = findObjectById(expensesArr, Number(expenseid));
             if (expenseObject?.title) {
                 makeExpenseDetailHtml(
                     expenseObject.title,
@@ -22,7 +22,7 @@ const addButtonItemElementLogic = (e: MouseEvent) => {
                     expenseObject.for.length,
                     expenseObject.by.name,
                     expenseObject.for[0].name,
-                    String(expenseObject.date),
+                    String(new Date().setTime(expenseObject.date)),
                     '',
                     'display-none'
                 );
@@ -51,7 +51,7 @@ const addExpensesPageHtml = () => {
     document.querySelector('.header')?.after(mainElement);
 
     const expensesBlockElement = document.querySelector('.expenses-block');
-    expenses.forEach((expense) => {
+    expensesArr.forEach((expense) => {
         const expensesItemString = expense.title
             ? addExpensesItem(
                   'goods',
