@@ -1,28 +1,32 @@
 import { addFocusedToBtn, addPictureBasketOrArrow, findObjectById } from '../../features/tools';
+import getDateFromMs from '../../features/getDateFromMs';
 import { expensesArr } from '../../data/database';
 import { makeMainHtml, addExpensesItem } from './expenses-pageHtml';
 import stringToElement from '../../components/stringToElement';
 import { makeExpenseDetailHtml, makeModalBlockForElement } from '../expense-detail-page/expense-detail';
 import getLangObj from '../../features/getLangObj';
+import getExpensesArr from '../../api/getExpensesArr';
 
 const langObj = getLangObj();
 
 const addButtonItemElementLogic = (e: MouseEvent) => {
+    const mainCurrency = localStorage.getItem('currency');
     if (e.currentTarget instanceof HTMLElement) {
         const expenseid = e.currentTarget?.dataset.expenseid;
         if (expenseid) {
             const expenseObject = findObjectById(expensesArr, Number(expenseid));
             if (expenseObject?.title) {
+                console.log('date from exp-page=', expenseObject.date);
                 makeExpenseDetailHtml(
                     expenseObject.title,
                     'basket',
                     expenseObject.amount,
-                    'USD',
+                    mainCurrency || 'no LS currency',
                     expenseObject.by.name,
                     expenseObject.for.length,
                     expenseObject.by.name,
                     expenseObject.for[0].name,
-                    String(new Date().setTime(expenseObject.date)),
+                    getDateFromMs(expenseObject.date),
                     '',
                     'display-none'
                 );
@@ -32,12 +36,12 @@ const addButtonItemElementLogic = (e: MouseEvent) => {
                     langObj.payment,
                     'arrow',
                     expenseObject.amount,
-                    'USD',
+                    mainCurrency || 'no LS currency',
                     expenseObject.by.name,
                     expenseObject.for.length,
                     expenseObject.by.name,
                     expenseObject.for[0].name,
-                    String(expenseObject.date),
+                    getDateFromMs(expenseObject.date),
                     'display-none',
                     ''
                 );
@@ -46,11 +50,14 @@ const addButtonItemElementLogic = (e: MouseEvent) => {
     }
 };
 
-const addExpensesPageHtml = () => {
+export const addExpensesPageHtml = async () => {
     const mainElement = stringToElement(makeMainHtml());
     document.querySelector('.header')?.after(mainElement);
 
     const expensesBlockElement = document.querySelector('.expenses-block');
+    await getExpensesArr();
+    console.log('expensesArr_after_fetch=', expensesArr);
+    if (expensesBlockElement) expensesBlockElement.innerHTML = '';
     expensesArr.forEach((expense) => {
         const expensesItemString = expense.title
             ? addExpensesItem(

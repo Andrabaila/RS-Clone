@@ -31,7 +31,7 @@ export const addExpenseDetailHtml = (
 <div class="header__wrapper-expense-detail">
   <div class="header-expense-detail-top">
     <div class="btn-expense-detail-arrow">
-      <a href='/#/expenses_page' onclick="window.location.hash = '#/expense_detail';">
+      <a onclick="location.reload()";>
         <?xml version="1.0" ?>
         <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg
           height="28px" id="Layer_1" style="enable-background:new 0 0 128 128;" version="1.1" viewBox="0 0 128 128"
@@ -50,7 +50,7 @@ export const addExpenseDetailHtml = (
         </svg>
       </a>
     </div>
-    <div class="btn-expense-detail-edit">${btnEdit}</div>
+    <div class="btn-expense-detail-edit display-none">${btnEdit}</div>
   </div>
   <div class="header-expense-detail-bottom">
     <div class="expense-detail-bottom-svg">

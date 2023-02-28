@@ -3,6 +3,7 @@ import getLangObj from '../features/getLangObj';
 import togglePopup from '../features/togglePopup';
 import { groupsArr } from '../data/database';
 import { UserInGroup } from '../data/types';
+import { roundTwoDigitsAfter } from '../features/tools';
 
 function createOverviewMain() {
     const langObj = getLangObj();
@@ -34,7 +35,7 @@ function createOverviewMain() {
             parentNode: listItem,
             tag: 'span',
             style: ['members-list__text'],
-            content: String(userObj.balance),
+            content: String(roundTwoDigitsAfter(userObj.balance)),
         });
     });
 

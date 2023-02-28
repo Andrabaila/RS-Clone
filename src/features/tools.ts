@@ -1,6 +1,6 @@
 import { GetExpense, GetGroup } from '../data/types';
 import { groupsArr } from '../data/database';
-// import getGroups from '../api/getGroups';
+import getGroups from '../api/getGroups';
 import getGroupsData from '../api/getGroupsData';
 import getLangObj from './getLangObj';
 
@@ -68,7 +68,6 @@ export const innerHtmlInElement = (elemClass: string, insertHtml: string) => {
     const elem = document.querySelector(elemClass);
     if (elem) elem.innerHTML = insertHtml;
 };
-// addListenerOpenCloseModal('.burger__menu', '.modal', 'modal-open', '.burger__nav');
 export const addListenerOpenCloseModal = (
     btnClass: string,
     modalClass: string,
@@ -115,9 +114,9 @@ export const changeHeaderGroupText = async (currentGroupId: string, fromServer: 
     innerHtmlInElement('.header__group-name', groupName);
 };
 
-// export const addCurrentGroupInLocalStorage = async () => {
-//     const nextGroupObj = await getGroups();
-//     const nextGroupId = nextGroupObj[0].id;
-//     changeHeaderGroupText(String(nextGroupId), '');
-//     localStorage.setItem('currentGroup', `${nextGroupId}`);
-// };
+export const addCurrentGroupInLocalStorage = async () => {
+    const nextGroupObj = await getGroups();
+    const nextGroupId = nextGroupObj[0].id;
+    changeHeaderGroupText(String(nextGroupId), '');
+    localStorage.setItem('currentGroup', `${nextGroupId}`);
+};

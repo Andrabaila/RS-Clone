@@ -51,7 +51,7 @@ export const getHeaderHtml = (
     groups: string,
     feedback: string,
     about: string,
-    total: string,
+    instruction: string,
     addPhoto: string,
     changeName: string,
     changeCurrency: string,
@@ -81,7 +81,7 @@ export const getHeaderHtml = (
         <div class="burger__bottom">
           <ul class="burger__list">
             <li><a href="mailto:ppl@vivanta.by" class="burger__link1">${feedback}</a></li>
-            <li><a href="/" class="burger__link2">${about}</a></li>
+            <li><a href="https://github.com/Andrabaila/RS-Clone/pull/1" target="_blank" class="burger__link2">${about}</a></li>
           </ul>
         </div>
       </nav>
@@ -93,10 +93,8 @@ export const getHeaderHtml = (
       </div>
       <nav class="dotted__nav">
         <ul class="dotted__list">
-          <li><a href="/" class="dotted__link">${total}</a></li>
-          <li><a href="/" class="dotted__link">${addPhoto}</a></li>
-          <li><a href="/" class="dotted__link">${changeName}</a></li>
-          <li><a href="/" class="dotted__link">${changeCurrency}</a></li>
+          <li><a href="/#/currencies" class="dotted__link">${changeCurrency}</a></li>
+          <li><a href="/#/instruction" class="dotted__link">${instruction}</a></li>
         </ul>
       </nav>
     </div>

@@ -99,8 +99,8 @@ const addTrashButtonLogic = (e: Event) => {
             localStorage.setItem('currentGroup', `${mainGroupId}`);
             changeHeaderGroupText(mainGroupId, '');
             addRemoveClassInAllElements('.burger__row2', '.burger__group-name', 'background-group-name', 'remove');
-            // toggleClassInElementById(mainGroupId, 'background-group-name');
             addRemoveClassInElementById(mainGroupId, 'background-group-name', 'add');
+            document.location.reload();
         }
         if (targetGroupId) {
             innerHtmlInElement(
