@@ -1,6 +1,6 @@
 import { GetExpense, GetGroup } from '../data/types';
 import { groupsArr } from '../data/database';
-// import getGroups from '../api/getGroups';
+import getGroups from '../api/getGroups';
 import getGroupsData from '../api/getGroupsData';
 import getLangObj from './getLangObj';
 
@@ -115,9 +115,9 @@ export const changeHeaderGroupText = async (currentGroupId: string, fromServer: 
     innerHtmlInElement('.header__group-name', groupName);
 };
 
-// export const addCurrentGroupInLocalStorage = async () => {
-//     const nextGroupObj = await getGroups();
-//     const nextGroupId = nextGroupObj[0].id;
-//     changeHeaderGroupText(String(nextGroupId), '');
-//     localStorage.setItem('currentGroup', `${nextGroupId}`);
-// };
+export const addCurrentGroupInLocalStorage = async () => {
+    const nextGroupObj = await getGroups();
+    const nextGroupId = nextGroupObj[0].id;
+    changeHeaderGroupText(String(nextGroupId), '');
+    localStorage.setItem('currentGroup', `${nextGroupId}`);
+};

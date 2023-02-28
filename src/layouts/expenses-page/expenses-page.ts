@@ -4,6 +4,7 @@ import { makeMainHtml, addExpensesItem } from './expenses-pageHtml';
 import stringToElement from '../../components/stringToElement';
 import { makeExpenseDetailHtml, makeModalBlockForElement } from '../expense-detail-page/expense-detail';
 import getLangObj from '../../features/getLangObj';
+import getExpensesP from '../../api/getExpensesP';
 
 const langObj = getLangObj();
 
@@ -46,11 +47,13 @@ const addButtonItemElementLogic = (e: MouseEvent) => {
     }
 };
 
-const addExpensesPageHtml = () => {
+export const addExpensesPageHtml = async () => {
     const mainElement = stringToElement(makeMainHtml());
     document.querySelector('.header')?.after(mainElement);
 
     const expensesBlockElement = document.querySelector('.expenses-block');
+    await getExpensesP();
+    console.log(expensesArr);
     expensesArr.forEach((expense) => {
         const expensesItemString = expense.title
             ? addExpensesItem(
