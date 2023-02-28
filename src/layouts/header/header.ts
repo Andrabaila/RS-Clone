@@ -15,7 +15,6 @@ import { GetGroup } from '../../data/types';
 import getGroupsData from '../../api/getGroupsData';
 import deleteGroup from '../../api/deleteGroup';
 import getGroups from '../../api/getGroups';
-// import { addExpensesPageHtml } from '../expenses-page/expenses-page';
 
 const langObj = getLangObj();
 
@@ -101,6 +100,7 @@ const addTrashButtonLogic = (e: Event) => {
             changeHeaderGroupText(mainGroupId, '');
             addRemoveClassInAllElements('.burger__row2', '.burger__group-name', 'background-group-name', 'remove');
             addRemoveClassInElementById(mainGroupId, 'background-group-name', 'add');
+            document.location.reload();
         }
         if (targetGroupId) {
             innerHtmlInElement(
