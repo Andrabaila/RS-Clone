@@ -3,9 +3,10 @@ import { groupsArr } from '../data/database';
 import { GetGroup } from '../data/types';
 
 async function getGroups() {
-    groupsArr.length = 0;
-    const request = `${API.baseUrl}${API.groups}`;
+    const userId = localStorage.getItem('user');
 
+    groupsArr.length = 0;
+    const request = `${API.baseUrl}${API.users}/${userId}/${API.groups}`;
     try {
         const response = await fetch(request);
         const data = await response.json();

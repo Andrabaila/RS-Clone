@@ -12,9 +12,7 @@ function routeFunctions(event: MouseEvent) {
 
         const functions: FunctionObject = {
             startPageButtonNew: () => createNewGroupPage,
-            startPageButtonJoin: () => {
-                console.log('createJoinGroupMain');
-            },
+            startPageButtonJoin: () => {},
         };
 
         functions[event.target.id]?.();

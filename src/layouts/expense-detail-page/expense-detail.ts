@@ -25,7 +25,6 @@ const addListenerBtnEdit = (inputValue: string) => {
                 addRemoveClassInElement('.expense-detail-input', 'bordered', 'remove');
                 addRemoveClassInElement('.button-expense-detail', 'display-none', 'add');
                 // ============================TO API изменение имени =======================================
-                console.log(input.value);
             }
         });
     }
@@ -92,7 +91,7 @@ export const makeExpenseDetailHtml = (
         byName,
         langObj.forWhom,
         forUsers,
-        from,
+        langObj.forWhom,
         to,
         langObj.date,
         dateText,
