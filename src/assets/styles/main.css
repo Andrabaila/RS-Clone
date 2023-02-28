@@ -1158,7 +1158,7 @@ input[type=number]:focus {
   bottom: 0;
   width: -moz-fit-content;
   width: fit-content;
-  height: 30rem;
+  height: 16rem;
   background-color: #ffffff;
   opacity: 0.95;
   transform: translateX(100%);
@@ -1407,6 +1407,7 @@ input.bordered {
 .expenses-item {
   justify-content: space-between;
   font-size: 1.8rem;
+  line-height: 2.5rem;
 }
 
 .expenses-picture-text-wrapper {

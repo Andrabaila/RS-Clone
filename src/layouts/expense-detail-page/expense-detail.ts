@@ -91,7 +91,7 @@ export const makeExpenseDetailHtml = (
         byName,
         langObj.forWhom,
         forUsers,
-        from,
+        langObj.forWhom,
         to,
         langObj.date,
         dateText,

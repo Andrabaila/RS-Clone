@@ -12,7 +12,6 @@ import {
 } from '../../features/tools';
 import getLangObj from '../../features/getLangObj';
 import { GetGroup } from '../../data/types';
-import getGroupsData from '../../api/getGroupsData';
 import deleteGroup from '../../api/deleteGroup';
 import getGroups from '../../api/getGroups';
 
@@ -140,7 +139,7 @@ const addBurgerGroupNameHtml = (groupName: string, id = groupName): void => {
     parentDiv?.append(btnItem);
 };
 const addGroupNames = async () => {
-    const arrOfGroups: GetGroup[] = await getGroupsData();
+    const arrOfGroups: GetGroup[] = await getGroups();
     const namesContainer = document.querySelector('.burger__row2');
     if (namesContainer) {
         namesContainer.innerHTML = '';
