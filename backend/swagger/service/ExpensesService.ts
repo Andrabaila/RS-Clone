@@ -1,5 +1,8 @@
 'use strict';
 
+interface Examples {
+  [key: string]: {}
+}
 
 /**
  * Создание новой покупки
@@ -8,9 +11,9 @@
  * body ExpenseSet 
  * returns Expense
  **/
-exports.addExpense = function(groupId,body) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
+exports.addExpense = function(groupId: string, body: any) {
+  return new Promise<void | {}>(function(resolve, reject) {
+    var examples: Examples = {};
     examples['application/json'] = {"empty": false};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -28,8 +31,8 @@ exports.addExpense = function(groupId,body) {
  * expenseId Object id покупки
  * no response value expected for this operation
  **/
-exports.deleteGroup = function(groupId,expenseId) {
-  return new Promise(function(resolve, reject) {
+exports.deleteGroup = function(groupId: string, expenseId: string) {
+  return new Promise<void | {}>(function(resolve, reject) {
     resolve();
   });
 }
@@ -41,9 +44,9 @@ exports.deleteGroup = function(groupId,expenseId) {
  * groupId Object id группы
  * returns List
  **/
-exports.getAllExpenses = function(groupId) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
+exports.getAllExpenses = function(groupId: string) {
+  return new Promise<void | {}>(function(resolve, reject) {
+    var examples: Examples = {};
     examples['application/json'] = {};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -61,9 +64,9 @@ exports.getAllExpenses = function(groupId) {
  * expenseId Object id покупки
  * returns Expense
  **/
-exports.getGroup = function(groupId,expenseId) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
+exports.getGroup = function(groupId: string, expenseId: string) {
+  return new Promise<void | {}>(function(resolve, reject) {
+    var examples: Examples = {};
     examples['application/json'] = {"empty": false};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -82,9 +85,9 @@ exports.getGroup = function(groupId,expenseId) {
  * body ExpenseSet 
  * returns Expense
  **/
-exports.updateGroup = function(groupId,expenseId,body) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
+exports.updateGroup = function(groupId: string, expenseId: string, body: any) {
+  return new Promise<void | {}>(function(resolve, reject) {
+    var examples: Examples = {};
     examples['application/json'] = {"empty": false};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);

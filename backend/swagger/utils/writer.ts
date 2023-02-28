@@ -1,13 +1,23 @@
-var ResponsePayload = function(code, payload) {
-  this.code = code;
-  this.payload = payload;
+interface WriteJson { 
+  writeHead: (arg0: string | number | ResponsePayload, arg1: { 'Content-Type': string; }) => void; 
+  end: (arg0: string | undefined) => void; 
 }
 
-exports.respondWithCode = function(code, payload) {
+class ResponsePayload {
+  code: string;
+  payload: string;
+
+  constructor(code: string, payload: string) {
+    this.code = code;
+    this.payload = payload;
+  }
+}
+
+exports.respondWithCode = function(code: string, payload: string) {
   return new ResponsePayload(code, payload);
 }
 
-var writeJson = exports.writeJson = function(response, arg1, arg2) {
+var writeJson = exports.writeJson = function(response: WriteJson, arg1: string | ResponsePayload, arg2: string | ResponsePayload) {
   var code;
   var payload;
 

@@ -35,14 +35,15 @@ export async function updateBalance(groupId: number): Promise<void> {
           return;
         }
       
-        const amountForOne = expense.amount / users.length;
-        const amountForByer = expense.amount - amountForOne;
+        const amountForOne = Math.floor(expense.amount / users.length);
+        const amountForByer = Math.floor(expense.amount - amountForOne);
       
         if (i === 0) users[byUserPosition].balance = 0;
 
+        console.log(amountForByer, byUserPosition, users)
         users[byUserPosition].balance += amountForByer;
         forUserPositions.forEach((user) => {
-          if (i === 0) users[byUserPosition].balance = 0;
+          if (i === 0) users[user].balance = 0;
           users[user].balance -= amountForOne;
         })
       })

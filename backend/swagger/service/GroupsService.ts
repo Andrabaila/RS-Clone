@@ -1,15 +1,14 @@
 'use strict';
 
-
 /**
  * Создание новой группы
  *
  * body GroupSet 
  * returns GroupSet
  **/
-exports.addUser = function(body) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
+exports.addUser = function(body: any) {
+  return new Promise<void | {}>(function(resolve, reject) {
+    var examples: Examples = {};
     examples['application/json'] = {"empty": false};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -26,8 +25,8 @@ exports.addUser = function(body) {
  * id Object id группы
  * no response value expected for this operation
  **/
-exports.deleteGroup = function(id) {
-  return new Promise(function(resolve, reject) {
+exports.deleteGroup = function(id: string)  {
+  return new Promise<void | {}>(function(resolve, reject) {
     resolve();
   });
 }
@@ -39,8 +38,8 @@ exports.deleteGroup = function(id) {
  * returns List
  **/
 exports.getAllgroups = function() {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
+  return new Promise<void | {}>(function(resolve, reject) {
+    var examples: Examples = {};
     examples['application/json'] = {};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -57,9 +56,9 @@ exports.getAllgroups = function() {
  * id Object id группы
  * returns Group
  **/
-exports.getGroup = function(id) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
+exports.getGroup = function(id: string)  {
+  return new Promise<void | {}>(function(resolve, reject) {
+    var examples: Examples = {};
     examples['application/json'] = {"empty": false};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -77,9 +76,9 @@ exports.getGroup = function(id) {
  * body Group 
  * returns Group
  **/
-exports.updateGroup = function(id,body) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
+exports.updateGroup = function(id: string, body: any) {
+  return new Promise<void | {}>(function(resolve, reject) {
+    var examples: Examples = {};
     examples['application/json'] = {"empty": false};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);

@@ -7,9 +7,9 @@
  * body User 
  * returns User
  **/
-exports.addUser = function(body) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
+exports.addUser = function(body: any) {
+  return new Promise<void | {}>(function(resolve, reject) {
+    var examples: Examples = {};
     examples['application/json'] = {"empty": false};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -26,8 +26,8 @@ exports.addUser = function(body) {
  * id Object id пользователя
  * no response value expected for this operation
  **/
-exports.deleteUser = function(id) {
-  return new Promise(function(resolve, reject) {
+exports.deleteUser = function(id: string) {
+  return new Promise<void | {}>(function(resolve, reject) {
     resolve();
   });
 }
@@ -39,8 +39,8 @@ exports.deleteUser = function(id) {
  * returns List
  **/
 exports.getAllUsers = function() {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
+  return new Promise<void | {}>(function(resolve, reject) {
+    var examples: Examples = {};
     examples['application/json'] = {};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -57,9 +57,9 @@ exports.getAllUsers = function() {
  * id Object id пользователя
  * returns User
  **/
-exports.getUser = function(id) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
+exports.getUser = function(id: string) {
+  return new Promise<void | {}>(function(resolve, reject) {
+    var examples: Examples = {};
     examples['application/json'] = {"empty": false};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -76,9 +76,9 @@ exports.getUser = function(id) {
  * id Object id пользователя
  * returns List
  **/
-exports.getUserGroups = function(id) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
+exports.getUserGroups = function(id: string) {
+  return new Promise<void | {}>(function(resolve, reject) {
+    var examples: Examples = {};
     examples['application/json'] = {};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -96,9 +96,9 @@ exports.getUserGroups = function(id) {
  * body User 
  * returns User
  **/
-exports.updateUser = function(id,body) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
+exports.updateUser = function(id: string, body: any) {
+  return new Promise<void | {}>(function(resolve, reject) {
+    var examples: Examples = {};
     examples['application/json'] = {"empty": false};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
