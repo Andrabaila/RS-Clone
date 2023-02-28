@@ -31,12 +31,35 @@ async function createAddPaymentMain() {
     });
 
     btnSave.addEventListener('click', () => {
-        setExpense().then(() => {
+        setExpense(true).then(() => {
             window.location.hash = '#/overview';
         });
     });
 
     getHtmlElement({ parent: '.main__wrapper', tag: 'form', style: ['form_add-payment'] });
+
+    //* ***************************zeros item***********************************
+
+    getHtmlElement({ parent: '.form_add-payment', style: ['form__item_amount'] });
+    getHtmlElement({ parent: '.form__item_amount', style: ['form__amount'] });
+    getHtmlElement({
+        parent: '.form__amount',
+        tag: 'span',
+        style: ['text', 'text_add-payment'],
+        content: langObj.titleExpense,
+    });
+    const name = getHtmlElement({
+        parent: '.form__amount',
+        tag: 'input',
+        style: ['input', 'input_add-payment'],
+    }) as HTMLInputElement;
+    name.required = true;
+    getHtmlElement({
+        parent: '.form__amount',
+        tag: 'span',
+        style: ['text', 'text_add-payment'],
+        content: '',
+    });
 
     //* ***************************first item***********************************
 
@@ -113,20 +136,6 @@ async function createAddPaymentMain() {
         style: ['text', 'text_add-payment'],
         content: langObj.textTo,
     });
-    // getHtmlElement({
-    //     parent: '.form__to',
-    //     tag: 'select',
-    //     style: ['select', 'select_add-payment-to'],
-    // });
-
-    // group.users.forEach((user) => {
-    //     getHtmlElement({
-    //         parent: '.select_add-payment-to',
-    //         tag: 'option',
-    //         style: ['input', 'input_add-payment'],
-    //         content: user.name,
-    //     }).dataset.userId = `${user.id}`;
-    // });
     getHtmlElement({ parent: '.form__to', tag: 'span', style: ['text', 'text_add-payment'], content: 'Another' });
 
     //* ***************************third item***********************************

@@ -79,6 +79,7 @@ const belarusian: { readonly [x: string]: string } = {
 
     amount: 'Сума',
     currencies: 'Валюта',
+    titleExpense: 'Назва',
     by: 'Кім',
     forWhom: 'Для',
     from: 'Ад',

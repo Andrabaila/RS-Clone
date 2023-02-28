@@ -109,7 +109,6 @@ export const findNameInObjectById = (arr: GetGroup[], id: number) => {
 
 export const changeHeaderGroupText = async (currentGroupId: string, fromServer: string) => {
     const arr = fromServer ? await getGroupsData() : groupsArr;
-    console.log('fromServer=', fromServer, 'arr=', arr);
     const groupName = findNameInObjectById(arr, Number(currentGroupId)) || `${langObj.chooseGroup}`;
     innerHtmlInElement('.header__group-name', groupName);
 };

@@ -1,30 +1,20 @@
 import getHtmlElement from '../components/getHtmlElement';
 import getLangObj from '../features/getLangObj';
 import togglePopup from '../features/togglePopup';
-import { groupsArr } from '../data/database';
 import { UserInGroup } from '../data/types';
 import { roundTwoDigitsAfter } from '../features/tools';
+import getGroup from '../api/getGroup';
 
-function createOverviewMain() {
+async function createOverviewMain() {
     const langObj = getLangObj();
-    let currentGroupId: number;
-    const currentGroupUsersArr: UserInGroup[] = [];
-
-    if (localStorage.getItem('currentGroup')) {
-        currentGroupId = Number(localStorage.getItem('currentGroup'));
-    }
-
-    groupsArr.forEach((groupObj) => {
-        if (groupObj.id === currentGroupId) {
-            groupObj.users.forEach((userInGroup) => {
-                currentGroupUsersArr.push(userInGroup);
-            });
-        }
-    });
+    let currentGroupUsersArr: UserInGroup[] = [];
 
     document.querySelector('.main')?.remove();
-
     getHtmlElement({ parent: 'body', tag: 'main', style: ['main', 'main_overview'] });
+
+    const group = await getGroup();
+    currentGroupUsersArr = group.users;
+
     getHtmlElement({ parent: '.main', style: ['main__wrapper', 'main__wrapper_overview'] });
     getHtmlElement({ parent: '.main__wrapper', tag: 'ul', style: ['members-list'] });
     currentGroupUsersArr.forEach((userObj) => {
