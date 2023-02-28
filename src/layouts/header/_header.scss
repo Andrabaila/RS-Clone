@@ -21,6 +21,7 @@
     @extend %column;
     align-items: center;
     width: 100%;
+    max-width: $max-width-layout;
     gap: 1rem;
 }
 
@@ -340,9 +341,9 @@
         color: #000000;
     }
 }
-.text_instruction-page{
-  padding: 2rem;
-  font-size: 1.7rem;
-  font-style: italic;
-  line-height: 2.2rem;
+.text_instruction-page {
+    padding: 2rem;
+    font-size: 1.7rem;
+    font-style: italic;
+    line-height: 2.2rem;
 }

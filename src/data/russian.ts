@@ -79,6 +79,7 @@ const russian: { readonly [x: string]: string } = {
 
     amount: 'Сумма',
     currencies: 'Валюта',
+    titleExpense: 'Название',
     by: 'Кем',
     forWhom: 'Для',
     from: 'От',

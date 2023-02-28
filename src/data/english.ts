@@ -79,6 +79,7 @@ const english: { readonly [x: string]: string } = {
 
     amount: 'Amount',
     currencies: 'Currency',
+    titleExpense: 'Title',
     by: 'By',
     forWhom: 'For',
     from: 'From',

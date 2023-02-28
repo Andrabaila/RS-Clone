@@ -1,7 +1,6 @@
 import createNewUser from '../api/createNewUser';
 import getHtmlElement from '../components/getHtmlElement';
 import getLangObj from '../features/getLangObj';
-import createStartPage from '../pages/createStartPage';
 
 function createGreetingMain() {
     const langObj = getLangObj();
@@ -29,7 +28,6 @@ function createGreetingMain() {
 
     buttonCreate.addEventListener('click', () => {
         createNewUser(inputName.value).then((user) => {
-            createStartPage();
             localStorage.user = user.id;
             window.location.hash = '';
         });
