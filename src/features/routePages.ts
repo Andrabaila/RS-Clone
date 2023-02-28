@@ -7,6 +7,7 @@ import createAddPaymentPage from '../pages/createAddPaymentPage';
 import createAddExpensePage from '../pages/createAddExpensePage';
 import createCurrenciesPage from '../pages/createCurrenciesPage';
 import createGreetingPage from '../pages/createGreetingPage';
+import createInstruction from '../pages/createInstruction';
 
 function routePages() {
     const { hash } = window.location;
@@ -15,7 +16,7 @@ function routePages() {
     switch (page) {
         case '': {
             if (localStorage.getItem('user')) {
-                createOverviewPage();
+                createExpensesPage();
             } else {
                 createGreetingPage();
             }
@@ -45,8 +46,11 @@ function routePages() {
         case '#/currencies':
             createCurrenciesPage();
             break;
+        case '#/instruction':
+            createInstruction();
+            break;
         default:
-            createExpensesPage();
+            createGreetingPage();
     }
 }
 

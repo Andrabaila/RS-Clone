@@ -16,7 +16,7 @@ const english: { readonly [x: string]: string } = {
     burgerTop: 'Groups',
     burgerFeedback: 'Feedback',
     burgerAbout: 'About',
-    dottedTotal: 'Total expenditure',
+    dottedTotal: 'Instruction',
     dottedAdd: 'Add group photo',
     dottedChangeName: 'Change name',
     dottedChangeCurrency: 'Change currency',

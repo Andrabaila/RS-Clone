@@ -2,7 +2,7 @@ import { API, ERROR_MESSAGE1 } from '../data/constants';
 import { expensesArr } from '../data/database';
 import { GetExpense } from '../data/types';
 
-async function getExpensesP() {
+async function getExpensesArr() {
     const currentGroupId = localStorage.getItem('currentGroup');
     expensesArr.length = 0;
     const request = `${API.baseUrl}${API.expenses}/${currentGroupId}`;
@@ -14,7 +14,7 @@ async function getExpensesP() {
         data.forEach((expenseObj: GetExpense) => {
             expensesArr.push(expenseObj);
         });
-        console.log('expensesArr=', expensesArr);
+        console.log('expensesArrFromApiFUNCgetExpensesArr=', expensesArr);
         return expensesArr;
     } catch (err) {
         console.log(err);
@@ -22,4 +22,4 @@ async function getExpensesP() {
     }
 }
 
-export default getExpensesP;
+export default getExpensesArr;

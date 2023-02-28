@@ -68,7 +68,6 @@ export const innerHtmlInElement = (elemClass: string, insertHtml: string) => {
     const elem = document.querySelector(elemClass);
     if (elem) elem.innerHTML = insertHtml;
 };
-// addListenerOpenCloseModal('.burger__menu', '.modal', 'modal-open', '.burger__nav');
 export const addListenerOpenCloseModal = (
     btnClass: string,
     modalClass: string,

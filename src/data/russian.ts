@@ -16,7 +16,7 @@ const russian: { readonly [x: string]: string } = {
     burgerTop: 'Группы',
     burgerFeedback: 'Отзыв',
     burgerAbout: 'О нас',
-    dottedTotal: 'Общие расходы',
+    dottedTotal: 'Инструкция',
     dottedAdd: 'Добавить групповое фото',
     dottedChangeName: 'Изменить имя',
     dottedChangeCurrency: 'Изменить валюту',

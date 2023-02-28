@@ -16,7 +16,7 @@ const belarusian: { readonly [x: string]: string } = {
     burgerTop: 'Гурты',
     burgerFeedback: 'Водгук',
     burgerAbout: 'Пра нас',
-    dottedTotal: 'Агульныя выдаткі',
+    dottedTotal: 'Iнструкцыя',
     dottedAdd: 'Дадаць групавое фота',
     dottedChangeName: 'Змяніць імя',
     dottedChangeCurrency: 'Змяніць валюту',
