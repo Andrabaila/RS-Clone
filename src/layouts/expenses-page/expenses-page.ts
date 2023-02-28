@@ -15,8 +15,8 @@ const addButtonItemElementLogic = (e: MouseEvent) => {
         const expenseid = e.currentTarget?.dataset.expenseid;
         if (expenseid) {
             const expenseObject = findObjectById(expensesArr, Number(expenseid));
+            console.log(expenseObject);
             if (expenseObject?.title) {
-                console.log('date from exp-page=', expenseObject.date);
                 makeExpenseDetailHtml(
                     expenseObject.title,
                     'basket',
@@ -56,7 +56,6 @@ export const addExpensesPageHtml = async () => {
 
     const expensesBlockElement = document.querySelector('.expenses-block');
     await getExpensesArr();
-    console.log('expensesArr_after_fetch=', expensesArr);
     if (expensesBlockElement) expensesBlockElement.innerHTML = '';
     expensesArr.forEach((expense) => {
         const expensesItemString = expense.title

@@ -235,7 +235,7 @@
 }
 
 .dotted__nav {
-    @include modalRightSide(fit-content, 30rem, $color-light, 0.95);
+    @include modalRightSide(fit-content, 16rem, $color-light, 0.95);
     padding: 15px;
     z-index: 4;
     @extend %column;

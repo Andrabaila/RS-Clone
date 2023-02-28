@@ -7,12 +7,9 @@ export default async function setExpense() {
     if (!(paymentForm instanceof HTMLFormElement)) return;
 
     const inputs = Array.from(paymentForm.elements) as HTMLInputElement[];
-    console.log('inputs=', inputs);
     const options = Array.from(document.querySelectorAll('option')) as HTMLOptionElement[];
     const userBy = options.find((option) => option.value === inputs[1].value);
-    console.log('userBy', userBy);
     if (!userBy || !userBy.dataset.userId) return;
-    console.log('userBy.dataset=', userBy.dataset);
     const { userId } = userBy.dataset;
 
     const group = await getGroup();

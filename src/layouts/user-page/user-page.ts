@@ -27,7 +27,6 @@ export const addListenerBtnEdit = () => {
                 addRemoveClassInElement('.upage-block', 'display-none', 'remove');
                 addRemoveClassInElement('.button-upage', 'display-none', 'add');
                 // ============================TO API=======================================
-                console.log(input.value);
             }
         });
     }

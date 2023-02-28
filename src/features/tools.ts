@@ -1,7 +1,6 @@
 import { GetExpense, GetGroup } from '../data/types';
 import { groupsArr } from '../data/database';
 import getGroups from '../api/getGroups';
-import getGroupsData from '../api/getGroupsData';
 import getLangObj from './getLangObj';
 
 const langObj = getLangObj();
@@ -108,8 +107,7 @@ export const findNameInObjectById = (arr: GetGroup[], id: number) => {
 };
 
 export const changeHeaderGroupText = async (currentGroupId: string, fromServer: string) => {
-    const arr = fromServer ? await getGroupsData() : groupsArr;
-    console.log('fromServer=', fromServer, 'arr=', arr);
+    const arr = fromServer ? await getGroups() : groupsArr;
     const groupName = findNameInObjectById(arr, Number(currentGroupId)) || `${langObj.chooseGroup}`;
     innerHtmlInElement('.header__group-name', groupName);
 };
