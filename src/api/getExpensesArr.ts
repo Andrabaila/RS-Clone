@@ -14,7 +14,6 @@ async function getExpensesArr() {
         data.forEach((expenseObj: GetExpense) => {
             expensesArr.push(expenseObj);
         });
-        console.log('expensesArrFromApiFUNCgetExpensesArr=', expensesArr);
         return expensesArr;
     } catch (err) {
         console.log(err);

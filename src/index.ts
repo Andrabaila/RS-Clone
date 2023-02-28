@@ -3,7 +3,6 @@ import getGroups from './api/getGroups';
 import getUsers from './api/getUsers';
 import routePages from './features/routePages';
 import setHash from './features/setHash';
-// import getExpensesArr from './api/getExpensesArr';
 
 window.addEventListener('click', setHash);
 window.addEventListener('hashchange', routePages);
@@ -18,5 +17,4 @@ if (!localStorage.getItem('currency')) {
 getCurrencies();
 getGroups();
 getUsers();
-// getExpensesArr();
 routePages();

@@ -6,7 +6,6 @@ import showMessageWithTimer from '../features/showMessageWithTimer';
 async function createNewUser(name: string) {
     const langObj = getLangObj();
     const request = `${API.baseUrl}${API.users}`;
-    console.log('Post new User request=', request);
 
     try {
         const response = await fetch(request, {

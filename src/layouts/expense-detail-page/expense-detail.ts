@@ -25,7 +25,6 @@ const addListenerBtnEdit = (inputValue: string) => {
                 addRemoveClassInElement('.expense-detail-input', 'bordered', 'remove');
                 addRemoveClassInElement('.button-expense-detail', 'display-none', 'add');
                 // ============================TO API изменение имени =======================================
-                console.log(input.value);
             }
         });
     }

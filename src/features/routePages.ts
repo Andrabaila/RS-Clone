@@ -8,17 +8,23 @@ import createAddExpensePage from '../pages/createAddExpensePage';
 import createCurrenciesPage from '../pages/createCurrenciesPage';
 import createGreetingPage from '../pages/createGreetingPage';
 import createInstruction from '../pages/createInstruction';
+import createStartPage from '../pages/createStartPage';
 
 function routePages() {
     const { hash } = window.location;
     const page = hash.split('-')[0];
 
+    if (!localStorage.getItem('user')) {
+        createGreetingPage();
+        return;
+    }
+
     switch (page) {
         case '': {
-            if (localStorage.getItem('user')) {
-                createExpensesPage();
+            if (localStorage.getItem('currentGroup')) {
+                createOverviewPage();
             } else {
-                createGreetingPage();
+                createStartPage();
             }
             break;
         }

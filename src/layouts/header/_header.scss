@@ -21,6 +21,7 @@
     @extend %column;
     align-items: center;
     width: 100%;
+    max-width: $max-width-layout;
     gap: 1rem;
 }
 
