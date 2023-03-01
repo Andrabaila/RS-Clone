@@ -10,6 +10,9 @@
 
 .expenses-block {
     width: 90%;
+    & .expenses-item{
+      cursor: pointer;
+    }
 }
 
 .expenses-item {

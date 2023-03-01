@@ -450,7 +450,6 @@ body {
   font-size: 1.8rem;
   background-color: #ffffff;
   color: #000000;
-  cursor: pointer;
 }
 
 .button {
@@ -1402,6 +1401,9 @@ input.bordered {
 
 .expenses-block {
   width: 90%;
+}
+.expenses-block .expenses-item {
+  cursor: pointer;
 }
 
 .expenses-item {
