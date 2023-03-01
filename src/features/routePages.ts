@@ -56,7 +56,7 @@ function routePages() {
             createInstruction();
             break;
         default:
-            createGreetingPage();
+            createInstruction();
     }
 }
 
