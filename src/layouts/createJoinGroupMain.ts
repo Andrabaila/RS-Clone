@@ -16,7 +16,6 @@ function createJoinGroupMain() {
         parent: '.main__header',
         tag: 'button',
         style: ['button', 'button_main-header', 'button_back'],
-        content: langObj.buttonBack,
     }).addEventListener('click', () => {
         window.history.back();
     });

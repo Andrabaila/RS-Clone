@@ -25,6 +25,17 @@ function createGreetingMain() {
         style: ['input', 'input_new-group'],
     });
     inputName.placeholder = langObj.placeholderNewGroup;
+    inputName.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' && inputName.value !== '') {
+            createNewUser(inputName.value).then((user) => {
+                localStorage.user = user.id;
+                if (window.location.hash === '') {
+                    window.location.hash = '/#';
+                }
+                window.location.hash = '';
+            });
+        }
+    });
 
     buttonCreate.addEventListener('click', () => {
         createNewUser(inputName.value).then((user) => {
