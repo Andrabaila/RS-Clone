@@ -1,6 +1,4 @@
 import getCurrencies from './api/getCurrencies';
-import getGroups from './api/getGroups';
-import getUsers from './api/getUsers';
 import routePages from './features/routePages';
 import setHash from './features/setHash';
 
@@ -15,6 +13,4 @@ if (!localStorage.getItem('currency')) {
 }
 
 getCurrencies();
-getGroups();
-getUsers();
 routePages();
