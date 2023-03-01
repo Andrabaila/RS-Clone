@@ -172,7 +172,6 @@ body {
   justify-content: space-between;
   min-height: 100%;
   width: 100%;
-  max-width: 1200px;
   background: #ff7b00;
   color: #ffffff;
 }
@@ -913,6 +912,7 @@ input[type=number]:focus {
 .header__wrapper {
   align-items: center;
   width: 100%;
+  max-width: 1200px;
   gap: 1rem;
 }
 

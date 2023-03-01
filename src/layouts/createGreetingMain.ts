@@ -29,6 +29,9 @@ function createGreetingMain() {
     buttonCreate.addEventListener('click', () => {
         createNewUser(inputName.value).then((user) => {
             localStorage.user = user.id;
+            if (window.location.hash === '') {
+                window.location.hash = '/#';
+            }
             window.location.hash = '';
         });
     });
