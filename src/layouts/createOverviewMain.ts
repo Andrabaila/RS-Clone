@@ -19,7 +19,7 @@ async function createOverviewMain() {
     getHtmlElement({ parent: '.main__wrapper', tag: 'ul', style: ['members-list'] });
     currentGroupUsersArr.forEach((userObj) => {
         const listItem = getHtmlElement({ parent: '.members-list', tag: 'li', style: ['members-list__item'] });
-        listItem.dataset.hash = 'user_page';
+        // listItem.dataset.hash = 'user_page';
         getHtmlElement({ parentNode: listItem, tag: 'span', style: ['members-list__text'], content: userObj.name });
         getHtmlElement({
             parentNode: listItem,
