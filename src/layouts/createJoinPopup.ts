@@ -35,7 +35,6 @@ function createJoinPopup() {
         style: ['button'],
         content: langObj.buttonJoin,
     });
-    buttonJoin.dataset.hash = 'overview';
 
     buttonJoin.addEventListener('click', () => {
         joinGroup(inputCode.value)
@@ -56,6 +55,30 @@ function createJoinPopup() {
                 });
                 showMessageWithTimer(message, 3000);
             });
+    });
+
+    inputCode.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' && inputCode.value !== '') {
+            event.preventDefault();
+            joinGroup(inputCode.value)
+                .then((status) => {
+                    if (status === 200) {
+                        setCurrentGroup(inputCode.value);
+                        window.location.hash = '#/overview';
+                    } else {
+                        throw new Error();
+                    }
+                })
+                .catch(() => {
+                    document.querySelector('.message')?.remove();
+                    const message = getHtmlElement({
+                        parent: '.main',
+                        style: ['message'],
+                        content: `${langObj.noGroupMessage}${inputCode.value}`,
+                    });
+                    showMessageWithTimer(message, 3000);
+                });
+        }
     });
 }
 export default createJoinPopup;
