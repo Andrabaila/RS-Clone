@@ -14,7 +14,6 @@ import getLangObj from '../../features/getLangObj';
 import { GetGroup } from '../../data/types';
 import deleteGroup from '../../api/deleteGroup';
 import getGroups from '../../api/getGroups';
-import createStartPage from '../../pages/createStartPage';
 
 const langObj = getLangObj();
 
@@ -49,7 +48,7 @@ const addListenerForDottedMenu = () =>
 const addListenerForPlusMenu = () => {
     const plusBtn = document.querySelector('.button__add-groupe');
     plusBtn?.addEventListener('click', () => {
-        createStartPage();
+        window.location.hash = '#/add';
     });
 };
 

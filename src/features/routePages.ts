@@ -9,6 +9,7 @@ import createCurrenciesPage from '../pages/createCurrenciesPage';
 import createGreetingPage from '../pages/createGreetingPage';
 import createInstruction from '../pages/createInstruction';
 import createStartPage from '../pages/createStartPage';
+import createAddPage from '../pages/createAddPage';
 
 function routePages() {
     const { hash } = window.location;
@@ -54,6 +55,9 @@ function routePages() {
             break;
         case '#/instruction':
             createInstruction();
+            break;
+        case '#/add':
+            createAddPage();
             break;
         default:
             createInstruction();
