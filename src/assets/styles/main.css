@@ -24,6 +24,7 @@ html {
   height: 100%;
   -webkit-user-select: none;
      -moz-user-select: none;
+      -ms-user-select: none;
           user-select: none;
   width: 100%;
   font-family: "Roboto";
@@ -399,6 +400,7 @@ body {
   background-color: #e8e9e9;
   -webkit-user-select: auto;
      -moz-user-select: auto;
+      -ms-user-select: auto;
           user-select: auto;
 }
 
@@ -1158,6 +1160,7 @@ input[type=number]:focus {
   top: 0;
   right: 0;
   bottom: 0;
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   height: 16rem;
@@ -1204,6 +1207,7 @@ input[type=number]:focus {
 
 .button-overview,
 .button-expenses {
+  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding: 12px 33px;
@@ -1273,6 +1277,7 @@ input[type=number]:focus {
   font-size: 1.7rem;
   font-style: italic;
   line-height: 2.2rem;
+  text-align: justify;
 }
 
 .header-upage {
@@ -1323,6 +1328,9 @@ input[type=number]:focus {
   width: 20rem;
 }
 .upage-row2-input::-moz-placeholder {
+  color: white;
+}
+.upage-row2-input:-ms-input-placeholder {
   color: white;
 }
 .upage-row2-input::placeholder {
@@ -1383,6 +1391,7 @@ input.bordered {
 }
 
 .button-upage {
+  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding: 8px 33px;
@@ -1486,6 +1495,9 @@ input.bordered {
 .expense-detail-input::-moz-placeholder {
   color: white;
 }
+.expense-detail-input:-ms-input-placeholder {
+  color: white;
+}
 .expense-detail-input::placeholder {
   color: white;
 }
@@ -1549,6 +1561,7 @@ input.bordered {
 }
 
 .button-expense-detail {
+  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding: 8px 33px;
