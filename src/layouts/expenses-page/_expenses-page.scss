@@ -9,9 +9,11 @@
 }
 
 .expenses-block {
-    width: 90%;
-    & .expenses-item{
-      cursor: pointer;
+    width: 100%;
+    max-width: $max-width-layout;
+    padding-top: 16px;
+    & .expenses-item {
+        cursor: pointer;
     }
 }
 
@@ -19,7 +21,7 @@
     @extend %flex-row-align-center;
     justify-content: space-between;
     font-size: 1.8rem;
-    line-height: 2.5rem
+    line-height: 2.5rem;
 }
 .expenses-picture-text-wrapper {
     @extend %flex-row-align-center;

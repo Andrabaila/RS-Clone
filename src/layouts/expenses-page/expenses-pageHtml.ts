@@ -6,7 +6,7 @@ export const addExpensesItem = (
     sum: number,
     svg: string
 ) =>
-    `<div data-type=${type} data-expenseid=${expenseId} class="expenses-item">
+    `<div data-type=${type} data-expenseid=${expenseId} class="expenses-item members-list__item">
   <div class="expenses-picture-text-wrapper">
     <div class="item-picture-expenses"><?xml version="1.0" ?>${svg}</div>
     <div class="item-text-expenses">
@@ -18,8 +18,8 @@ export const addExpensesItem = (
 </div>`;
 
 export const makeMainHtml = () =>
-    `<main class="expenses-main">
-  <div class="expenses-block">
+    `<main class="expenses-main main_overview">
+  <div class="expenses-block members-list">
   
   </div>
 </main>>`;

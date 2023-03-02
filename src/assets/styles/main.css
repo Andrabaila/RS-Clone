@@ -1413,7 +1413,9 @@ input.bordered {
 }
 
 .expenses-block {
-  width: 90%;
+  width: 100%;
+  max-width: 1200px;
+  padding-top: 16px;
 }
 .expenses-block .expenses-item {
   cursor: pointer;
