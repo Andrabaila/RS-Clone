@@ -26,6 +26,19 @@ function createPopup() {
         getHtmlElement({ parent: '.form', tag: 'input', style: ['input', 'input_new-group'] })
     );
     inputName.placeholder = langObj.placeholderNewGroup;
+    inputName.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' && inputName.value !== '') {
+            event.preventDefault();
+            const group = createGroup(inputName.value);
+
+            group.then((newGroup: GetGroup) => {
+                localStorage.currentGroup = newGroup.id;
+                joinGroup().then(() => {
+                    window.location.hash = '/overview';
+                });
+            });
+        }
+    });
     getHtmlElement({ parent: '.form', style: ['wrapper', 'wrapper_popup-currency'] });
 
     getHtmlElement({
