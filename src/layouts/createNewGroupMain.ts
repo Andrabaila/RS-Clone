@@ -34,6 +34,18 @@ function createNewGroupMain() {
         style: ['input', 'input_new-group'],
     });
     inputName.placeholder = langObj.placeholderNewGroup;
+    inputName.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' && inputName.value !== '') {
+            const group = createGroup(inputName.value);
+
+            group.then((newGroup: GetGroup) => {
+                localStorage.currentGroup = newGroup.id;
+                joinGroup().then(() => {
+                    window.location.hash = '/overview';
+                });
+            });
+        }
+    });
 
     buttonCreate.addEventListener('click', () => {
         const group = createGroup(inputName.value);
