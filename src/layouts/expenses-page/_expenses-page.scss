@@ -28,6 +28,8 @@
     gap: 2rem;
 }
 .item-picture-expenses svg {
+    display: flex;
+    align-items: center;
     width: 35px;
     height: 35px;
     fill: #ff7b00;

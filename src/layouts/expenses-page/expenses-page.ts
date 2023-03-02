@@ -15,6 +15,7 @@ const addButtonItemElementLogic = (e: MouseEvent) => {
         const expenseid = e.currentTarget?.dataset.expenseid;
         if (expenseid) {
             const expenseObject = findObjectById(expensesArr, Number(expenseid));
+
             if (expenseObject?.title) {
                 makeExpenseDetailHtml(
                     expenseObject.title,

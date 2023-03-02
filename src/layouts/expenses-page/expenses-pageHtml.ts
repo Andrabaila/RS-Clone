@@ -14,7 +14,7 @@ export const addExpensesItem = (
       <div class="text-bottom-expenses">${whoPaid}</div>
     </div>
   </div>
-  <div class="item-amount-expenses">${sum}</div>
+  <div class="item-amount-expenses">${sum} ${localStorage.getItem('currency')}</div>
 </div>`;
 
 export const makeMainHtml = () =>

@@ -906,7 +906,6 @@ input[type=number]:focus {
   align-items: center;
   gap: 2rem;
   width: 100%;
-  height: 17vh;
   padding: 2rem;
   background-color: #ff7b00;
 }
@@ -923,9 +922,11 @@ input[type=number]:focus {
 
 .header__row1 {
   width: 100%;
+  max-width: 1200px;
   align-items: center;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 1rem;
 }
 .header__row1 h2 {
   min-width: 28rem;
@@ -1283,18 +1284,18 @@ input[type=number]:focus {
 
 .header-upage {
   width: 100%;
-  height: 20vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 2rem;
-  padding: 2rem;
+  padding: 1.5rem;
   background-color: #ff7b00;
 }
 
 .header__wrapper-upage {
-  width: 80%;
+  width: 100%;
   align-items: center;
+  gap: 2rem;
 }
 
 .header-upage-row1 {
@@ -1316,7 +1317,6 @@ input[type=number]:focus {
 
 .header-upage-row2 {
   width: 100%;
-  padding: 50px 0 18px 0px;
 }
 
 .upage-row2-input {
@@ -1324,7 +1324,7 @@ input[type=number]:focus {
   color: white;
   border: none;
   outline: none;
-  font-size: 2.5rem;
+  font-size: 3.6rem;
   font-weight: bold;
   width: 20rem;
 }
@@ -1347,7 +1347,7 @@ input.bordered {
 }
 
 .upage-main {
-  height: 80vh;
+  flex-grow: 2;
   width: 100%;
   background-color: #f0f0f0;
   color: black;
@@ -1371,24 +1371,24 @@ input.bordered {
   content: "$";
 }
 
-.upage-balance,
-.upage-benefit,
-.upage-wrap {
-  margin-bottom: 35px;
-}
-
-.upage-balance {
-  margin-top: 35px;
-}
-
 .upage-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   width: 100%;
+  padding: 2rem 0;
 }
 .upage-block a {
   color: black;
 }
 .upage-block a:hover {
   color: #909090;
+}
+
+.upage-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
 }
 
 .button-upage {
@@ -1432,6 +1432,8 @@ input.bordered {
 }
 
 .item-picture-expenses svg {
+  display: flex;
+  align-items: center;
   width: 35px;
   height: 35px;
   fill: #ff7b00;
@@ -1443,17 +1445,16 @@ input.bordered {
 
 .header-expense-detail {
   width: 100%;
-  height: 17vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  padding: 2rem;
+  padding: 1.5rem;
   background-color: #ff7b00;
 }
 
 .header__wrapper-expense-detail {
-  width: 80%;
+  width: 100%;
   align-items: center;
 }
 
@@ -1476,7 +1477,6 @@ input.bordered {
 
 .header-expense-detail-bottom {
   width: 100%;
-  padding: 30px 0 0px 0px;
 }
 
 .expense-detail-bottom-svg {
@@ -1514,12 +1514,13 @@ input.bordered {
 }
 
 .expense-detail-main {
-  height: 83vh;
+  flex-grow: 2;
   width: 100%;
   font-size: 2.2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 2rem 0;
   background-color: #f0f0f0;
   color: black;
 }
@@ -1541,18 +1542,14 @@ input.bordered {
   content: "$";
 }
 
-.expense-detail-balance,
-.expense-detail-benefit,
-.expense-detail-wrap-goods,
-.expense-detail-wrap-settle {
-  margin: 35px 0;
-}
-
 .expense-detail-balance {
   margin-top: 35px;
 }
 
 .expense-detail-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   width: 100%;
   font-size: 1.8rem;
 }
@@ -1561,6 +1558,13 @@ input.bordered {
 }
 .expense-detail-block a:hover {
   color: #909090;
+}
+
+.expense-detail-wrap,
+.expense-detail-wrap-goods {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
 }
 
 .button-expense-detail {
