@@ -5,7 +5,7 @@ import showMessageWithTimer from '../features/showMessageWithTimer';
 
 async function deleteGroup(groupId: string) {
     const langObj = getLangObj();
-    const request = `${API.baseUrl}${API.groups}/${groupId}`;
+    const request = `${API.baseUrl}${API.groups}/user/${groupId}/${localStorage.user}`;
 
     try {
         const response = await fetch(request, {

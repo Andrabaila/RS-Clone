@@ -18,8 +18,7 @@ async function createAddPaymentMain() {
     getHtmlElement({
         parent: '.main__header',
         tag: 'button',
-        style: ['button', 'button_main-header'],
-        content: langObj.buttonBack,
+        style: ['button', 'button_main-header', 'button_back'],
     }).addEventListener('click', () => {
         window.history.back();
     });
