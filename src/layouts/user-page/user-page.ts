@@ -2,6 +2,10 @@ import { addRemoveClassInElement } from '../../features/tools';
 import addUserPageHtml from './user-pageHtml';
 
 import getLangObj from '../../features/getLangObj';
+import getUser from '../../api/getUser';
+import renameUser from '../../api/renameUser';
+import renameUserInGroup from '../../api/renameUserInGroup';
+import getGroup from '../../api/getGroup';
 
 const langObj = getLangObj();
 
@@ -10,8 +14,8 @@ export const addListenerBtnEdit = () => {
     const input = document.querySelector('.upage-row2-input');
     if (input instanceof HTMLInputElement) {
         // ============================FROM API============================================
-        if (localStorage.getItem('userName')) {
-            input.value = String(localStorage.getItem('userName'));
+        if (localStorage.getItem('userNameSelected')) {
+            input.value = String(localStorage.getItem('userNameSelected'));
         }
 
         btnEdit?.addEventListener('click', () => {
@@ -29,6 +33,23 @@ export const addListenerBtnEdit = () => {
                 addRemoveClassInElement('.upage-block', 'display-none', 'remove');
                 addRemoveClassInElement('.button-upage', 'display-none', 'add');
                 // ============================TO API=======================================
+                if (localStorage.getItem('userIdSelected')) {
+                    const selectedUserId = localStorage.getItem('userIdSelected');
+                    getUser(String(selectedUserId)).then((userObj) => {
+                        renameUser(input.value, userObj.groupList, userObj.id)
+                            .then(() => {
+                                localStorage.setItem('userNameSelected', input.value);
+                            })
+                            .then(() => {
+                                getGroup().then((groupObj) => {
+                                    if (localStorage.getItem('userIdSelected')) {
+                                        const userIdSelected = localStorage.getItem('userIdSelected');
+                                        renameUserInGroup(input.value, Number(userIdSelected), groupObj);
+                                    }
+                                });
+                            });
+                    });
+                }
             }
         });
     }

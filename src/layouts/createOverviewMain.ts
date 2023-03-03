@@ -21,7 +21,7 @@ async function createOverviewMain() {
         const listItem = getHtmlElement({ parent: '.members-list', tag: 'li', style: ['members-list__item'] });
         listItem.dataset.hash = 'user_page';
         listItem.dataset.userName = userObj.name;
-        console.log(userObj);
+        listItem.dataset.userId = String(userObj.id);
         listItem.dataset.userBalance = `${String(roundTwoDigitsAfter(userObj.balance))} ${localStorage.getItem(
             'currency'
         )}`;
@@ -33,6 +33,7 @@ async function createOverviewMain() {
         });
         userName.dataset.hash = 'user_page';
         userName.dataset.userName = userObj.name;
+        listItem.dataset.userId = String(userObj.id);
         userName.dataset.userBalance = `${String(roundTwoDigitsAfter(userObj.balance))} ${localStorage.getItem(
             'currency'
         )}`;
@@ -44,6 +45,7 @@ async function createOverviewMain() {
         });
         userBalance.dataset.hash = 'user_page';
         userBalance.dataset.userName = userObj.name;
+        listItem.dataset.userId = String(userObj.id);
         userBalance.dataset.userBalance = `${String(roundTwoDigitsAfter(userObj.balance))} ${localStorage.getItem(
             'currency'
         )}`;

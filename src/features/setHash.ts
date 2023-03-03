@@ -6,10 +6,13 @@ function setHash(event: MouseEvent) {
         event.target.dataset.hash
     ) {
         if (event.target.dataset.userName) {
-            localStorage.setItem('userName', event.target.dataset.userName);
+            localStorage.setItem('userNameSelected', event.target.dataset.userName);
         }
         if (event.target.dataset.userBalance) {
-            localStorage.setItem('userBalance', event.target.dataset.userBalance);
+            localStorage.setItem('userBalanceSelected', event.target.dataset.userBalance);
+        }
+        if (event.target.dataset.userId) {
+            localStorage.setItem('userIdSelected', event.target.dataset.userId);
         }
 
         event.preventDefault();
