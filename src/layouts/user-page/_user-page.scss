@@ -72,12 +72,6 @@ input.bordered {
     background-color: white;
 }
 
-.balance-number {
-    &::after {
-        content: '$';
-    }
-}
-
 .upage-block {
     display: flex;
     flex-direction: column;

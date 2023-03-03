@@ -20,13 +20,33 @@ async function createOverviewMain() {
     currentGroupUsersArr.forEach((userObj) => {
         const listItem = getHtmlElement({ parent: '.members-list', tag: 'li', style: ['members-list__item'] });
         listItem.dataset.hash = 'user_page';
-        getHtmlElement({ parentNode: listItem, tag: 'span', style: ['members-list__text'], content: userObj.name });
-        getHtmlElement({
+        listItem.dataset.userName = userObj.name;
+        console.log(userObj);
+        listItem.dataset.userBalance = `${String(roundTwoDigitsAfter(userObj.balance))} ${localStorage.getItem(
+            'currency'
+        )}`;
+        const userName = getHtmlElement({
+            parentNode: listItem,
+            tag: 'span',
+            style: ['members-list__text'],
+            content: userObj.name,
+        });
+        userName.dataset.hash = 'user_page';
+        userName.dataset.userName = userObj.name;
+        userName.dataset.userBalance = `${String(roundTwoDigitsAfter(userObj.balance))} ${localStorage.getItem(
+            'currency'
+        )}`;
+        const userBalance = getHtmlElement({
             parentNode: listItem,
             tag: 'span',
             style: ['members-list__text'],
             content: `${String(roundTwoDigitsAfter(userObj.balance))} ${localStorage.getItem('currency')}`,
         });
+        userBalance.dataset.hash = 'user_page';
+        userBalance.dataset.userName = userObj.name;
+        userBalance.dataset.userBalance = `${String(roundTwoDigitsAfter(userObj.balance))} ${localStorage.getItem(
+            'currency'
+        )}`;
     });
 
     getHtmlElement({
