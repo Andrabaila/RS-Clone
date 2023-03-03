@@ -48,7 +48,7 @@ const addUserPageHtml = (
   <div class="upage-block">
     <div class="upage-balance">
       <div class="balance-text">${balance}</div>
-      <div class="balance-number">10</div>
+      <div class="balance-number">${localStorage.getItem('userBalance')}</div>
     </div>
     <div class="upage-wrap">
     <a href=${expensesHref}>

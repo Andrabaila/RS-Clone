@@ -10,7 +10,9 @@ export const addListenerBtnEdit = () => {
     const input = document.querySelector('.upage-row2-input');
     if (input instanceof HTMLInputElement) {
         // ============================FROM API============================================
-        input.value = 'Pavel';
+        if (localStorage.getItem('userName')) {
+            input.value = String(localStorage.getItem('userName'));
+        }
 
         btnEdit?.addEventListener('click', () => {
             if (btnEdit.innerHTML === langObj.btnEdit) {
