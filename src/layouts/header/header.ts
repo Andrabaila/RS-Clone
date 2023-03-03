@@ -5,7 +5,6 @@ import {
     addListenerOpenCloseModal,
     removeElementFromBody,
     addRemoveClassInAllElements,
-    addRemoveClassInElementById,
     addRemoveClassInElement,
     changeHeaderGroupText,
     toggleClassInElementById,
@@ -14,6 +13,7 @@ import getLangObj from '../../features/getLangObj';
 import { GetGroup } from '../../data/types';
 import deleteGroup from '../../api/deleteGroup';
 import getGroups from '../../api/getGroups';
+import createOverviewPage from '../../pages/createOverviewPage';
 
 const langObj = getLangObj();
 
@@ -92,10 +92,11 @@ const addTrashButtonLogic = (e: Event) => {
         const mainGroupId = e.target.id;
         if (mainGroupId) {
             localStorage.setItem('currentGroup', `${mainGroupId}`);
-            changeHeaderGroupText(mainGroupId, '');
-            addRemoveClassInAllElements('.burger__row2', '.burger__group-name', 'background-group-name', 'remove');
-            addRemoveClassInElementById(mainGroupId, 'background-group-name', 'add');
-            document.location.reload();
+            // changeHeaderGroupText(mainGroupId, '');
+            // addRemoveClassInAllElements('.burger__row2', '.burger__group-name', 'background-group-name', 'remove');
+            // addRemoveClassInElementById(mainGroupId, 'background-group-name', 'add');
+            // document.location.hash = '#/overview';
+            createOverviewPage();
         }
         if (targetGroupId) {
             innerHtmlInElement(
@@ -113,11 +114,19 @@ const addTrashButtonLogic = (e: Event) => {
                         removeElementFromBody(targetGroupId);
                         (async () => {
                             await deleteGroup(targetGroupId);
-                            const nextGroupObj = await getGroups();
-                            const nextGroupId = nextGroupObj[0].id;
-                            changeHeaderGroupText(String(nextGroupId), '');
-                            toggleClassInElementById(String(nextGroupId), 'background-group-name');
-                            localStorage.setItem('currentGroup', `${nextGroupId}`);
+                            const firstGroup = document.querySelector('.burger__group-name');
+                            if (!firstGroup || !(firstGroup instanceof HTMLElement)) {
+                                localStorage.setItem('currentGroup', '');
+                                window.location.hash = '#/add';
+                                return;
+                            }
+
+                            firstGroup.click();
+                            // const nextGroupObj = await getGroups();
+                            // const nextGroupId = nextGroupObj[0].id;
+                            // changeHeaderGroupText(String(nextGroupId), '');
+                            // toggleClassInElementById(String(nextGroupId), 'background-group-name');
+                            localStorage.setItem('currentGroup', `${firstGroup.id}`);
                         })();
                         addRemoveClassInElement('.modal1', 'modal-open', 'remove');
                     }

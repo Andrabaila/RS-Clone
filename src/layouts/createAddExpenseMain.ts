@@ -15,15 +15,16 @@ async function createAddPaymentMain() {
     getHtmlElement({ parent: 'body', tag: 'main', style: ['main', 'main_add-payment-page'] });
     getHtmlElement({ parent: '.main', style: ['main__wrapper', 'main__wrapper_add-payment-page'] });
     getHtmlElement({ parent: '.main__wrapper', style: ['main__header'] });
+    getHtmlElement({ parent: '.main__header', style: ['main__header-container'] });
     getHtmlElement({
-        parent: '.main__header',
+        parent: '.main__header-container',
         tag: 'button',
         style: ['button', 'button_main-header', 'button_back'],
     }).addEventListener('click', () => {
         window.history.back();
     });
     const btnSave = getHtmlElement({
-        parent: '.main__header',
+        parent: '.main__header-container',
         tag: 'button',
         style: ['button', 'button_main-header'],
         content: langObj.buttonSave,
