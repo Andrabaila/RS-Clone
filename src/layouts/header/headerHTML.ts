@@ -17,7 +17,7 @@ export const addModalTrashCanHtml = (btnCancel: string, btnLeave: string, leaveG
   <h3 class="modal1__trash-h3">${leaveGroup}</h3>
   <div class="modal1__trash-buttons">
     <button data-id="cancel" class="modal1__trash-cancel">${btnCancel}</button>
-    <button data-id="leave" class="modal1__trash-leave">${btnLeave}</button>
+    <button data-id="leave" class="modal1__trash-delete">${btnLeave}</button>
   </div>
 </div>`;
 

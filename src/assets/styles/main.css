@@ -251,7 +251,7 @@ body {
   padding: 2rem 0;
   gap: 2rem;
   flex-grow: 1;
-  max-width: 1200px;
+  max-width: 100%;
 }
 
 .main__wrapper_add-payment-page {
@@ -265,6 +265,15 @@ body {
   width: 100%;
   padding: 0.5rem;
   background-color: #ff7b00;
+}
+
+.main__header-container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .main__footer {
@@ -1033,15 +1042,18 @@ input[type=number]:focus {
 }
 
 .modal1__trash-block {
-  padding: 15px;
+  width: 300px;
+  height: 150px;
+  background-color: #ff7b00;
+  border-radius: 12px;
+  display: flex;
   flex-direction: column;
-}
-.modal1__trash-block h3 {
-  line-height: 200%;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal1__trash-buttons button:hover {
-  background-color: #767474;
+  transform: scale(1.02);
 }
 
 .burger__row1 {
@@ -1613,6 +1625,7 @@ input.bordered {
   height: -moz-fit-content;
   height: fit-content;
   margin-top: 20px;
+  margin-left: 10px;
   padding: 8px 33px;
   border-radius: 25px;
   font-size: 2rem;

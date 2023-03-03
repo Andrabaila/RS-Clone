@@ -114,15 +114,19 @@
     z-index: 7;
 }
 .modal1__trash-block {
-    padding: 15px;
+    width: 300px;
+    height: 150px;
+
+    background-color: #ff7b00;
+    border-radius: 12px;
+    display: flex;
     flex-direction: column;
-    & h3 {
-        line-height: 200%;
-    }
+    align-items: center;
+    justify-content: center;
 }
 .modal1__trash-buttons {
     & button:hover {
-        background-color: $color-gray;
+        transform: scale(1.02);
     }
 }
 
