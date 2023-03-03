@@ -1,16 +1,15 @@
 .header-expense-detail {
     width: 100%;
-    height: 17vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    padding: 2rem;
+    padding: 1.5rem;
     background-color: #ff7b00;
 }
 .header__wrapper-expense-detail {
     @extend %column;
-    width: 80%;
+    width: 100%;
     align-items: center;
 }
 .header-expense-detail-top {
@@ -30,7 +29,6 @@
 .header-expense-detail-bottom {
     @extend %flex-row-align-center;
     width: 100%;
-    padding: 30px 0 0px 0px;
 }
 .expense-detail-bottom-svg {
     width: 50px;
@@ -61,12 +59,14 @@ input.bordered {
 }
 
 .expense-detail-main {
-    height: 83vh;
+    flex-grow: 2;
     width: 100%;
     font-size: 2.2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 2rem 0;
+
     background-color: #f0f0f0;
     color: black;
 }
@@ -90,17 +90,13 @@ input.bordered {
     }
 }
 
-.expense-detail-balance,
-.expense-detail-benefit,
-.expense-detail-wrap-goods,
-.expense-detail-wrap-settle {
-    margin: 35px 0;
-}
-
 .expense-detail-balance {
     margin-top: 35px;
 }
 .expense-detail-block {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
     width: 100%;
     font-size: 1.8rem;
     & a {
@@ -109,6 +105,13 @@ input.bordered {
     & a:hover {
         color: #909090;
     }
+}
+
+.expense-detail-wrap,
+.expense-detail-wrap-goods {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
 }
 
 .button-expense-detail {
@@ -140,13 +143,13 @@ input.bordered {
 .modal-expense-detail-block {
     // display: none;
 }
-.expense-detail-for-btn:hover{
-color: #9c9999;
+.expense-detail-for-btn:hover {
+    color: #9c9999;
 }
 
-.expense-detail-text{
-min-width: 20%;
+.expense-detail-text {
+    min-width: 20%;
 }
-.expense-detail-bottom-name{
-  margin-left: 10px;
+.expense-detail-bottom-name {
+    margin-left: 10px;
 }
