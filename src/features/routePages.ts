@@ -10,11 +10,11 @@ import createGreetingPage from '../pages/createGreetingPage';
 import createInstruction from '../pages/createInstruction';
 import createStartPage from '../pages/createStartPage';
 import createAddPage from '../pages/createAddPage';
+import { makeExpenseDetailHtml } from '../layouts/expense-detail-page/expense-detail';
 
 function routePages() {
     const { hash } = window.location;
     const page = hash.split('-')[0];
-
     if (!localStorage.getItem('user')) {
         createGreetingPage();
         return;
@@ -58,6 +58,9 @@ function routePages() {
             break;
         case '#/add':
             createAddPage();
+            break;
+        case '#/expense':
+            makeExpenseDetailHtml();
             break;
         default:
             createInstruction();

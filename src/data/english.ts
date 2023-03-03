@@ -59,6 +59,7 @@ const english: { readonly [x: string]: string } = {
     btnCancel: 'Cancel',
     btnDelete: 'Delete',
     joinGroup: 'Join group',
+    checkText: 'Are you sure?',
 
     buttonAdd: '+',
     popupTitleNewExpense: 'New expense',
