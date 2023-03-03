@@ -6,6 +6,7 @@ import getUser from '../../api/getUser';
 import renameUser from '../../api/renameUser';
 import renameUserInGroup from '../../api/renameUserInGroup';
 import getGroup from '../../api/getGroup';
+import removeUserFromGroup from '../../api/removeUserFromGroup';
 
 const langObj = getLangObj();
 
@@ -67,6 +68,14 @@ const addListenersModal = () => {
     document.querySelector('.modal1__trash-delete')?.addEventListener('click', () => {
         addRemoveClassInElement('.modal1', 'modal-open', 'remove');
         // сюда добавить функциюю удаления юзера с сервера
+        getGroup().then((groupObj) => {
+            if (localStorage.getItem('userIdSelected')) {
+                const userIdSelected = localStorage.getItem('userIdSelected');
+                removeUserFromGroup(Number(userIdSelected), groupObj).then(() => {
+                    window.location.hash = '#/overview';
+                });
+            }
+        });
     });
 };
 
