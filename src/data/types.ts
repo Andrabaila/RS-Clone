@@ -9,7 +9,7 @@ export interface FunctionObject {
 export interface User {
     id: number;
     name: string; // имя человека
-    groups: number[]; // перечень групп который подключил/создал пользователь
+    groupList: number[]; // перечень групп который подключил/создал пользователь
 }
 
 export interface SendUser {
