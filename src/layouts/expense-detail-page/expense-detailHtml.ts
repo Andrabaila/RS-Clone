@@ -1,11 +1,11 @@
-export const addModalBlockForHtml = (name: string, percent: number, sum: number) =>
+export const addModalBlockForHtml = (name: string, sum: number) =>
     `<div class="expense-detail-created">
       <div class="expense-detail-text">${name}</div>
-      <div class="expense-detail-num">${percent}%</div>
       <div class="expense-detail-num">${sum}</div>
     </div>`;
 
 export const addExpenseDetailHtml = (
+    expenseId: number,
     btnEdit: string,
     picture: string,
     amount: string,
@@ -31,7 +31,7 @@ export const addExpenseDetailHtml = (
 <div class="header__wrapper-expense-detail">
   <div class="header-expense-detail-top">
     <div class="btn-expense-detail-arrow">
-      <a onclick="location.reload()";>
+      <a href="#/expenses_page">
         <?xml version="1.0" ?>
         <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg
           height="28px" id="Layer_1" style="enable-background:new 0 0 128 128;" version="1.1" viewBox="0 0 128 128"
@@ -62,7 +62,7 @@ export const addExpenseDetailHtml = (
   </div>
 </div>
 </header>
-<main class="expense-detail-main">
+<main class="expense-detail-main" data-expense-id="${expenseId}">
 <div class="expense-detail-block">
   <div class="expense-detail-wrap">
     <div class="expense-detail-amount">
@@ -103,19 +103,17 @@ export const addExpenseDetailHtml = (
     <div class="payments-number">${dateText}</div>
   </div>
 </div>
-<button class="button button-expense-detail display-none">${btnDelete}</button>
+<button class="button button-expense-detail">${btnDelete}</button>
 
 <div class="modal1">
-  <div class="modal-expense-detail-block display-none">
+  <div class="modal-expense-detail-block">
     <h3 class="modal-expense-detail-h3">${deleteExpense}</h3>
     <div class="modal-expense-detail-buttons">
       <button class="modal1__trash-cancel">${btnCancel}</button>
-      <a href="#/expenses_page">
-        <button class="modal1__trash-delete">${btnDelete}</button>
-      </a>
+      <button class="modal1__trash-delete">${btnDelete}</button>
     </div>
   </div>
-  <div class="modal-expense-detail-block-for display-none">
+  <div class="modal-expense-detail-block-for">
     
     <div class="expense-detail-for-btn-wrap">
       <button class="button expense-detail-for-done-btn">${btnDONE}</button>

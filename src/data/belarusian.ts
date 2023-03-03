@@ -59,6 +59,7 @@ const belarusian: { readonly [x: string]: string } = {
     btnCancel: 'Адмена',
     btnDelete: 'Выдаліць',
     joinGroup: 'Далучыцца да гурту',
+    checkText: 'Вы ўпэўнены?',
 
     buttonAdd: '+',
     popupTitleNewExpense: 'Новы выдатак',

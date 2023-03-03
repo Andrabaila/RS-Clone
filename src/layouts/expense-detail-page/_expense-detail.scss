@@ -141,7 +141,45 @@ input.bordered {
     justify-content: center;
 }
 .modal-expense-detail-block {
-    // display: none;
+    width: 300px;
+    height: 150px;
+
+    background-color: #ff7b00;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.modal1__trash-delete {
+    height: fit-content;
+    margin-top: 20px;
+    padding: 8px 33px;
+    border-radius: 25px;
+    font-size: 2rem;
+    background-color: white;
+    border: none;
+    color: #ff7b00;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.02);
+    }
+}
+.modal1__trash-cancel {
+    height: fit-content;
+    margin-top: 20px;
+    padding: 8px 33px;
+    border-radius: 25px;
+    font-size: 2rem;
+    background-color: white;
+    border: none;
+    color: #ff7b00;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.02);
+    }
 }
 .expense-detail-for-btn:hover {
     color: #9c9999;

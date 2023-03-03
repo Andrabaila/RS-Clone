@@ -1,53 +1,13 @@
-import { addFocusedToBtn, addPictureBasketOrArrow, findObjectById } from '../../features/tools';
-import getDateFromMs from '../../features/getDateFromMs';
+import { addFocusedToBtn, addPictureBasketOrArrow } from '../../features/tools';
 import { expensesArr } from '../../data/database';
 import { makeMainHtml, addExpensesItem } from './expenses-pageHtml';
 import stringToElement from '../../components/stringToElement';
-import { makeExpenseDetailHtml, makeModalBlockForElement } from '../expense-detail-page/expense-detail';
-import getLangObj from '../../features/getLangObj';
 import getExpensesArr from '../../api/getExpensesArr';
 
-const langObj = getLangObj();
-
 const addButtonItemElementLogic = (e: MouseEvent) => {
-    const mainCurrency = localStorage.getItem('currency');
-    if (e.currentTarget instanceof HTMLElement) {
-        const expenseid = e.currentTarget?.dataset.expenseid;
-        if (expenseid) {
-            const expenseObject = findObjectById(expensesArr, Number(expenseid));
-
-            if (expenseObject?.title) {
-                makeExpenseDetailHtml(
-                    expenseObject.title,
-                    'basket',
-                    expenseObject.amount,
-                    mainCurrency || 'no LS currency',
-                    expenseObject.by.name,
-                    expenseObject.for.length,
-                    expenseObject.by.name,
-                    expenseObject.for[0].name,
-                    getDateFromMs(expenseObject.date),
-                    '',
-                    'display-none'
-                );
-                makeModalBlockForElement(expenseObject);
-            } else if (expenseObject) {
-                makeExpenseDetailHtml(
-                    langObj.payment,
-                    'arrow',
-                    expenseObject.amount,
-                    mainCurrency || 'no LS currency',
-                    expenseObject.by.name,
-                    expenseObject.for.length,
-                    expenseObject.by.name,
-                    expenseObject.for[0].name,
-                    getDateFromMs(expenseObject.date),
-                    'display-none',
-                    ''
-                );
-            }
-        }
-    }
+    if (!(e.currentTarget instanceof HTMLElement)) return;
+    const expenseid = e.currentTarget?.dataset.expenseid;
+    if (expenseid) window.location.hash = `#/expense-${expenseid}`;
 };
 
 export const addExpensesPageHtml = async () => {
