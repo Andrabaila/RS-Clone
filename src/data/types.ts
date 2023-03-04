@@ -65,3 +65,7 @@ export interface GetExpense {
 export interface CurrencyObj {
     [index: string]: string | number;
 }
+
+export interface CurrencyRateObj {
+    [index: string]: string | number;
+}

@@ -1,4 +1,4 @@
-import getCurrencies from './api/getCurrencies';
+import getCurrencyRates from './api/getCurrencyRates';
 import routePages from './features/routePages';
 import setHash from './features/setHash';
 
@@ -12,5 +12,13 @@ if (!localStorage.getItem('currency')) {
     localStorage.setItem('currency', 'BYN');
 }
 
-getCurrencies();
+if (!localStorage.getItem('currencyRate')) {
+    localStorage.setItem('currencyRate', '1');
+}
+
+if (!localStorage.getItem('currencyScale')) {
+    localStorage.setItem('currencyScale', '1');
+}
+
+getCurrencyRates();
 routePages();

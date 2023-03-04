@@ -1,3 +1,5 @@
+import convertAmountAtExchangeRate from '../../features/convertAmountAtExchangeRate';
+
 export const addModalBlockForHtml = (name: string, sum: number) =>
     `<div class="expense-detail-created">
       <div class="expense-detail-text">${name}</div>
@@ -67,7 +69,7 @@ export const addExpenseDetailHtml = (
   <div class="expense-detail-wrap">
     <div class="expense-detail-amount">
       <div class="payments-text">${amount}</div>
-      <div class="payments-number">${amountSum}</div>
+      <div class="payments-number">${convertAmountAtExchangeRate(amountSum)}</div>
     </div>
     <div class="expense-detail-currency">
       <div class="payments-text">${currency}</div>

@@ -1,5 +1,6 @@
 import { API_NBRB, ERROR_MESSAGE } from '../data/constants';
 import currenciesArr from '../data/currencies';
+import currencyRatesArr from '../data/currencyRates';
 import { CurrencyObj } from '../data/types';
 
 async function getCurrencies() {
@@ -10,7 +11,11 @@ async function getCurrencies() {
         const data = await response.json();
 
         data.forEach((currency: CurrencyObj) => {
-            currenciesArr.push(currency);
+            currencyRatesArr.forEach((curRateObj) => {
+                if (curRateObj.Cur_ID === currency.Cur_ID) {
+                    currenciesArr.push(currency);
+                }
+            });
         });
     } catch (err) {
         console.log(err);
