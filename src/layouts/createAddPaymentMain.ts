@@ -6,7 +6,7 @@ import setPayment from '../features/setPayment';
 import toggleText from '../features/toggleText';
 import toggleVisibility from '../features/toggleVisibility';
 
-const currentСurrency = localStorage.getItem('currency');
+const currentCurrency = localStorage.getItem('currency');
 async function createAddPaymentMain() {
     const langObj = getLangObj();
 
@@ -75,7 +75,7 @@ async function createAddPaymentMain() {
         parent: '.form__currency',
         tag: 'span',
         style: ['text', 'text_add-payment'],
-        content: currentСurrency || 'error LS current currency',
+        content: currentCurrency || 'error LS current currency',
     });
 
     //* ***************************second item***********************************

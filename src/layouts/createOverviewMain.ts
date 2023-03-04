@@ -2,8 +2,8 @@ import getHtmlElement from '../components/getHtmlElement';
 import getLangObj from '../features/getLangObj';
 import togglePopup from '../features/togglePopup';
 import { UserInGroup } from '../data/types';
-import { roundTwoDigitsAfter } from '../features/tools';
 import getGroup from '../api/getGroup';
+import convertAmountAtExchangeRate from '../features/convertAmountAtExchangeRate';
 
 async function createOverviewMain() {
     const langObj = getLangObj();
@@ -22,7 +22,7 @@ async function createOverviewMain() {
         listItem.dataset.hash = 'user_page';
         listItem.dataset.userName = userObj.name;
         listItem.dataset.userId = String(userObj.id);
-        listItem.dataset.userBalance = `${String(roundTwoDigitsAfter(userObj.balance))} ${localStorage.getItem(
+        listItem.dataset.userBalance = `${String(convertAmountAtExchangeRate(userObj.balance))} ${localStorage.getItem(
             'currency'
         )}`;
         const userName = getHtmlElement({
@@ -34,21 +34,21 @@ async function createOverviewMain() {
         userName.dataset.hash = 'user_page';
         userName.dataset.userName = userObj.name;
         listItem.dataset.userId = String(userObj.id);
-        userName.dataset.userBalance = `${String(roundTwoDigitsAfter(userObj.balance))} ${localStorage.getItem(
+        userName.dataset.userBalance = `${String(convertAmountAtExchangeRate(userObj.balance))} ${localStorage.getItem(
             'currency'
         )}`;
         const userBalance = getHtmlElement({
             parentNode: listItem,
             tag: 'span',
             style: ['members-list__text'],
-            content: `${String(roundTwoDigitsAfter(userObj.balance))} ${localStorage.getItem('currency')}`,
+            content: `${String(convertAmountAtExchangeRate(userObj.balance))} ${localStorage.getItem('currency')}`,
         });
         userBalance.dataset.hash = 'user_page';
         userBalance.dataset.userName = userObj.name;
         listItem.dataset.userId = String(userObj.id);
-        userBalance.dataset.userBalance = `${String(roundTwoDigitsAfter(userObj.balance))} ${localStorage.getItem(
-            'currency'
-        )}`;
+        userBalance.dataset.userBalance = `${String(
+            convertAmountAtExchangeRate(userObj.balance)
+        )} ${localStorage.getItem('currency')}`;
     });
 
     getHtmlElement({
