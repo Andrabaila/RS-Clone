@@ -10,12 +10,8 @@ function setCurrency(event: MouseEvent) {
     ) {
         currency = event.target.id;
         localStorage.setItem('currency', currency);
-        console.log(currencyRatesArr);
         currencyRatesArr.forEach((currencyObj) => {
-            console.log(currencyObj.Cur_Abbreviation);
-            //           console.log(currency);
             if (String(currencyObj.Cur_Abbreviation) === String(currency)) {
-                console.log('yes');
                 localStorage.setItem('currencyRate', String(currencyObj.Cur_OfficialRate));
                 localStorage.setItem('currencyScale', String(currencyObj.Cur_Scale));
             }

@@ -8,6 +8,7 @@ function createAddPageMain() {
     document.querySelector('header')?.remove();
 
     document.querySelector('.main')?.remove();
+    document.querySelector('main')?.remove();
     getHtmlElement({ parent: 'body', tag: 'header', style: ['header_start-page'] });
     getHtmlElement({ parent: 'body', tag: 'main', style: ['main', 'main_start-page'] });
     getHtmlElement({ parent: '.main', style: ['main__wrapper', 'main__wrapper_start-page'] });

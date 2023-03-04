@@ -110,6 +110,8 @@ const english: { readonly [x: string]: string } = {
     --"Add expense". It is necessary in case when the user buys something for the whole group. When clicked, a page for adding a purchase opens in which you must specify the name of the purchase, its cost and select who makes the purchase. After clicking on the "Save" button, the purchase is saved and the user's balance is recalculated. The user who made the purchase is added a number equal to the amount owed to the user by other users. <br>
     --"Add payment". Required when a purchase is made for a single user in a group. When clicked, a page for adding a purchase opens in which you must specify the cost of the purchase, choose who makes the purchase and for whom. After clicking on the "Save" button, the purchase is saved and the user's balance is recalculated. The user who made the purchase is added a number equal to half the cost of the purchase, the user who must deduct this amount accordingly. <br><br>
     We sincerely apologize, but, unfortunately, the application, for some reason, is not yet completed and continues to be developed. <br>`,
+
+    toValue: 'everyone',
 };
 
 export default english;

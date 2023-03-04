@@ -136,7 +136,7 @@ async function createAddPaymentMain() {
         style: ['text', 'text_add-payment'],
         content: langObj.textTo,
     });
-    getHtmlElement({ parent: '.form__to', tag: 'span', style: ['text', 'text_add-payment'], content: 'Another' });
+    getHtmlElement({ parent: '.form__to', tag: 'span', style: ['text', 'text_add-payment'], content: langObj.toValue });
 
     //* ***************************third item***********************************
 
