@@ -1,0 +1,108 @@
+.main {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 0 2rem;
+    flex-grow: 1;
+    gap: $gap;
+}
+
+.main_start-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 2rem;
+    gap: $gap;
+}
+
+.main_new-group-page,
+.main_currencies-page {
+    padding: 0rem;
+}
+
+.main_overview,
+.main_add-payment-page {
+    padding: 0;
+    background-color: $color-background-lightest;
+}
+
+.main__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: $max-width-layout;
+    padding: 1rem 2rem;
+    gap: $gap;
+}
+
+.main__wrapper_start-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 2rem;
+    gap: $gap;
+}
+
+.main__wrapper_new-group-page,
+.main__wrapper_currencies-page {
+    max-width: $max-width-layout;
+    padding: 0;
+}
+
+.main__wrapper_currencies-page {
+    background-color: $color-background-lightest;
+    gap: calc($gap * 2);
+}
+
+.main__wrapper_overview,
+.main__wrapper_add-payment-page {
+    justify-content: flex-start;
+    padding: 2rem 0;
+    gap: 2rem;
+    flex-grow: 1;
+    max-width: 100%;
+}
+
+.main__wrapper_add-payment-page {
+    padding: 0 0 2rem 0;
+}
+
+.main__header {
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5rem;
+
+    background-color: $color-background;
+}
+
+.main__header-container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main__footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+    min-height: 180px;
+    padding-right: 20px;
+    flex-grow: 1;
+}

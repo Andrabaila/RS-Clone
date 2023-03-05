@@ -1,0 +1,102 @@
+.header-upage {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: #ff7b00;
+}
+.header__wrapper-upage {
+    @extend %column;
+    width: 100%;
+    align-items: center;
+    gap: calc($gap * 2);
+}
+.header-upage-row1 {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+.btn-upage-arrow {
+    cursor: pointer;
+}
+.btn-upage-delete {
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+.header-upage-row2 {
+    width: 100%;
+}
+
+.upage-row2-input {
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    border: none;
+    outline: none;
+    font-size: $font-size-title1;
+    font-weight: bold;
+    width: 20rem;
+    &::placeholder {
+        color: white;
+    }
+}
+
+input.disabled {
+    pointer-events: none;
+}
+input.bordered {
+    border-bottom: 2px solid white;
+}
+
+.upage-main {
+    flex-grow: 2;
+    width: 100%;
+    background-color: #f0f0f0;
+    color: black;
+    font-size: 2.2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.upage-balance,
+.upage-expenses,
+.upage-payments,
+.upage-benefit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10%;
+    background-color: white;
+}
+
+.upage-block {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+    width: 100%;
+    padding: 2rem 0;
+    & a {
+        color: black;
+    }
+    & a:hover {
+        color: #909090;
+    }
+}
+
+.upage-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.button-upage {
+    height: fit-content;
+    padding: 8px 33px;
+    border-radius: 25px;
+    font-size: 2rem;
+    background-color: white;
+    margin-top: 20px;
+}

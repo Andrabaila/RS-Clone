@@ -1,0 +1,20 @@
+.text {
+    font-size: $font-size-text_large;
+}
+
+.text_start-page,
+.text_join-page,
+.text_invite {
+    padding: 1rem 7rem;
+
+    text-align: center;
+}
+
+.text_start-page {
+    color: $color-text;
+}
+
+.text_invite {
+    padding: 1rem 0;
+    color: $color-gray;
+}

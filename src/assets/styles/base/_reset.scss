@@ -1,0 +1,44 @@
+html {
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    height: 100%;
+    user-select: none;
+    width: 100%;
+
+    font-family: 'Roboto';
+    font-size: 10px;
+    color: $color-text;
+    background-color: $color-light;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body,
+div,
+p,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: $color-text;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+@media (max-width: 550px) {
+    html {
+        font-size: 8px;
+    }
+}

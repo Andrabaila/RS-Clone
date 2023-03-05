@@ -1,0 +1,76 @@
+.input {
+    border: 1px solid transparent;
+    outline: none;
+    border-radius: 2px;
+
+    background-color: $color-light;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: $font-size-text_large;
+    color: $color-text_dark;
+    height: $input-height;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type='number'],
+input[type='number']:hover,
+input[type='number']:focus {
+    appearance: none;
+    -moz-appearance: textfield;
+}
+
+.input_new-group,
+.input_join-group {
+    width: 100%;
+    max-width: $max-width-content;
+    height: unset;
+    padding: 10px;
+
+    font-size: $font-size-text_largest;
+    text-align: center;
+}
+
+.input_add-payment {
+    width: 100px;
+    flex-grow: 2;
+    text-align: right;
+}
+
+.input::-webkit-input-placeholder {
+    font-size: $font-size-text_largest;
+    color: $color-placeholder;
+    text-align: center;
+}
+
+.input:focus {
+    border: 1px solid #ffffff;
+
+    background-color: $color-focus;
+
+    outline: none;
+}
+
+.input_valid {
+    border: 1px solid $color-background-light;
+}
+
+.input_valid:focus {
+    color: $color-text;
+}
+
+.input_invalid {
+    position: relative;
+
+    border: 1px solid $color-mistake;
+
+    color: $color-mistake;
+}
+
+.input_invalid:focus {
+    color: $color-text;
+}

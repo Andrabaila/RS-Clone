@@ -1,0 +1,44 @@
+.item-amount-expenses {
+    white-space: nowrap;
+    padding-left: 5px;
+}
+
+.expenses-main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    font-size: 2.2rem;
+    color: black;
+    background-color: #f0f0f0;
+}
+
+.expenses-block {
+    width: 100%;
+    max-width: $max-width-layout;
+    padding-top: 16px;
+    & .expenses-item {
+        cursor: pointer;
+    }
+}
+
+.expenses-item {
+    @extend %flex-row-align-center;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+}
+.expenses-picture-text-wrapper {
+    @extend %flex-row-align-center;
+    gap: 2rem;
+}
+.item-picture-expenses svg {
+    display: flex;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    fill: #ff7b00;
+}
+.expenses-item * {
+    pointer-events: none;
+}

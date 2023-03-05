@@ -1,0 +1,174 @@
+.button {
+    padding: 1.5rem 5rem;
+    border-radius: calc($button-height / 2);
+    height: $button-height;
+
+    background-color: $color-light;
+    border: none;
+    cursor: pointer;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: $font-size-text_large;
+    color: $color-background;
+
+    transition: all 0.2s;
+}
+
+.button_language {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+
+    margin: 0.5rem 2rem;
+    padding: 0;
+
+    background-color: $color-background;
+    color: $color-light;
+}
+
+.button_start-page {
+    background-color: $color-light;
+}
+
+.button_main-header {
+    padding: 1.5rem 1.5rem;
+
+    background-color: $color-background;
+    color: $color-light;
+}
+
+.button_back {
+    @include size(40px);
+    background-image: url('../../assets/icons/arrow_back.svg');
+    background-size: 24px 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.button_currency {
+    padding: 0;
+    flex-grow: 1;
+    background-color: $color-background;
+    color: $color-light;
+}
+
+.button_currency:first-of-type {
+    text-align: left;
+}
+
+.button_currency:last-of-type {
+    text-align: right;
+}
+
+.button_x {
+    position: absolute;
+    right: 8px;
+    top: 5px;
+
+    display: inline-block;
+    @include size(35px);
+    padding: 2px;
+    justify-self: flex-start;
+
+    background-color: transparent;
+    background-image: url('../../../assets/icons/close.svg');
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.button_overview {
+    border: 1px solid darker($color-background-lightest, 1);
+    box-shadow: 0 1px 3px darker($color-background-lightest, 3);
+    background-color: $color-light;
+}
+
+.button_copy {
+    padding: 1.5rem 5rem;
+
+    color: $color-light;
+    background-color: $color-background;
+}
+
+.button_later {
+    padding: 1.5rem 5rem;
+
+    color: $color-background;
+    background-color: $color-light;
+}
+
+.button:hover {
+    transform: scale(1.05);
+}
+
+.button_x:hover {
+    transform: rotateZ(90deg);
+}
+
+.button_add {
+    @include size(50px);
+    border-radius: 25px;
+    padding: 0;
+
+    color: $color-light;
+    background-color: $color-background;
+}
+
+.button_add-light {
+    @include size(50px);
+    border-radius: 25px;
+    padding: 0 0 3px 0;
+
+    font-size: 25px;
+    color: $color-background;
+    background-color: $color-light;
+    border: 1px solid darker($color-background-lightest, 1);
+    box-shadow: 0 1px 3px darker($color-background-lightest, 3);
+}
+
+.button_add-popup {
+    background-image: url('../../assets/icons/add.svg');
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
+.button_add-expense {
+    background-image: url('../../assets/icons/add_expense.svg');
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
+.button_forward {
+    background-image: url('../../assets/icons/arrow_forward.svg');
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
+.button_currency:hover {
+    transform: scale(1);
+}
+
+.button_disabled {
+    border: 1px solid darker($color-border, 8);
+
+    background-color: darker($color-primary, 8);
+    cursor: default;
+
+    color: darker($color-text, 8);
+}
+
+.button_disabled:hover {
+    border: 1px solid darker($color-border, 8);
+
+    background-color: darker($color-primary, 8);
+    cursor: default;
+    box-shadow: none;
+
+    color: darker($color-text, 8);
+}

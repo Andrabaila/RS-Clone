@@ -1,0 +1,48 @@
+.wrapper {
+    display: flex;
+}
+
+.wrapper_start-page-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+}
+
+.wrapper_currency,
+.wrapper_input-new-group {
+    width: 100%;
+    padding: 0 11em;
+    justify-content: space-between;
+}
+
+.wrapper_input-new-group {
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper_popup {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: $gap * 2;
+}
+
+.wrapper_popup-add {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    gap: calc($gap * 2);
+}
+
+@media (min-width: 768px) {
+    .wrapper_start-page-buttons {
+        display: flex;
+        flex-direction: row;
+    }
+}

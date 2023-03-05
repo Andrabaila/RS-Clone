@@ -1,0 +1,90 @@
+.popup {
+    position: absolute;
+    top: -300%;
+
+    display: flex;
+    width: 70%;
+    max-width: $max-width-popup;
+    padding: 3rem;
+    gap: 1rem;
+
+    font-size: 30px;
+    background: $color-background;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.popup_invite {
+    background-color: $color-light;
+    border-radius: 2px;
+    color: $color-dark;
+}
+
+.popup_add {
+    width: 100%;
+    max-width: $max-width-layout;
+    padding-right: 20px;
+
+    background-color: transparent;
+    border-radius: 2px;
+    color: $color-dark;
+}
+
+.popup_active {
+    top: 50%;
+    left: 50%;
+    z-index: 20;
+
+    opacity: 1;
+    transform: translate(-50%, -50%);
+
+    &.popup_add {
+        top: unset;
+        bottom: -30px;
+    }
+}
+
+.popup__title_invite {
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    background-color: $color-gray_light;
+    user-select: auto;
+}
+
+.popup-add__item {
+    display: flex;
+    gap: calc($gap * 2);
+}
+
+.popup-add__item-content {
+    display: flex;
+    flex-direction: column;
+    gap: calc($gap / 2);
+}
+
+.popup-add__item-title {
+    color: $color-text_dark;
+    text-align: right;
+}
+
+.popup__content {
+    text-align: center;
+}
+
+.popup-add__item-text {
+    color: $color-gray;
+    font-size: $font-size-text_small;
+}
+
+.popup__close {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+
+    @include size(28px);
+
+    &:hover {
+        transform: scale(1.2);
+    }
+}
