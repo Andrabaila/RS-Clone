@@ -7,6 +7,7 @@ import renameUser from '../../api/renameUser';
 import renameUserInGroup from '../../api/renameUserInGroup';
 import getGroup from '../../api/getGroup';
 import removeUserFromGroup from '../../api/removeUserFromGroup';
+import getUserExpenses from '../../api/getUserExpenses';
 
 const langObj = getLangObj();
 
@@ -79,7 +80,9 @@ const addListenersModal = () => {
     });
 };
 
-export const makeUserPage = () => {
+export const makeUserPage = async () => {
+    const userInfo = await getUserExpenses(localStorage.userIdSelected || localStorage.user);
+
     document.body.innerHTML = addUserPageHtml(
         '/#/overview',
         '/',
@@ -88,8 +91,11 @@ export const makeUserPage = () => {
         langObj.btnEdit,
         langObj.balance,
         langObj.expenses,
+        userInfo.expenses.length,
         langObj.payments,
+        userInfo.payments.length,
         langObj.benefitsFrom,
+        userInfo.benefits.length,
         langObj.deletePerson,
         langObj.btnCancel,
         langObj.btnDelete
