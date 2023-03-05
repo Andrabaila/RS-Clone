@@ -6,8 +6,11 @@ const addUserPageHtml = (
     btnEdit: string,
     balance: string,
     expenses: string,
+    expensesCount: string,
     payments: string,
+    paymentsCount: string,
     benefitsFrom: string,
+    benefitsCount: string,
     deletePerson: string,
     btnCancel: string,
     btnDelete: string
@@ -54,20 +57,20 @@ const addUserPageHtml = (
     <a href=${expensesHref}>
       <div class="upage-expenses">
         <div class="expenses-text">${expenses}</div>
-        <div class="expenses-number">10</div>
+        <div class="expenses-number">${expensesCount}</div>
       </div>
       </a>
       <a href=${paymentsHref}>
       <div class="upage-payments">
         <div class="payments-text">${payments}</div>
-        <div class="payments-number">10</div>
+        <div class="payments-number">${paymentsCount}</div>
       </div>
       </a>
     </div>
     <a href=${benefitHref}>
     <div class="upage-benefit">
       <div class="benefit-text">${benefitsFrom}</div>
-      <div class="benefit-number">10</div>
+      <div class="benefit-number">${benefitsCount}</div>
     </div>
     </a>
   </div>
